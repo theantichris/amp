@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace AMP\Providers;
 
 use Laravel\Spark\Spark;
 use Laravel\Spark\Providers\AppServiceProvider as ServiceProvider;
@@ -13,11 +13,11 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $details = [
-        'vendor' => 'Your Company',
-        'product' => 'Your Product',
-        'street' => 'PO Box 111',
-        'location' => 'Your Town, NY 12345',
-        'phone' => '555-555-5555',
+        'vendor' => 'Additerra, Inc.',
+        'product' => 'Additerra Manufacturing Platform',
+        'street' => '10629 Hardin Valley Rd #210',
+        'location' => 'Knoxville, TN 37932',
+        'phone' => '(865) 321-9199',
     ];
 
     /**
