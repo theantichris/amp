@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace AMP;
 
 use Laravel\Spark\Team as SparkTeam;
 

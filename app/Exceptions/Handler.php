@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace AMP\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

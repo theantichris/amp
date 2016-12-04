@@ -2,9 +2,16 @@
 
 namespace AMP\Providers;
 
-use Laravel\Spark\Spark;
+use AMP\Team;
+use AMP\User;
 use Laravel\Spark\Providers\AppServiceProvider as ServiceProvider;
+use Laravel\Spark\Spark;
 
+/**
+ * Class SparkServiceProvider
+ *
+ * @package AMP\Providers
+ */
 class SparkServiceProvider extends ServiceProvider
 {
     /**
@@ -13,11 +20,11 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $details = [
-        'vendor' => 'Additerra, Inc.',
-        'product' => 'Additerra Manufacturing Platform',
-        'street' => '10629 Hardin Valley Rd #210',
+        'vendor'   => 'Additerra, Inc.',
+        'product'  => 'Additerra Manufacturing Platform',
+        'street'   => '10629 Hardin Valley Rd #210',
         'location' => 'Knoxville, TN 37932',
-        'phone' => '(865) 321-9199',
+        'phone'    => '(865) 321-9199',
     ];
 
     /**
@@ -53,14 +60,24 @@ class SparkServiceProvider extends ServiceProvider
         Spark::useBraintree()->noCardUpFront()->trialDays(10);
 
         Spark::freePlan()
-            ->features([
-                'First', 'Second', 'Third'
-            ]);
+             ->features([
+                 'First',
+                 'Second',
+                 'Third',
+             ]);
 
         Spark::plan('Basic', 'provider-id-1')
-            ->price(10)
-            ->features([
-                'First', 'Second', 'Third'
-            ]);
+             ->price(10)
+             ->features([
+                 'First',
+                 'Second',
+                 'Third',
+             ]);
+    }
+
+    public function register()
+    {
+        Spark::useUserModel(User::class);
+        Spark::useTeamModel(Team::class);
     }
 }
