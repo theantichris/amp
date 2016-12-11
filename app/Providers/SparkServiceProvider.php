@@ -32,7 +32,7 @@ class SparkServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $sendSupportEmailsTo = null;
+    protected $sendSupportEmailsTo = 'support@additerra.com';
 
     /**
      * All of the application developer e-mail addresses.
