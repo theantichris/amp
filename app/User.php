@@ -2,12 +2,19 @@
 
 namespace AMP;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Spark\CanJoinTeams;
 use Laravel\Spark\User as SparkUser;
 
+/**
+ * Class User
+ *
+ * @package AMP
+ */
 class User extends SparkUser
 {
     use CanJoinTeams;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -47,7 +54,12 @@ class User extends SparkUser
      * @var array
      */
     protected $casts = [
-        'trial_ends_at' => 'date',
+        'trial_ends_at'        => 'date',
         'uses_two_factor_auth' => 'boolean',
     ];
+
+    /**
+     * @var string[]
+     */
+    protected $dates = ['deleted_at'];
 }
