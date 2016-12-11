@@ -40,7 +40,9 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $developers = [
-        //
+        'chrislamm@additerra.com',
+        'mattserkland@additerra.com',
+        'willsames@additerra.com',
     ];
 
     /**
@@ -57,16 +59,16 @@ class SparkServiceProvider extends ServiceProvider
      */
     public function booted()
     {
-        Spark::useBraintree()->noCardUpFront()->trialDays(10);
+        Spark::useBraintree()->noCardUpFront()->teamTrialDays(10);
 
-        Spark::freePlan()
+        Spark::freeTeamPlan()
              ->features([
                  'First',
                  'Second',
                  'Third',
              ]);
 
-        Spark::plan('Basic', 'provider-id-1')
+        Spark::teamPlan('Basic', 'provider-id-1')
              ->price(10)
              ->features([
                  'First',
