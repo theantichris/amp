@@ -4,7 +4,7 @@ namespace AMP\Http\Controllers;
 
 use Illuminate\View\View;
 
-class HomeController extends Controller
+class CustomerController extends Controller
 {
     public function __construct()
     {
@@ -12,8 +12,8 @@ class HomeController extends Controller
         $this->middleware('teamSubscribed');
     }
 
-    public function show(): View
+    public function index(): View
     {
-        return view('home');
+        return view('customer.index');
     }
 }
