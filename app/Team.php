@@ -13,7 +13,8 @@ class Team extends SparkTeam
 
     protected $dates = ['deleted_at'];
 
-    public function customers(): HasMany{
+    public function customers(): HasMany
+    {
         return $this->hasMany(Customer::class);
     }
 }
