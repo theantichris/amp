@@ -8,13 +8,7 @@
                     <div class="panel-heading">Customers</div>
 
                     <div class="panel-body">
-                        <customer-list inline-template>
-                            <ul>
-                                <li v-for="customers in customers">
-                                    @{{ customers.company_name }}
-                                </li>
-                            </ul>
-                        </customer-list>
+                        <customer-list></customer-list>
                     </div>
                 </div>
             </div>
