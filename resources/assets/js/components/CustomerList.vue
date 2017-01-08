@@ -1,3 +1,11 @@
+<template>
+    <ul>
+        <li v-for="customers in customers">
+            {{ customers.company_name }}
+        </li>
+    </ul>
+</template>
+
 <script>
     export default {
         props: ['user'],
@@ -25,11 +33,3 @@
         }
     }
 </script>
-
-<template>
-    <ul>
-        <li v-for="customers in customers">
-            {{ customers.company_name }}
-        </li>
-    </ul>
-</template>
