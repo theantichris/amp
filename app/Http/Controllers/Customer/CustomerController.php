@@ -1,7 +1,8 @@
 <?php
 
-namespace AMP\Http\Controllers;
+namespace AMP\Http\Controllers\Customer;
 
+use AMP\Http\Controllers\Controller;
 use Illuminate\View\View;
 
 class CustomerController extends Controller
