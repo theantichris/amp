@@ -2,16 +2,11 @@
 
 namespace AMP\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Response;
 
 class WelcomeController extends Controller
 {
-    /**
-     * Show the application splash screen.
-     *
-     * @return Response
-     */
-    public function show()
+    public function show(): Response
     {
         return view('welcome');
     }
