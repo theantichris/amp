@@ -2,7 +2,6 @@
 
 namespace AMP\Repository;
 
-use Auth;
 use Exception;
 use Illuminate\Contracts\Container\Container as App;
 use Illuminate\Database\Eloquent\Builder;
