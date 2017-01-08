@@ -2,11 +2,11 @@
 
 namespace AMP\Http\Controllers;
 
-use Response;
+use Illuminate\View\View;
 
 class WelcomeController extends Controller
 {
-    public function show(): Response
+    public function show(): View
     {
         return view('welcome');
     }
