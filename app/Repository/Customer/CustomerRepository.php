@@ -1,8 +1,9 @@
 <?php
 
-namespace AMP\Repository;
+namespace AMP\Repository\Customer;
 
-use AMP\Domain\Customer;
+use AMP\Domain\Customer\Customer;
+use AMP\Repository\Repository;
 
 class CustomerRepository extends Repository
 {

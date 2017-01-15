@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Domain;
+namespace AMP\Domain\Customer;
 
 use AMP\Team;
 use Carbon\Carbon;

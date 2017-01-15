@@ -3,10 +3,10 @@
 namespace AMP\Http\Controllers\Customer;
 
 use AMP\Http\Controllers\Controller;
-use AMP\Repository\CustomerRepository;
+use AMP\Repository\Customer\CustomerRepository;
+use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
 use Response;
-use Illuminate\Contracts\Auth\Factory as Auth;
 
 class CustomerApiController extends Controller
 {

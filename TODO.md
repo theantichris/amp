@@ -1,3 +1,5 @@
 # TODO
 
-* Filter API by team
+* Filter Customer API by team
+    * Criteria
+    * Customer service
