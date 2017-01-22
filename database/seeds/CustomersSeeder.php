@@ -1,7 +1,8 @@
 <?php
 
-use AMP\Domain\Customer;
+use AMP\Domain\Customer\Customer;
 use AMP\Team;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class CustomersSeeder extends Seeder
@@ -17,6 +18,7 @@ class CustomersSeeder extends Seeder
             'contact_name'   => 'John Doe',
             'contact_email'  => 'john@customerone.com',
             'team_id'        => $additerra->getQueueableId(),
+            'created_at'     => new Carbon(),
         ]);
     }
 }
