@@ -20,5 +20,14 @@ class CustomersSeeder extends Seeder
             'team_id'        => $additerra->getQueueableId(),
             'created_at'     => new Carbon(),
         ]);
+
+        Customer::create([
+            'account_number' => '987654321',
+            'company_name'   => 'Customer Two',
+            'contact_name'   => 'Jane Doe',
+            'contact_email'  => 'jane@customertwo.com',
+            'team_id'        => $additerra->getQueueableId(),
+            'created_at'     => new Carbon(),
+        ]);
     }
 }
