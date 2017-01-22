@@ -8,259 +8,184 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class Customer
+ *
+ * @package AMP\Domain\Customer
+ *
+ * @property string      $account_number
+ * @property string      $company_name
+ * @property string      $contact_name
+ * @property string      $contact_phone
+ * @property string|null $address1
+ * @property string|null $address2
+ * @property string|null $state
+ * @property string|null $zip
+ * @property string|null shipping_account_provider
+ * @property string|null shipping_account_number
+ * @property Carbon      $created_at
+ * @property Carbon      $updated_at
+ * @property Carbon|null $deleted_at
+ */
 class Customer extends Model
 {
     use SoftDeletes;
 
-    /**
-     * @var string[]
-     */
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    /**
-     * @var string
-     */
-    private $accountNumber;
-
-    /**
-     * @var string
-     */
-    private $companyName;
-
-    /**
-     * @var string
-     */
-    private $contactName;
-
-    /**
-     * @var string
-     */
-    private $contactPhone;
-
-    /**
-     * @var string
-     */
-    private $address1;
-
-    /**
-     * @var string
-     */
-    private $address2;
-
-    /**
-     * @var string
-     */
-    private $city;
-
-    /**
-     * @var string
-     */
-    private $state;
-
-    /**
-     * @var string
-     */
-    private $zip;
-
-    /**
-     * @var string
-     */
-    private $shippingAccountProvider;
-
-    /**
-     * @var string
-     */
-    private $shippingAccountNumber;
-
-    /**
-     * @var Carbon
-     */
-    private $createdAt;
-
-    /**
-     * @var Carbon
-     */
-    private $updatedAt;
-
-    /**
-     * @var Carbon
-     */
-    private $deletedAt;
-
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
-
     public function getAccountNumber(): string
     {
-        return $this->accountNumber;
+        return $this->attributes['account_number'];
     }
 
     public function setAccountNumber(string $accountNumber): Customer
     {
-        $this->accountNumber = $accountNumber;
+        $this->attributes['account_number'] = $accountNumber;
 
         return $this;
     }
 
     public function getCompanyName(): string
     {
-        return $this->companyName;
+        return $this->attributes['company_name'];
     }
 
     public function setCompanyName(string $companyName): Customer
     {
-        $this->companyName = $companyName;
+        $this->attributes['company_name'] = $companyName;
 
         return $this;
     }
 
     public function getContactName(): string
     {
-        return $this->contactName;
+        return $this->attributes['contact_name'];
     }
 
     public function setContactName(string $contactName): Customer
     {
-        $this->contactName = $contactName;
+        $this->attributes['contact_name'] = $contactName;
 
         return $this;
     }
 
     public function getContactPhone(): string
     {
-        return $this->contactPhone;
+        return $this->attributes['contact_phone'];
     }
 
     public function setContactPhone(string $contactPhone): Customer
     {
-        $this->contactPhone = $contactPhone;
+        $this->attributes['contact_phone'] = $contactPhone;
 
         return $this;
     }
 
-    public function getAddress1(): string
+    public function getAddress1(): ?string
     {
-        return $this->address1;
+        return $this->attributes['address1'];
     }
 
     public function setAddress1(string $address1): Customer
     {
-        $this->address1 = $address1;
+        $this->attributes['address1'] = $address1;
 
         return $this;
     }
 
-    public function getAddress2(): string
+    public function getAddress2(): ?string
     {
-        return $this->address2;
+        return $this->attributes['address2'];
     }
 
     public function setAddress2(string $address2): Customer
     {
-        $this->address2 = $address2;
+        $this->attributes['address2'] = $address2;
 
         return $this;
     }
-
-    public function getCity(): string
+    
+    public function getCity(): ?string
     {
-        return $this->city;
+        return $this->attributes['city'];
     }
-
+    
     public function setCity(string $city): Customer
     {
-        $this->city = $city;
-
+        $this->attributes['city'] = $city;
+        
         return $this;
     }
-
-    public function getState(): string
+    
+    public function getState(): ?string
     {
-        return $this->state;
+        return $this->attributes['state'];
     }
-
+    
     public function setState(string $state): Customer
     {
-        $this->state = $state;
-
+        $this->attributes['state'] = $state;
+        
         return $this;
     }
-
-    public function getZip(): string
+    
+    public function getZip(): ?string
     {
-        return $this->zip;
+        return $this->attributes['zip'];
     }
-
+    
     public function setZip(string $zip): Customer
     {
-        $this->zip = $zip;
-
+        $this->attributes['zip'] = $zip;
+        
         return $this;
     }
-
-    public function getShippingAccountProvider(): string
+    
+    public function getShippingAccountProvider(): ?string
     {
-        return $this->shippingAccountProvider;
+        return $this->attributes['shipping_account_provider'];
     }
-
+    
     public function setShippingAccountProvider(string $shippingAccountProvider): Customer
     {
-        $this->shippingAccountProvider = $shippingAccountProvider;
-
+        $this->attributes['shipping_account_provider']  = $shippingAccountProvider;
+        
         return $this;
     }
-
-    public function getShippingAccountNumber(): string
+    
+    public function getShippingAccountNumber(): ?string
     {
-        return $this->shippingAccountNumber;
+        return $this->attributes['shipping_account_number'];
     }
-
+    
     public function setShippingAccountNumber(string $shippingAccountNumber): Customer
     {
-        $this->shippingAccountNumber = $shippingAccountNumber;
-
+        $this->attributes['shipping_account_number']  = $shippingAccountNumber;
+        
         return $this;
     }
-
-    public function getDeletedAt(): Carbon
-    {
-        return $this->deletedAt;
-    }
-
-    public function setDeletedAt(Carbon $deletedAt): Customer
-    {
-        $this->deletedAt = $deletedAt;
-
-        return $this;
-    }
-
+    
     public function getCreatedAt(): Carbon
     {
-        return $this->createdAt;
+        return $this->attributes['created_at'];
     }
-
-    public function setCreatedAt($createdAt): Customer
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
+    
     public function getUpdatedAt(): Carbon
     {
-        return $this->updatedAt;
+        return $this->attributes['updated_at'];
+    }
+    
+    public function getDeletedAt(): ?Carbon
+    {
+        return $this->attributes['deleted_at'];
     }
 
-    public function setUpdatedAt($updatedAt): Customer
+    public function team(): BelongsTo
     {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
+        return $this->belongsTo(Team::class);
     }
 }
