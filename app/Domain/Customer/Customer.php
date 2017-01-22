@@ -19,6 +19,11 @@ class Customer extends Model
         'deleted_at',
     ];
 
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
+
     public function getAccountNumber(): string
     {
         return $this->attributes['account_number'];

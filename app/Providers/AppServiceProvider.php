@@ -2,11 +2,13 @@
 
 namespace AMP\Providers;
 
-use AMP\Http\Controllers\Customer\CustomerApiController;
 use AMP\Repository\Customer\CustomerRepository;
 use AMP\Repository\RepositoryInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use AMP\Map\Customer\CustomerListViewModelMapper;
+use AMP\Map\ViewModelMapperInterface;
+use AMP\Service\Customer\CustomerService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +23,12 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(IdeHelperServiceProvider::class);
         }
 
-        $this->app->when(CustomerApiController::class)
+        $this->app->when(CustomerService::class)
                   ->needs(RepositoryInterface::class)
                   ->give(CustomerRepository::class);
+
+        $this->app->when(CustomerService::class)
+                  ->needs(ViewModelMapperInterface::class)
+                  ->give(CustomerListViewModelMapper::class);
     }
 }
