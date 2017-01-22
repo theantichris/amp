@@ -1,9 +1,11 @@
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
-    <table class="table table-striped">
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <table class="table table-striped sortable-table">
         <thead>
         <tr>
-            <th v-for="column in columns" v-on:click="sortBy(column)">
-                {{ column.replace( /([A-Z])/g, " $1" ) | capitalize }}
+            <th class="sortable-table__heading" v-for="column in columns" v-on:click="sortBy(column)" v-bind:class="{ active: sortKey == column }">
+                <span>{{ column.replace( /([A-Z])/g, " $1" ) | capitalize }}</span>
+
+                <i class="fa" v-bind:class="sortClass(column)"></i>
             </th>
         </tr>
         </thead>
@@ -33,7 +35,8 @@
                     'contactName',
                     'contactEmail',
                 ],
-                sortKey: 'accountNumber'
+                sortKey: 'accountNumber',
+                reversed: null
             }
         },
 
@@ -55,15 +58,48 @@
             sortBy(column){
                 this.sortedCustomers = this.customers;
 
-                if (this.sortKey == column)
+                if (this.sortKey == column) {
                     this.sortedCustomers.reverse();
-                else
+
+                    if (this.reversed == null)
+                        this.reversed = false;
+                    else
+                        this.reversed = !this.reversed;
+                }
+                else {
                     this.sortedCustomers = this.customers.sort(function (a, b) {
                         return a[column] == b[column] ? 0 : +(a[column] > b[column] || -1);
                     });
 
+                    this.reversed = false;
+                }
+
                 this.sortKey = column;
+            },
+            sortClass(column){
+                if (this.sortKey == column && !this.reversed)
+                    return 'fa-chevron-up';
+
+                if (this.sortKey == column && this.reversed)
+                    return 'fa-chevron-down';
+
+                return 'fa-sort';
             }
         }
     }
 </script>
+
+<style lang="less" scoped>
+    .sortable-table {
+
+    .sortable-table__heading {
+        cursor: pointer;
+
+    &
+    .active {
+        background: transparent;
+    }
+
+    }
+    }
+</style>
