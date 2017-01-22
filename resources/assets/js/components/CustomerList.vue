@@ -4,7 +4,6 @@
         <tr>
             <th class="sortable-table__heading" v-for="column in columns" v-on:click="sortBy(column)" v-bind:class="{ active: sortKey == column }">
                 <span>{{ column.replace( /([A-Z])/g, " $1" ) | capitalize }}</span>
-
                 <i class="fa" v-bind:class="sortClass(column)"></i>
             </th>
         </tr>
