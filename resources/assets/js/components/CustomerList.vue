@@ -2,10 +2,9 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Account Number</th>
-            <th>Company Name</th>
-            <th>Contact Name</th>
-            <th>Contact Email</th>
+            <th v-for="column in columns">
+                {{ column.replace( /([A-Z])/g, " $1" ) | capitalize }}
+            </th>
         </tr>
         </thead>
 
@@ -26,7 +25,13 @@
 
         data (){
             return {
-                customers: []
+                customers: [],
+                columns: [
+                    'accountNumber',
+                    'companyName',
+                    'contactName',
+                    'contactEmail',
+                ]
             }
         },
 
