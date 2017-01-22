@@ -4,13 +4,17 @@
         <tr>
             <th>Account Number</th>
             <th>Company Name</th>
+            <th>Contact Name</th>
+            <th>Contact Email</th>
         </tr>
         </thead>
 
         <tbody>
         <tr v-for="customer in customers">
-            <td>{{ customer.account_number }}</td>
-            <td>{{ customer.company_name }}</td>
+            <td>{{ customer.accountNumber }}</td>
+            <td>{{ customer.companyName }}</td>
+            <td>{{ customer.contactName }}</td>
+            <td>{{ customer.contactEmail }}</td>
         </tr>
         </tbody>
     </table>
