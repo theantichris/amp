@@ -8,25 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class Customer
- *
- * @package AMP\Domain\Customer
- *
- * @property string      $account_number
- * @property string      $company_name
- * @property string      $contact_name
- * @property string      $contact_phone
- * @property string|null $address1
- * @property string|null $address2
- * @property string|null $state
- * @property string|null $zip
- * @property string|null shipping_account_provider
- * @property string|null shipping_account_number
- * @property Carbon      $created_at
- * @property Carbon      $updated_at
- * @property Carbon|null $deleted_at
- */
 class Customer extends Model
 {
     use SoftDeletes;
