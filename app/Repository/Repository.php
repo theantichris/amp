@@ -65,6 +65,6 @@ abstract class Repository implements RepositoryInterface
 
     public function findBy(string $field, string $value, array $columns = ['*']): Collection
     {
-        return $this->model->where($field, '=', $value)->max($columns);
+        return $this->model->where($field, '=', $value)->get($columns);
     }
 }

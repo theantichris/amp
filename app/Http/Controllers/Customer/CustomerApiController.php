@@ -4,25 +4,25 @@ namespace AMP\Http\Controllers\Customer;
 
 use AMP\Http\Controllers\Controller;
 use AMP\Repository\RepositoryInterface;
-use Illuminate\Contracts\Auth\Factory as Auth;
+use Auth;
 use Illuminate\Http\JsonResponse;
 use Response;
 
 class CustomerApiController extends Controller
 {
     private $repo;
-    private $auth;
 
-    public function __construct(RepositoryInterface $customerRepo, Auth $auth)
+    public function __construct(RepositoryInterface $customerRepo)
     {
         $this->middleware('auth');
 
         $this->repo = $customerRepo;
-        $this->auth = $auth->guard();
     }
 
     public function index(): JsonResponse
     {
-        return Response::json($this->repo->all());
+        $customers = $this->repo->findBy('team_id', Auth::user()->currentTeam()->id);
+
+        return Response::json($customers);
     }
 }
