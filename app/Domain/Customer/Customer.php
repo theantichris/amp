@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use InvalidArgumentException;
 
 class Customer extends Model
 {
@@ -54,7 +55,23 @@ class Customer extends Model
         return $this;
     }
 
-    public function getContactPhone(): string
+    public function getContactEmail(): string
+    {
+        return $this->attributes['contact_email'];
+    }
+
+    public function setContactEmail(string $contactEmail): Customer
+    {
+        if (!filter_var($contactEmail, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException($contactEmail . ' is not a valid email address.');
+        }
+
+        $this->attributes['contact_email'] = $contactEmail;
+
+        return $this;
+    }
+
+    public function getContactPhone(): ?string
     {
         return $this->attributes['contact_phone'];
     }
@@ -89,77 +106,77 @@ class Customer extends Model
 
         return $this;
     }
-    
+
     public function getCity(): ?string
     {
         return $this->attributes['city'];
     }
-    
+
     public function setCity(string $city): Customer
     {
         $this->attributes['city'] = $city;
-        
+
         return $this;
     }
-    
+
     public function getState(): ?string
     {
         return $this->attributes['state'];
     }
-    
+
     public function setState(string $state): Customer
     {
         $this->attributes['state'] = $state;
-        
+
         return $this;
     }
-    
+
     public function getZip(): ?string
     {
         return $this->attributes['zip'];
     }
-    
+
     public function setZip(string $zip): Customer
     {
         $this->attributes['zip'] = $zip;
-        
+
         return $this;
     }
-    
+
     public function getShippingAccountProvider(): ?string
     {
         return $this->attributes['shipping_account_provider'];
     }
-    
+
     public function setShippingAccountProvider(string $shippingAccountProvider): Customer
     {
-        $this->attributes['shipping_account_provider']  = $shippingAccountProvider;
-        
+        $this->attributes['shipping_account_provider'] = $shippingAccountProvider;
+
         return $this;
     }
-    
+
     public function getShippingAccountNumber(): ?string
     {
         return $this->attributes['shipping_account_number'];
     }
-    
+
     public function setShippingAccountNumber(string $shippingAccountNumber): Customer
     {
-        $this->attributes['shipping_account_number']  = $shippingAccountNumber;
-        
+        $this->attributes['shipping_account_number'] = $shippingAccountNumber;
+
         return $this;
     }
-    
+
     public function getCreatedAt(): Carbon
     {
         return $this->attributes['created_at'];
     }
-    
+
     public function getUpdatedAt(): Carbon
     {
         return $this->attributes['updated_at'];
     }
-    
+
     public function getDeletedAt(): ?Carbon
     {
         return $this->attributes['deleted_at'];
