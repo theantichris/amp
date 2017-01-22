@@ -90,15 +90,12 @@
 
 <style lang="less" scoped>
     .sortable-table {
+        .sortable-table__heading {
+            cursor: pointer;
 
-    .sortable-table__heading {
-        cursor: pointer;
-
-    &
-    .active {
-        background: transparent;
-    }
-
-    }
+            &.active {
+                background: transparent;
+            }
+        }
     }
 </style>
