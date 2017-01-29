@@ -32,7 +32,7 @@
                     'accountNumber',
                     'companyName',
                     'contactName',
-                    'contactEmail',
+                    'contactEmail'
                 ],
                 sortKey: 'accountNumber',
                 reversed: null
@@ -87,15 +87,3 @@
         }
     }
 </script>
-
-<style lang="less" scoped>
-    .sortable-table {
-        .sortable-table__heading {
-            cursor: pointer;
-
-            &.active {
-                background: transparent;
-            }
-        }
-    }
-</style>
