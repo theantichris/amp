@@ -1,9 +1,9 @@
 require('spark-bootstrap');
 require('./components/bootstrap');
 
-import CustomerList from './components/CustomerList.vue';
+import SortedList from './components/SortedList.vue';
 
 new Vue({
     mixins: [require('spark')],
-    components: {CustomerList}
+    components: {SortedList}
 });

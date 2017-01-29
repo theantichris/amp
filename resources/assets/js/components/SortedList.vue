@@ -10,11 +10,11 @@
         </thead>
 
         <tbody>
-        <tr v-for="customer in sortedCustomers">
-            <td>{{ customer.accountNumber }}</td>
-            <td>{{ customer.companyName }}</td>
-            <td>{{ customer.contactName }}</td>
-            <td>{{ customer.contactEmail }}</td>
+        <tr v-for="item in sortedItems">
+            <td>{{ item[columns[0]] }}</td>
+            <td>{{ item[columns[1]] }}</td>
+            <td>{{ item[columns[2]] }}</td>
+            <td>{{ item[columns[3]] }}</td>
         </tr>
         </tbody>
     </table>
@@ -22,19 +22,12 @@
 
 <script>
     export default {
-        props: ['user'],
+        props: ['columns', 'url', 'sortKey'],
 
         data (){
             return {
-                customers: [],
-                sortedCustomers: [],
-                columns: [
-                    'accountNumber',
-                    'companyName',
-                    'contactName',
-                    'contactEmail'
-                ],
-                sortKey: 'accountNumber',
+                items: [],
+                sortedItems: [],
                 reversed: null
             }
         },
@@ -45,20 +38,20 @@
 
         methods: {
             getCustomerList(){
-                let resource = this.$resource('/api/customer');
+                let resource = this.$resource(this.url);
 
                 resource.get().then((response) => {
-                    this.customers = response.data;
+                    this.items = response.data;
                     this.sortBy(this.sortKey);
                 }, (error) => {
                     console.error(error);
                 })
             },
             sortBy(column){
-                this.sortedCustomers = this.customers;
+                this.sortedItems = this.items;
 
                 if (this.sortKey == column) {
-                    this.sortedCustomers.reverse();
+                    this.sortedItems.reverse();
 
                     if (this.reversed == null)
                         this.reversed = false;
@@ -66,7 +59,7 @@
                         this.reversed = !this.reversed;
                 }
                 else {
-                    this.sortedCustomers = this.customers.sort(function (a, b) {
+                    this.sortedItems = this.items.sort(function (a, b) {
                         return a[column] == b[column] ? 0 : +(a[column] > b[column] || -1);
                     });
 

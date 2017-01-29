@@ -8,7 +8,9 @@
                     <div class="panel-heading">Customers</div>
 
                     <div class="panel-body">
-                        <customer-list></customer-list>
+                        <sorted-list :columns="['accountNumber', 'companyName', 'contactName', 'contactEmail']"
+                                       :url="'/api/customer'"
+                                       :sort-key="'accountNumber'"></sorted-list>
                     </div>
                 </div>
             </div>
