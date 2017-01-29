@@ -10,7 +10,7 @@
 
                         <div class="panel-body">
                             <div class="dashboard__icon">
-                                <a class="dashboard__link" href="customer">
+                                <a class="dashboard__link" href="customers">
                                     <div class="dashboard__image"><i class="fa fa-users"></i></div>
                                     <div class="dashboard__text">Customers</div>
                                 </a>

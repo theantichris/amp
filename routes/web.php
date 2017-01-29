@@ -4,4 +4,4 @@ Route::get('/', 'WelcomeController@show');
 
 Route::get('/home', 'HomeController@show');
 
-Route::get('/customer', 'Customer\CustomerController@index');
+Route::get('/customers', 'Customer\CustomerController@index');
