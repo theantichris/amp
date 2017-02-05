@@ -1,10 +1,11 @@
 <?php
 
-namespace Feature;
+namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\IntegrationTest;
 
-class AuthenticationTest extends \TestCase
+class AuthenticationTest extends IntegrationTest
 {
     use DatabaseMigrations;
 
