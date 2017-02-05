@@ -2,14 +2,17 @@
 
 namespace AMP\Providers;
 
-use AMP\Repository\Customer\CustomerRepository;
-use AMP\Repository\RepositoryInterface;
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
-use Illuminate\Support\ServiceProvider;
 use AMP\Map\Customer\CustomerListViewModelMapper;
 use AMP\Map\ViewModelMapperInterface;
+use AMP\Repository\Customer\CustomerRepository;
+use AMP\Repository\RepositoryInterface;
 use AMP\Service\Customer\CustomerService;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
+/**
+ * @codeCoverageIgnore
+ */
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
