@@ -11,8 +11,8 @@
   ],
   "require": {
     "php": ">=7.1.0",
-    "laravel/framework": "5.3.*",
-    "laravel/spark": "~3.0",
+    "laravel/framework": "5.4.*",
+    "laravel/spark": "~4.0",
     "laravel/cashier-braintree": "~2.0"
   },
   "require-dev": {
