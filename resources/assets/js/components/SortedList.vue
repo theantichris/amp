@@ -38,14 +38,14 @@
 
         methods: {
             getCustomerList(){
-                let resource = this.$resource(this.url);
-
-                resource.get().then((response) => {
-                    this.items = response.data;
-                    this.sortBy(this.sortKey);
-                }, (error) => {
-                    console.error(error);
-                })
+                axios.get(this.url)
+                    .then((response) => {
+                        this.items = response.data;
+                        this.sortBy(this.sortKey);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             },
             sortBy(column){
                 this.sortedItems = this.items;
@@ -59,7 +59,7 @@
                         this.reversed = !this.reversed;
                 }
                 else {
-                    this.sortedItems = this.items.sort(function (a, b) {
+                    this.sortedItems = this.items.sort((a, b) => {
                         return a[column] == b[column] ? 0 : +(a[column] > b[column] || -1);
                     });
 
