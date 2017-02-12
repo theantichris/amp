@@ -24,6 +24,7 @@ class CreateTeamsTable extends Migration
             $table->string('card_last_four')->nullable();
             $table->text('extra_billing_information')->nullable();
             $table->timestamp('trial_ends_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

@@ -1,18 +1,9 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register the API routes for your application as
-| the routes are automatically authenticated using the API guard and
-| loaded automatically by this application's RouteServiceProvider.
-|
-*/
+// B8ZbJgTlhZIsVz7tAvnls73hP9zX856wAK4r0XGT6fw8338LUj3PksrhYu5b
 
 Route::group([
     'middleware' => 'auth:api'
 ], function () {
-    //
+    Route::get('/customer', 'Customer\CustomerApiController@index');
 });

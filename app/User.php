@@ -1,26 +1,21 @@
 <?php
 
-namespace App;
+namespace AMP;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Spark\CanJoinTeams;
 use Laravel\Spark\User as SparkUser;
 
 class User extends SparkUser
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    use CanJoinTeams;
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'email',
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -38,13 +33,10 @@ class User extends SparkUser
         'extra_billing_information',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
-        'trial_ends_at' => 'date',
+        'trial_ends_at'        => 'date',
         'uses_two_factor_auth' => 'boolean',
     ];
+
+    protected $dates = ['deleted_at'];
 }

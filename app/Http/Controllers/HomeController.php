@@ -1,29 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace AMP\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
-
-        // $this->middleware('subscribed');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return Response
-     */
-    public function show()
+    public function show(): View
     {
         return view('home');
     }
