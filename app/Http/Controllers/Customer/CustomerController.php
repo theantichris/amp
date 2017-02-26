@@ -19,6 +19,6 @@ class CustomerController extends Controller
 
     public function create(): View
     {
-        return view('customers.form');
+        return view('customers.form')->with('customerId', null);
     }
 }
