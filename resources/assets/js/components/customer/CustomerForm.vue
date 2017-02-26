@@ -1,3 +1,4 @@
+<!--suppress HtmlUnknownTarget -->
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
     <form v-on:submit.prevent="save">
         <div class="row">
@@ -30,7 +31,8 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <button type="submit" class="btn btn-primary" v-bind:disabled="form.busy">Save</button>
+                <button type="submit" class="btn btn-primary" v-bind:disabled="form.busy" title="Save">Save</button>
+                <a href="/customers" class="btn btn-danger" title="Cancel">Cancel</a>
             </div>
         </div>
     </form>
