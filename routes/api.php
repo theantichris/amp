@@ -5,5 +5,5 @@
 Route::group([
     'middleware' => 'auth:api'
 ], function () {
-    Route::get('/customer', 'Customer\CustomerApiController@index');
+    Route::get('/customers', 'Customer\CustomerApiController@index');
 });

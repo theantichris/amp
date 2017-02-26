@@ -9,8 +9,8 @@
 
                     <div class="panel-body">
                         <sorted-list :columns="['accountNumber', 'companyName', 'contactName', 'contactEmail']"
-                                       :url="'/api/customer'"
-                                       :sort-key="'accountNumber'"></sorted-list>
+                                     :url="'/api/customers'"
+                                     :sort-key="'accountNumber'"></sorted-list>
                     </div>
                 </div>
             </div>
