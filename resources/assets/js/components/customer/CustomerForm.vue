@@ -1,5 +1,5 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
-    <form v-on:submit="save">
+    <form v-on:submit="save($event)">
         <div class="row">
             <div class="form-group col-xs-12 required" v-bind:class="{'has-error': form.errors.has('accountNumber')}">
                 <label for="accountNumber" class="control-label">Account Number</label>
@@ -76,7 +76,10 @@
         },
 
         methods: {
-            save() {
+            save(event) {
+                if (event)
+                    event.preventDefault();
+
                 Spark.post('/customers', this.form).then(response => {
                     console.log(response);
                 });
