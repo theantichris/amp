@@ -42,6 +42,7 @@
 
         data (){
             return {
+                butts: {},
                 form: new SparkForm({
                     accountNumber: '',
                     companyName: '',
@@ -51,15 +52,13 @@
             }
         },
 
-        mounted() {
-
-        },
-
         methods: {
             save() {
-                Spark.post('/api/customers', this.form).then(response => {
-                    console.log(response);
-                });
+                axios.post('/api/customers', this.form)
+                // TODO: Handle response
+                    .catch(error => {
+                        console.error(error);
+                    });
             }
         }
     }

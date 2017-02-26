@@ -14,7 +14,6 @@ class CustomersSeeder extends Seeder
 
         /** @var Customer $customer */
         factory(Customer::class, 10)->create(['team_id' => $additerra->getQueueableId()])->each(function ($customer) {
-
         });
     }
 }
