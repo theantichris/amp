@@ -10,7 +10,7 @@
                     <div class="panel-body">
                         <sorted-list :columns="['accountNumber', 'companyName', 'contactName', 'contactEmail']"
                                      :url="'/api/customers'"
-                                     :sort-key="'accountNumber'"></sorted-list>
+                                     :default-sort-key="'accountNumber'"></sorted-list>
                     </div>
                 </div>
             </div>

@@ -22,18 +22,19 @@
 
 <script>
     export default {
-        props: ['columns', 'url', 'sortKey'],
+        props: ['columns', 'url', 'defaultSortKey'],
 
         data (){
             return {
                 items: [],
                 sortedItems: [],
-                reversed: null
+                sortKey: null
             }
         },
 
         mounted() {
             this.getCustomerList();
+            this.sortKey = this.defaultSortKey;
         },
 
         methods: {
