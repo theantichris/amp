@@ -2,10 +2,12 @@
 
 namespace AMP\Service\Customer;
 
-use AMP\Repository\RepositoryInterface;
+use AMP\Domain\Customer\Customer;
 use AMP\Map\ViewModelMapperInterface;
+use AMP\Repository\RepositoryInterface;
+use AMP\Team;
 
-class CustomerService
+class CustomerService implements CustomerServiceInterface
 {
     private $repo;
     private $listMapper;
@@ -26,5 +28,23 @@ class CustomerService
         }
 
         return $viewModels;
+    }
+
+    public function saveFromJson(string $json, Team $team): Customer
+    {
+        // TODO: Converter.
+
+        $data = json_decode($json);
+
+        $customer = new Customer();
+
+        $customer->setAccountNumber($data->accountNumber)
+                 ->setCompanyName($data->companyName)
+                 ->setContactName($data->contactName)
+                 ->setContactEmail($data->contactEmail);
+
+        $team->customers()->save($customer);
+
+        return $customer;
     }
 }

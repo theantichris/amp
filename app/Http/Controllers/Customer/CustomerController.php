@@ -14,6 +14,11 @@ class CustomerController extends Controller
 
     public function index(): View
     {
-        return view('customer.index');
+        return view('customers.index');
+    }
+
+    public function create(): View
+    {
+        return view('customers.form')->with('customerId', null);
     }
 }
