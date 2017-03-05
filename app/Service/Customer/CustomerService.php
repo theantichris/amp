@@ -2,6 +2,7 @@
 
 namespace AMP\Service\Customer;
 
+use AMP\Converter\Customer\CustomerJsonConverter;
 use AMP\Domain\Customer\Customer;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Repository\RepositoryInterface;
@@ -11,11 +12,16 @@ class CustomerService implements CustomerServiceInterface
 {
     private $repo;
     private $listMapper;
+    private $jsonConverter;
 
-    public function __construct(RepositoryInterface $repo, ViewModelMapperInterface $listMapper)
-    {
-        $this->repo       = $repo;
+    public function __construct(
+        RepositoryInterface $repo,
+        ViewModelMapperInterface $listMapper,
+        CustomerJsonConverter $jsonConverter
+    ) {
+        $this->repo = $repo;
         $this->listMapper = $listMapper;
+        $this->jsonConverter = $jsonConverter;
     }
 
     public function getListViewModels(int $teamId): array
@@ -32,18 +38,9 @@ class CustomerService implements CustomerServiceInterface
 
     public function saveFromJson(string $json, Team $team): Customer
     {
-        // TODO: Converter.
-
-        $data = json_decode($json);
-
-        $customer = new Customer();
-
-        $customer->setAccountNumber($data->accountNumber)
-                 ->setCompanyName($data->companyName)
-                 ->setContactName($data->contactName)
-                 ->setContactEmail($data->contactEmail);
-
-        $team->customers()->save($customer);
+        /** @var Customer $customer */
+        $customer = $this->jsonConverter->convert($json, $team);
+        $this->repo->save($customer);
 
         return $customer;
     }
