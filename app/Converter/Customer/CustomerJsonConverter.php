@@ -2,13 +2,14 @@
 
 namespace AMP\Converter\Customer;
 
+use AMP\Converter\JsonConverterInterface;
 use AMP\Domain\Customer\Customer;
 use AMP\Team;
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerJsonConverter
+class CustomerJsonConverter implements JsonConverterInterface
 {
-    public function convert(string $json, ?Team $team = null): Model
+    public function convert(string $json, Team $team): Model
     {
         $data = json_decode($json);
 

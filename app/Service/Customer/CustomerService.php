@@ -2,7 +2,7 @@
 
 namespace AMP\Service\Customer;
 
-use AMP\Converter\Customer\CustomerJsonConverter;
+use AMP\Converter\JsonConverterInterface;
 use AMP\Domain\Customer\Customer;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Repository\RepositoryInterface;
@@ -17,10 +17,10 @@ class CustomerService implements CustomerServiceInterface
     public function __construct(
         RepositoryInterface $repo,
         ViewModelMapperInterface $listMapper,
-        CustomerJsonConverter $jsonConverter
+        JsonConverterInterface $jsonConverter
     ) {
-        $this->repo = $repo;
-        $this->listMapper = $listMapper;
+        $this->repo          = $repo;
+        $this->listMapper    = $listMapper;
         $this->jsonConverter = $jsonConverter;
     }
 
