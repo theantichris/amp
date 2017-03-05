@@ -1,7 +1,6 @@
 @extends('spark::layouts.app')
 
 @section('content')
-    <!--suppress HtmlUnknownTarget -->
     <div class="spark-screen container">
         <div class="row">
             @include('customers.sidebar')
