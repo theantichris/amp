@@ -2,7 +2,6 @@
 
 namespace AMP\Http\Controllers\Customer;
 
-use AMP\Domain\Customer\Customer;
 use AMP\Http\Controllers\Controller;
 use AMP\Service\Customer\CustomerServiceInterface;
 use Illuminate\View\View;
@@ -30,7 +29,7 @@ class CustomerController extends Controller
 
     public function show(int $id): View
     {
-        $customer = Customer::find($id);
+        $customer = $this->customerService->getCustomer($id);
 
         return view('customers.detail')->with('customer', $customer);
     }
