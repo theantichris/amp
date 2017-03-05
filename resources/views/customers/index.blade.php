@@ -18,7 +18,8 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <sorted-list :columns="['accountNumber', 'companyName', 'contactName', 'contactEmail']"
-                                             :url="'/api/customers'"
+                                             :api-url="'/api/customers'"
+                                             :url="'/customers'"
                                              :default-sort-key="'accountNumber'"></sorted-list>
                             </div>
                         </div>

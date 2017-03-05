@@ -55,7 +55,7 @@ abstract class Repository implements RepositoryInterface
 
     public function find(int $id, array $columns = ['*']): Model
     {
-        return $this->model->find($id, $columns)->first();
+        return $this->model->find($id, $columns);
     }
 
     public function findOneBy(string $field, string $value, array $columns = ['*']): Builder

@@ -6,6 +6,7 @@
                 <span>{{ column.replace( /([A-Z])/g, " $1" ) | capitalize }}</span>
                 <i class="fa" v-bind:class="sortClass(column)"></i>
             </th>
+            <th></th>
         </tr>
         </thead>
 
@@ -15,6 +16,7 @@
             <td>{{ item[columns[1]] }}</td>
             <td>{{ item[columns[2]] }}</td>
             <td>{{ item[columns[3]] }}</td>
+            <td><a v-bind:href="url + '/' + item['id']"><i class="fa fa-eye"></i></a></td>
         </tr>
         </tbody>
     </table>
@@ -22,7 +24,7 @@
 
 <script>
     export default {
-        props: ['columns', 'url', 'defaultSortKey'],
+        props: ['columns', 'apiUrl', 'url', 'defaultSortKey'],
 
         data (){
             return {
@@ -39,7 +41,7 @@
 
         methods: {
             getCustomerList(){
-                axios.get(this.url)
+                axios.get(this.apiUrl)
                     .then((response) => {
                         this.items = response.data;
                         this.sortBy(this.sortKey);
