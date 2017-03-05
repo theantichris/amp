@@ -38,7 +38,7 @@ class CustomerApiController extends Controller
         $customer = $this->customerService->saveFromJson($json, $team);
 
         return Response::json([], 201, [
-            'Location' => url('/customers/' . $customer->getId()),
+            'Location' => '/customers/' . $customer->getId(),
         ]);
     }
 }

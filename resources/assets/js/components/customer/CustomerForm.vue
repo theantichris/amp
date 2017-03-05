@@ -119,10 +119,10 @@
             },
             save() {
                 axios.post('/api/customers', this.form)
-                    .then(response => {
-                        window.location = '/customers'; // TODO Redirect to details page.
+                    .then((response) => {
+                        window.location = response.headers.location;
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         console.error(error);
             })
             }
