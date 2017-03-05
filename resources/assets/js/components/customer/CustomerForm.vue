@@ -31,8 +31,8 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <button type="submit" class="btn btn-primary" v-bind:disabled="form.busy" title="Save">Save</button>
                 <a href="/customers" class="btn btn-danger" title="Cancel">Cancel</a>
+                <button type="submit" class="btn btn-primary" v-bind:disabled="form.busy" title="Save">Save</button>
             </div>
         </div>
     </form>
