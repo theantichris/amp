@@ -11,7 +11,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="/customers/add" title="Add customer" class="btn btn-primary">Add</a>
+                                <a href="/customers/add" title="Add customer" class="btn btn-success">Add</a>
                             </div>
                         </div>
 
