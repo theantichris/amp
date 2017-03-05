@@ -2,19 +2,15 @@
 
 @section('content')
     <!--suppress HtmlUnknownTarget -->
-    <div class="container">
+    <div class="spark-screen container">
         <div class="row">
-            <div class="col-xs-12">
+            @include('customers.sidebar')
+
+            <div class="col-xs-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">Customers</div>
 
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <a href="/customers/add" title="Add customer" class="btn btn-success">Add</a>
-                            </div>
-                        </div>
-
                         <div class="row">
                             <div class="col-xs-12">
                                 <sorted-list :columns="['accountNumber', 'companyName', 'contactName', 'contactEmail']"
