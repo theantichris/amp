@@ -57,8 +57,7 @@
             </div>
 
             <div class="form-group col-xs-12 col-xs-4">
-                <label for="state" class="control-label">State</label>
-                <input id="state" name="state" type="text" class="form-control" v-model="form.state">
+                <state-select :select-state="onStateSelection"></state-select>
             </div>
 
             <div class="form-group col-xs-12 col-xs-4">
@@ -89,7 +88,11 @@
 </template>
 
 <script>
+    import StateSelect from '../form/StateSelect.vue';
+
     export default {
+        components: {StateSelect},
+
         props: ['customerId'],
 
         data (){
@@ -113,6 +116,9 @@
         },
 
         methods: {
+            onStateSelection: function (state) {
+                this.form.state = state;
+            },
             save() {
                 axios.post('/api/customers', this.form)
                     .then(response => {
