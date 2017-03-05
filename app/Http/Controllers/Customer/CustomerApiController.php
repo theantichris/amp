@@ -28,8 +28,7 @@ class CustomerApiController extends Controller
         return Response::json($customers);
     }
 
-    // TODO: Change this to create.
-    public function save(Request $request): JsonResponse
+    public function create(Request $request): JsonResponse
     {
         $json = $request->getContent();
 

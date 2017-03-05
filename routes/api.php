@@ -7,6 +7,6 @@ Route::group([
 ], function () {
     Route::group(['prefix' => 'customers'], function () {
         Route::get('', 'Customer\CustomerApiController@index');
-        Route::post('', 'Customer\CustomerApiController@save');
+        Route::post('', 'Customer\CustomerApiController@create');
     });
 });
