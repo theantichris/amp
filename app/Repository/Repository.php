@@ -67,4 +67,9 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->where($field, '=', $value)->get($columns);
     }
+
+    public function save(Model $model)
+    {
+        $model->save();
+    }
 }
