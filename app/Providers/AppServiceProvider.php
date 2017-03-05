@@ -4,7 +4,6 @@ namespace AMP\Providers;
 
 use AMP\Converter\Customer\CustomerJsonConverter;
 use AMP\Converter\JsonConverterInterface;
-use AMP\Http\Controllers\Customer\CustomerApiController;
 use AMP\Map\Customer\CustomerListViewModelMapper;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Repository\Customer\CustomerRepository;
@@ -30,9 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(IdeHelperServiceProvider::class);
         }
 
-        $this->app->when(CustomerApiController::class)
-                  ->needs(CustomerServiceInterface::class)
-                  ->give(CustomerService::class);
+        $this->app->bind(CustomerServiceInterface::class, CustomerService::class);
 
         $this->app->when(CustomerService::class)
                   ->needs(JsonConverterInterface::class)

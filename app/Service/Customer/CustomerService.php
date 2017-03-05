@@ -44,4 +44,12 @@ class CustomerService implements CustomerServiceInterface
 
         return $customer;
     }
+
+    public function getCustomer(int $id): Customer
+    {
+        /** @var Customer $customer */
+        $customer = $this->repo->find($id);
+
+        return $customer;
+    }
 }
