@@ -57,7 +57,9 @@
         methods: {
             save() {
                 axios.post('/api/customers', this.form)
-                // TODO: Handle response
+                    .then(response => {
+                        window.location = '/customers'; // TODO Redirect to details page.
+                    })
                     .catch(error => {
                         console.error(error);
                     });
