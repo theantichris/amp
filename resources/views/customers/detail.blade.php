@@ -11,35 +11,35 @@
 
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <div>Account Number</div>
+                            <div class="detail-group col-xs-12 col-md-6">
+                                <div class="detail-label">Account Number</div>
                                 <div>{{ $customer->getAccountNumber() }}</div>
                             </div>
 
-                            <div class="col-xs-12 col-md-6">
-                                <div>Company Name</div>
+                            <div class="detail-group col-xs-12 col-md-6">
+                                <div class="detail-label">Company Name</div>
                                 <div>{{ $customer->getCompanyName() }}</div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-12">
-                                <div>Contact Name</div>
+                            <div class="detail-group col-xs-12">
+                                <div class="detail-label">Contact Name</div>
                                 <div>{{ $customer->getContactName() }}</div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-12">
-                                <div>Contact Email</div>
+                            <div class="detail-group col-xs-12">
+                                <div class="detail-label">Contact Email</div>
                                 <div>{{ $customer->getContactEmail() }}</div>
                             </div>
                         </div>
 
                         @if ($customer->getContactPhone() )
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <div>Contact Phone</div>
+                                <div class="detail-group col-xs-12">
+                                    <div class="detail-label">Contact Phone</div>
                                     <div>{{ $customer->getContactPhone() }}</div>
                                 </div>
                             </div>
@@ -47,8 +47,8 @@
 
                         @if ($customer->getAddress1() )
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <div>Address</div>
+                                <div class="detail-group col-xs-12">
+                                    <div class="detail-label">Address</div>
                                     <div>{{ $customer->getAddress1() }}</div>
                                 </div>
                             </div>
@@ -56,8 +56,8 @@
 
                         @if ($customer->getAddress2() )
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <div>Address Line 2</div>
+                                <div class="detail-group col-xs-12">
+                                    <div class="detail-label">Address Line 2</div>
                                     <div>{{ $customer->getAddress2() }}</div>
                                 </div>
                             </div>
@@ -65,22 +65,22 @@
 
                         <div class="row">
                             @if ($customer->getCity())
-                                <div class="col-xs-12 col-xs-4">
-                                    <div>City</div>
+                                <div class="detail-group col-xs-12 col-xs-4">
+                                    <div class="detail-label">City</div>
                                     <div>{{ $customer->getCity() }}</div>
                                 </div>
                             @endif
 
                             @if($customer->getState())
-                                <div class="col-xs-12 col-xs-4">
-                                    <div>State</div>
+                                <div class="detail-group col-xs-12 col-xs-4">
+                                    <div class="detail-label">State</div>
                                     <div>{{ $customer->getState() }}</div>
                                 </div>
                             @endif
 
                             @if($customer->getZip())
-                                <div class="col-xs-12 col-xs-4">
-                                    <div>Zip</div>
+                                <div class="detail-group col-xs-12 col-xs-4">
+                                    <div class="detail-label">Zip</div>
                                     <div>{{ $customer->getZip() }}</div>
                                 </div>
                             @endif
@@ -88,14 +88,14 @@
 
                         <div class="row">
                             @if ($customer->getShippingAccountProvider())
-                                <div class="col-xs-12 col-md-6">
-                                    <div>Shipping Account Provider</div>
+                                <div class="detail-group col-xs-12 col-md-6">
+                                    <div class="detail-label">Shipping Account Provider</div>
                                     <div>{{ $customer->getShippingAccountProvider() }}</div>
                                 </div>
                             @endif
                             @if ($customer->getShippingAccountNumber())
-                                <div class="col-xs-12 col-md-6">
-                                    <div>Shipping Account AccountNumber</div>
+                                <div class="detail-group col-xs-12 col-md-6">
+                                    <div class="detail-label">Shipping Account AccountNumber</div>
                                     <div>{{ $customer->getShippingAccountNumber() }}</div>
                                 </div>
                             @endif
