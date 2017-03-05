@@ -15,17 +15,24 @@
         data (){
             return {
                 selectedState: '',
-                // TODO: Add other states.
-                states: [
-                    'AL',
-                    'NC',
-                    'TN',
-                    'TX'
-                ]
+                states: []
             }
         },
 
+        mounted() {
+            this.getStates();
+        },
+
         methods: {
+            getStates(){
+                axios.get('/api/states')
+                    .then((response) => {
+                        this.states = response.data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            },
             onSelection: function () {
                 this.selectState(this.selectedState);
             }

@@ -2,6 +2,7 @@
 
 namespace AMP\Domain\Customer;
 
+use AMP\Enum\StateAbbreviation;
 use AMP\Team;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -132,6 +133,10 @@ class Customer extends Model
 
     public function setState(string $state): Customer
     {
+        if (!StateAbbreviation::isValidValue($state)) {
+            throw new InvalidArgumentException($state . ' is not a valid state.');
+        }
+
         $this->attributes['state'] = $state;
 
         return $this;

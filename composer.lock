@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "29ee4d9464605fe71f6d935f2b79e78f",
+    "content-hash": "324bc23fbcf43b4b96f5c6390e9b2044",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2083,6 +2083,45 @@
                 "dump"
             ],
             "time": "2017-01-03T08:53:57+00:00"
+        },
+        {
+            "name": "theantichris/enum",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theantichris/enum.git",
+                "reference": "94be388b87bfb18bf140588681bd93f85e41ebf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theantichris/enum/zipball/94be388b87bfb18bf140588681bd93f85e41ebf8",
+                "reference": "94be388b87bfb18bf140588681bd93f85e41ebf8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "theantichris\\enum\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU3"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Lamm",
+                    "email": "chris@theantichris.com"
+                }
+            ],
+            "description": "A PHP implementation of an Enum class.",
+            "keywords": [
+                "enum"
+            ],
+            "time": "2016-01-24T15:06:41+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

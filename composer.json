@@ -13,7 +13,8 @@
     "php": ">=7.1.0",
     "laravel/framework": "5.4.*",
     "laravel/spark": "~4.0",
-    "laravel/cashier-braintree": "~2.0"
+    "laravel/cashier-braintree": "~2.0",
+    "theantichris/enum": "^1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
