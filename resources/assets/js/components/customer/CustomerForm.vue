@@ -2,14 +2,12 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
     <form v-on:submit.prevent="save">
         <div class="row">
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12 col-md-6 required">
                 <label for="accountNumber" class="control-label">Account Number</label>
                 <input id="accountNumber" name="accountNumber" type="text" class="form-control" v-model="form.accountNumber" required>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12 col-md-6 required">
                 <label for="companyName" class="control-label">Company Name</label>
                 <input id="companyName" name="companyName" type="text" class="form-control" v-model="form.companyName" required>
             </div>
@@ -126,7 +124,7 @@
                     })
                     .catch(error => {
                         console.error(error);
-                    });
+            })
             }
         }
     }
