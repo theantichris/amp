@@ -10,4 +10,6 @@ interface CustomerServiceInterface
     public function getListViewModels(int $teamId): array;
 
     public function saveFromJson(string $json, Team $team): Customer;
+
+    public function getCustomer(int $id): Customer;
 }

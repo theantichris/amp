@@ -25,11 +25,12 @@ class CustomerApiController extends Controller
     {
         $customers = $this->customerService->getListViewModels(Auth::user()->currentTeam()->getQueueableId());
 
-        return Response::json($customers);
+        return Response::json([
+            'customers' => $customers,
+        ]);
     }
 
-    // TODO: Change this to create.
-    public function save(Request $request): JsonResponse
+    public function create(Request $request): JsonResponse
     {
         $json = $request->getContent();
 

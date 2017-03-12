@@ -21,4 +21,6 @@ interface RepositoryInterface
     public function findOneBy(string $field, string $value, array $columns = ['*']): Builder;
 
     public function findBy(string $field, string $value, array $columns = ['*']): Collection;
+
+    public function save(Model $model);
 }
