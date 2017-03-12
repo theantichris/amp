@@ -12,11 +12,26 @@
 
         <tbody>
         <tr v-for="item in sortedItems">
-            <td>{{ item[columns[0]] }}</td>
-            <td>{{ item[columns[1]] }}</td>
-            <td>{{ item[columns[2]] }}</td>
-            <td>{{ item[columns[3]] }}</td>
-            <td><a v-bind:href="url + '/' + item['id']"><i class="fa fa-eye"></i></a></td>
+            <td>
+                <div class="btn-table-align">{{ item[columns[0]] }}</div>
+            </td>
+            <td>
+                <div class="btn-table-align">{{ item[columns[1]] }}</div>
+            </td>
+            <td>
+                <div class="btn-table-align">{{ item[columns[2]] }}</div>
+            </td>
+            <td>
+                <div class="btn-table-align">{{ item[columns[3]] }}</div>
+            </td>
+
+            <td>
+                <a v-bind:href="url + '/' + item['id']">
+                    <button class="btn btn-primary">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
