@@ -1,4 +1,4 @@
-<sorted-list :api-url="'/api/customers'" inline-template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<sorted-list :api-url="'/api/customers'" :default-sort-key="'accountNumber'" inline-template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="panel panel-default">
         <div class="panel-heading">Customers</div>
 
@@ -8,10 +8,14 @@
                     <table class="table table-striped sortable-table">
                         <thead>
                         <tr>
-                            <th>Account</th>
-                            <th>Company</th>
-                            <th>Contact</th>
-                            <th>Email</th>
+                            <th v-on:click="sortBy('accountNumber')">Account
+                                <i class="fa" v-bind:class="sortClass('accountNumber')"></i></th>
+                            <th v-on:click="sortBy('companyName')">Company
+                                <i class="fa" v-bind:class="sortClass('companyName')"></i></th>
+                            <th v-on:click="sortBy('contactName')">Contact
+                                <i class="fa" v-bind:class="sortClass('contactName')"></i></th>
+                            <th v-on:click="sortBy('contactEmail')">Email
+                                <i class="fa" v-bind:class="sortClass('contactEmail')"></i></th>
                             <th></th>
                         </tr>
                         </thead>
