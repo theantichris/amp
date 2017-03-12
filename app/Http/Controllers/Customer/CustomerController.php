@@ -19,18 +19,6 @@ class CustomerController extends Controller
 
     public function index(): View
     {
-        return view('customers.index');
-    }
-
-    public function create(): View
-    {
-        return view('customers.form')->with('customerId', null);
-    }
-
-    public function show(int $id): View
-    {
-        $customer = $this->customerService->getCustomer($id);
-
-        return view('customers.detail')->with('customer', $customer);
+        return view('customers.customer-management');
     }
 }

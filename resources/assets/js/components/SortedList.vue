@@ -1,31 +1,16 @@
 <script>
     export default {
-        props: ['apiUrl', 'defaultSortKey'],
+        props: ['items'],
 
         data (){
             return {
-                items: [],
                 sortedItems: [],
                 sortKey: null,
                 reversed: false
             }
         },
 
-        mounted() {
-            this.getItems();
-            this.sortKey = this.defaultSortKey
-        },
-
         methods: {
-            getItems(){
-                axios.get(this.apiUrl)
-                    .then((response) => {
-                        this.items = response.data.customers;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-            },
             sortBy(column){
                 this.sortedItems = this.items;
 
@@ -43,6 +28,7 @@
 
                 this.sortKey = column;
             },
+
             sortClass(column){
                 if (this.sortKey == column && !this.reversed)
                     return 'fa-chevron-up';
