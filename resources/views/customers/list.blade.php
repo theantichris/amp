@@ -9,13 +9,18 @@
                         <thead>
                         <tr>
                             <th v-on:click="sortBy('accountNumber')">Account
-                                <i class="fa" v-bind:class="sortClass('accountNumber')"></i></th>
+                                <i class="fa" v-bind:class="sortClass('accountNumber')"></i>
+                            </th>
                             <th v-on:click="sortBy('companyName')">Company
-                                <i class="fa" v-bind:class="sortClass('companyName')"></i></th>
+                                <i class="fa" v-bind:class="sortClass('companyName')"></i>
+                            </th>
                             <th v-on:click="sortBy('contactName')">Contact
-                                <i class="fa" v-bind:class="sortClass('contactName')"></i></th>
+                                <i class="fa" v-bind:class="sortClass('contactName')"></i>
+                            </th>
                             <th v-on:click="sortBy('contactEmail')">Email
-                                <i class="fa" v-bind:class="sortClass('contactEmail')"></i></th>
+                                <i class="fa" v-bind:class="sortClass('contactEmail')"></i>
+                            </th>
+
                             <th></th>
                         </tr>
                         </thead>
