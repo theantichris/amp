@@ -3,24 +3,19 @@
 @section('content')
     <div class="spark-screen container">
         <div class="row">
-            @include('customers.sidebar')
 
-            <div class="col-xs-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Customers</div>
+            <div class="col-md-4">
+                @include('customers.sidebar')
+            </div>
 
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <sorted-list :columns="['accountNumber', 'companyName', 'contactName', 'contactEmail']"
-                                             :api-url="'/api/customers'"
-                                             :url="'/customers'"
-                                             :default-sort-key="'accountNumber'"></sorted-list>
-                            </div>
-                        </div>
+            <div class="col-md-8">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active">
+                        @include('customers.list')
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection
