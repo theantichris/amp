@@ -84,7 +84,12 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <a href="" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="#form"
+                           aria-controls="form"
+                           role="tab"
+                           data-toggle="tab"
+                           class="btn btn-primary"
+                           title="Edit"><i class="fa fa-edit"></i> Edit</a>
                     </div>
                 </div>
             </div>
