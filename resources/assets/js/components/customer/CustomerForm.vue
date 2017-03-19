@@ -33,13 +33,16 @@
                     shipping_account_number: ''
                 });
             },
+
             onStateSelection(state) {
                 this.form.state = state;
             },
+
             save() {
                 axios.post('/api/customers', this.form)
                     .then(() => {
                         this.initForm();
+                        this.$parent.loadCustomers();
                         window.location.href = '/customers#/list';
                     })
                     .catch((error) => {
