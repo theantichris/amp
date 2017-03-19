@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        props: ['select-state'],
+        props: ['selectState'],
 
         data (){
             return {
