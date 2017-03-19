@@ -42,8 +42,7 @@
                 axios.post('/api/customers', this.form)
                     .then(() => {
                         this.initForm();
-                        this.$parent.loadCustomers();
-                        window.location.href = '/customers#/list';
+                        this.form.successful = true;
                     })
                     .catch((error) => {
                         console.error(error);

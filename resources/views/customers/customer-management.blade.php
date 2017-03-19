@@ -26,6 +26,10 @@
                                                 <i class="fa fa-fw fa-btn fa-plus"></i>Add Customer
                                             </a>
                                         </li>
+
+                                        <li role="presentation" v-show="false">
+                                            <a href="#detail" aria-controls="detail" role="tab" data-toggle="tab"></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

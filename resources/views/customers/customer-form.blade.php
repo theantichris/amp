@@ -6,6 +6,10 @@
             </div>
 
             <div class="panel-body">
+                <div class="alert alert-success" v-if="form.successful">
+                    Your customer information has been updated!
+                </div>
+
                 <form v-on:submit.prevent="save">
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-6 required">

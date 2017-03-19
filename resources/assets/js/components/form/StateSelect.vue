@@ -27,7 +27,7 @@
             getStates(){
                 axios.get('/api/states')
                     .then((response) => {
-                        this.states = response.data;
+                        this.states = response.data.states;
                     })
                     .catch((error) => {
                         console.error(error);
