@@ -41,7 +41,7 @@
                             </td>
 
                             <td>
-                                <a v-bind:href="'/customers/' + item.id">
+                                <a v-bind:href="'/customers#/' + item.id">
                                     <button class="btn btn-primary">
                                         <i class="fa fa-eye"></i>
                                     </button>

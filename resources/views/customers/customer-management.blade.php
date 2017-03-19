@@ -26,6 +26,12 @@
                                                 <i class="fa fa-fw fa-btn fa-plus"></i>Add Customer
                                             </a>
                                         </li>
+
+                                        <li role="presentation">
+                                            <a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">
+                                                <i class="fa fa-fw fa-btn fa-eye"></i>Customer Detail
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -41,6 +47,10 @@
 
                         <div role="tabpanel" class="tab-pane" id="form">
                             @include('customers.customer-form')
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="detail">
+                            @include('customers.customer-detail')
                         </div>
                     </div>
                 </div>
