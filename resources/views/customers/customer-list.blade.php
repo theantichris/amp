@@ -1,3 +1,5 @@
+<!--suppress HtmlUnknownAnchorTarget -->
+
 <sorted-list :items="customers" inline-template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="panel panel-default">
         <div class="panel-heading">Customers</div>
@@ -41,7 +43,6 @@
                             </td>
 
                             <td>
-                                <!--suppress HtmlUnknownAnchorTarget -->
                                 <a href="#detail" aria-controls="detail" role="tab" data-toggle="tab" v-on:click="$parent.loadCustomer(item.id)">
                                     <button class="btn btn-primary">
                                         <i class="fa fa-eye"></i>
