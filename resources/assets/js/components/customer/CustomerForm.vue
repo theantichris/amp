@@ -34,10 +34,6 @@
                 });
             },
 
-            onStateSelection(state) {
-                this.form.state = state;
-            },
-
             save() {
                 axios.post('/api/customers', this.form)
                     .then(() => {

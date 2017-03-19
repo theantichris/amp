@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        props: ['selectState'],
+        props: [],
 
         data (){
             return {
@@ -34,7 +34,7 @@
                     });
             },
             onSelection: function () {
-                this.selectState(this.selectedState);
+                this.$parent.form.state = this.selectedState;
             }
         }
     }

@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="form-group col-xs-12 col-xs-4">
-                            <state-select :select-state="onStateSelection"></state-select>
+                            <state-select></state-select>
                         </div>
 
                         <div class="form-group col-xs-12 col-xs-4">
