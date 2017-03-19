@@ -7,18 +7,17 @@
         props: ['customer'],
 
         mounted(){
-            this.initForm();
         },
 
         data(){
             return {
-                form: {}
+                form: this.initForm()
             }
         },
 
         methods: {
             initForm(){
-                this.form = new SparkForm({
+                return new SparkForm({
                     account_number: '',
                     company_name: '',
                     contact_name: '',
@@ -37,7 +36,7 @@
             save() {
                 axios.post('/api/customers', this.form)
                     .then(() => {
-                        this.initForm();
+                        this.form = this.initForm();
                         this.form.successful = true;
                     })
                     .catch((error) => {
