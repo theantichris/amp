@@ -81,6 +81,12 @@
                         <div>@{{ customer.shipping_account_number }}</div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i> Edit</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
