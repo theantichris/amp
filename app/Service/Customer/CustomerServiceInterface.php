@@ -11,5 +11,5 @@ interface CustomerServiceInterface
 
     public function saveFromJson(string $json, Team $team): Customer;
 
-    public function getCustomer(int $id): Customer;
+    public function getCustomer(int $id, int $teamId): Customer;
 }

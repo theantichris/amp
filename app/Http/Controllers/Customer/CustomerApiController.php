@@ -23,7 +23,7 @@ class CustomerApiController extends Controller
 
     public function index(): JsonResponse
     {
-        $customers = $this->customerService->getListViewModels(Auth::user()->currentTeam()->getQueueableId());
+        $customers = $this->customerService->getListViewModels($this->getTeam()->getQueueableId());
 
         return Response::json([
             'customers' => $customers,
@@ -46,10 +46,19 @@ class CustomerApiController extends Controller
 
     public function show(int $id): JsonResponse
     {
-        $customer = $this->customerService->getCustomer($id);
+        $customer = $this->customerService->getCustomer($id, $this->getTeam()->getQueueableId());
 
         return new JsonResponse([
             'customer' => $customer,
         ]);
     }
+
+    private function getTeam(): Team
+    {
+        /** @var Team $team */
+        $team = Auth::user()->currentTeam();
+
+        return $team;
+    }
+
 }

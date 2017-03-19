@@ -197,4 +197,9 @@ class Customer extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function getTeamId(): int
+    {
+        return $this->attributes['team_id'];
+    }
 }

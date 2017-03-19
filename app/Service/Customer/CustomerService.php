@@ -7,6 +7,7 @@ use AMP\Domain\Customer\Customer;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Repository\RepositoryInterface;
 use AMP\Team;
+use Illuminate\Validation\UnauthorizedException;
 
 class CustomerService implements CustomerServiceInterface
 {
@@ -45,10 +46,14 @@ class CustomerService implements CustomerServiceInterface
         return $customer;
     }
 
-    public function getCustomer(int $id): Customer
+    public function getCustomer(int $id, int $teamId): Customer
     {
         /** @var Customer $customer */
         $customer = $this->repo->find($id);
+
+        if ($customer->getTeamId() !== $teamId) {
+            throw new UnauthorizedException("You do not have access to this team's customers.");
+        }
 
         return $customer;
     }
