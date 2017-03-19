@@ -4,7 +4,7 @@
     export default {
         components: {StateSelect},
 
-        props: [],
+        props: ['customer'],
 
         mounted(){
             this.initForm();
