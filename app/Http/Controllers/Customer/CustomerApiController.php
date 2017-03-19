@@ -43,4 +43,13 @@ class CustomerApiController extends Controller
             'Location' => '/customers/' . $customer->getId(),
         ]);
     }
+
+    public function show(int $id): JsonResponse
+    {
+        $customer = $this->customerService->getCustomer($id);
+
+        return new JsonResponse([
+            'customer' => $customer,
+        ]);
+    }
 }
