@@ -3,6 +3,7 @@
     import CustomerForm from './CustomerForm.vue';
 
     export default {
+        mixins: [require('../../../../../vendor/laravel/spark/resources/assets/js/mixins/tab-state')],
         components: {SortedList, CustomerForm},
         data() {
             return {
@@ -11,6 +12,7 @@
         },
         mounted() {
             this.loadCustomers();
+            this.usePushStateForTabs('.customer-management-tabs');
         },
         methods: {
             loadCustomers() {

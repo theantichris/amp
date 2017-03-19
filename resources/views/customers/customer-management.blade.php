@@ -12,20 +12,22 @@
                         </div>
 
                         <div class="panel-body">
-                            <div class="spark-settings-stacked-tabs">
-                                <ul class="nav spark-settings-stacked-tabs" role="tablist">
-                                    <li role="presentation" class="active" v-on:click="loadCustomers()">
-                                        <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
-                                            <i class="fa fa-fw fa-btn fa-list"></i>List
-                                        </a>
-                                    </li>
+                            <div class="customer-management-tabs">
+                                <div class="spark-settings-stacked-tabs">
+                                    <ul class="nav spark-settings-stacked-tabs" role="tablist">
+                                        <li role="presentation" class="active" v-on:click="loadCustomers()">
+                                            <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
+                                                <i class="fa fa-fw fa-btn fa-list"></i>List
+                                            </a>
+                                        </li>
 
-                                    <li role="presentation">
-                                        <a href="#form" aria-controls="form" role="tab" data-toggle="tab">
-                                            <i class="fa fa-fw fa-btn fa-plus"></i>Add Customer
-                                        </a>
-                                    </li>
-                                </ul>
+                                        <li role="presentation">
+                                            <a href="#form" aria-controls="form" role="tab" data-toggle="tab">
+                                                <i class="fa fa-fw fa-btn fa-plus"></i>Add Customer
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

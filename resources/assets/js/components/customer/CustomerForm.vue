@@ -40,6 +40,7 @@
                 axios.post('/api/customers', this.form)
                     .then(() => {
                         this.initForm();
+                        window.location.href = '/customers#/list';
                     })
                     .catch((error) => {
                         console.error(error);
