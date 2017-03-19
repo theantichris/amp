@@ -41,7 +41,8 @@
                             </td>
 
                             <td>
-                                <a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">
+                                <!--suppress HtmlUnknownAnchorTarget -->
+                                <a href="#detail" aria-controls="detail" role="tab" data-toggle="tab" v-on:click="$parent.loadCustomer(item.id)">
                                     <button class="btn btn-primary">
                                         <i class="fa fa-eye"></i>
                                     </button>

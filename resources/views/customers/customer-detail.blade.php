@@ -1,4 +1,4 @@
-<customer-detail :customer-id="1" inline-template>
+<customer-detail :customer="customer" inline-template>
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
