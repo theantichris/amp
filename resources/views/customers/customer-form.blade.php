@@ -10,33 +10,33 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-6 required">
                             <label for="accountNumber" class="control-label">Account Number</label>
-                            <input id="accountNumber" name="accountNumber" type="text" class="form-control" v-model="form.accountNumber" required>
+                            <input id="accountNumber" name="accountNumber" type="text" class="form-control" v-model="form.account_number" required>
                         </div>
 
                         <div class="form-group col-xs-12 col-md-6 required">
                             <label for="companyName" class="control-label">Company Name</label>
-                            <input id="companyName" name="companyName" type="text" class="form-control" v-model="form.companyName" required>
+                            <input id="companyName" name="companyName" type="text" class="form-control" v-model="form.company_name" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-xs-12 required">
                             <label for="contactName" class="control-label">Contact Name</label>
-                            <input id="contactName" name="contactName" type="text" class="form-control" v-model="form.contactName" required>
+                            <input id="contactName" name="contactName" type="text" class="form-control" v-model="form.contact_name" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-xs-12 required">
                             <label for="contactEmail" class="control-label">Contact Email</label>
-                            <input id="contactEmail" name="contactEmail" type="email" class="form-control" v-model="form.contactEmail" required>
+                            <input id="contactEmail" name="contactEmail" type="email" class="form-control" v-model="form.contact_email" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <label for="contactPhone" class="control-label">Contact Phone</label>
-                            <input id="contactPhone" name="contactPhone" type="tel" class="form-control" v-model="form.contactPhone">
+                            <input id="contactPhone" name="contactPhone" type="tel" class="form-control" v-model="form.contact_phone">
                         </div>
                     </div>
 
@@ -73,12 +73,12 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-6">
                             <label for="shippingAccountProvider" class="control-label">Shipping Account Provider</label>
-                            <input id="shippingAccountProvider" name="shippingAccountProvider" type="text" class="form-control" v-model="form.shippingAccountProvider">
+                            <input id="shippingAccountProvider" name="shippingAccountProvider" type="text" class="form-control" v-model="form.shipping_account_provider">
                         </div>
 
                         <div class="form-group col-xs-12 col-md-6">
                             <label for="shippingAccountNumber" class="control-label">Shipping Account Number</label>
-                            <input id="shippingAccountNumber" name="shippingAccountNumber" type="text" class="form-control" v-model="form.shippingAccountNumber">
+                            <input id="shippingAccountNumber" name="shippingAccountNumber" type="text" class="form-control" v-model="form.shipping_account_number">
                         </div>
                     </div>
 

@@ -19,18 +19,18 @@
         methods: {
             initForm(){
                 this.form = new SparkForm({
-                    accountNumber: '',
-                    companyName: '',
-                    contactName: '',
-                    contactEmail: '',
-                    contactPhone: '',
+                    account_number: '',
+                    company_name: '',
+                    contact_name: '',
+                    contact_email: '',
+                    contact_phone: '',
                     address1: '',
                     address2: '',
                     city: '',
                     state: '',
                     zip: '',
-                    shippingAccountProvider: '',
-                    shippingAccountNumber: ''
+                    shipping_account_provider: '',
+                    shipping_account_number: ''
                 });
             },
             onStateSelection(state) {
