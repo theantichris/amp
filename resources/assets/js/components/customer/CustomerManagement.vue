@@ -4,14 +4,7 @@
 
             <div class="col-md-4">
                 <div class="panel panel-default panel-flush">
-                    <div class="panel-heading">
-                        Customers
-
-
-
-
-
-                    </div>
+                    <div class="panel-heading">Customers</div>
 
                     <div class="panel-body">
                         <div class="customer-management-tabs">
