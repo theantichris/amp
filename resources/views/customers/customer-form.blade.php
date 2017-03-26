@@ -1,4 +1,4 @@
-<customer-form :customer="customer" inline-template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<customer-form :form="form" inline-template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">

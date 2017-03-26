@@ -12,13 +12,15 @@
         data() {
             return {
                 customers: [],
-                customer: {}
+                customer: {},
+                form: {}
             }
         },
 
         mounted() {
             this.loadCustomers();
             this.usePushStateForTabs('.customer-management-tabs');
+            this.initForm();
         },
 
         methods: {
@@ -33,16 +35,31 @@
             },
 
             loadCustomer(id) {
-                if (!id)
-                    return;
+                if (id)
+                    axios.get('/api/customers/' + id)
+                        .then((response) => {
+                            this.customer = response.data.customer;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+            },
 
-                axios.get('/api/customers/' + id)
-                    .then((response) => {
-                        this.customer = response.data.customer;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    });
+            initForm() {
+                this.form = new SparkForm({
+                    account_number: '',
+                    company_name: '',
+                    contact_name: '',
+                    contact_email: '',
+                    contact_phone: '',
+                    address1: '',
+                    address2: '',
+                    city: '',
+                    state: '',
+                    zip: '',
+                    shipping_account_provider: '',
+                    shipping_account_number: ''
+                });
             }
         }
     }
