@@ -2,9 +2,10 @@
     import SortedList from '../SortedList.vue';
     import CustomerForm from './CustomerForm.vue';
     import CustomerDetail from './CustomerDetail.vue';
+    import TabState from '../../../../../vendor/laravel/spark/resources/assets/js/mixins/tab-state';
 
     export default {
-        mixins: [require('../../../../../vendor/laravel/spark/resources/assets/js/mixins/tab-state')],
+        mixins: [TabState],
 
         components: {SortedList, CustomerForm, CustomerDetail},
 
