@@ -9,7 +9,6 @@
             <div class="panel-body">
                 <div class="alert alert-success" v-if="form.successful">
                     Your customer information has been updated!
-
                 </div>
 
                 <form v-on:submit.prevent="save">

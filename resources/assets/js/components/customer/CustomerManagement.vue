@@ -17,13 +17,13 @@
                                     <li role="presentation" class="active" v-on:click="loadCustomers()">
                                         <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
                                             <i class="fa fa-fw fa-btn fa-list"></i>List
-                                            </a>
+                                        </a>
                                     </li>
 
                                     <li role="presentation">
                                         <a href="#form" aria-controls="form" role="tab" data-toggle="tab">
                                             <i class="fa fa-fw fa-btn fa-plus"></i>Add Customer
-                                            </a>
+                                        </a>
                                     </li>
 
                                     <li role="presentation" v-show="false">
@@ -121,7 +121,12 @@
             },
 
             handleFormSaved(){
-                console.log('Form saved.');
+                this.initForm();
+
+                this.form.successful = true;
+                setInterval(() => {
+                    this.form.successful = false;
+                }, 10000);
             }
         }
     }
