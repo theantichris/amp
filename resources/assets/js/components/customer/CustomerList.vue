@@ -43,6 +43,7 @@
                                 </td>
 
                                 <td>
+                                    <!-- TODO: Refactor click event -->
                                     <a href="#detail" aria-controls="detail" role="tab" data-toggle="tab" v-on:click="$parent.$parent.loadCustomer(item.id)">
                                         <button class="btn btn-primary">
                                             <i class="fa fa-eye"></i>
