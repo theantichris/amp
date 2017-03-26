@@ -4,11 +4,13 @@
             <div class="panel-heading">
                 Add Customer
 
+
             </div>
 
             <div class="panel-body">
                 <div class="alert alert-success" v-if="form.successful">
                     Your customer information has been updated!
+
                 </div>
 
                 <form v-on:submit.prevent="save">
@@ -108,13 +110,23 @@
 
         methods: {
             save() {
-                axios.post('/api/customers', this.form)
-                    .then(() => {
-                        this.$emit('formSaved');
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    });
+                if (this.form.id) {
+                    axios.put('/api/customers/' + this.form.id, this.form)
+                        .then(() => {
+                            this.$emit('formSaved');
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                } else {
+                    axios.post('/api/customers', this.form)
+                        .then(() => {
+                            this.$emit('formSaved');
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                }
             }
         }
     }

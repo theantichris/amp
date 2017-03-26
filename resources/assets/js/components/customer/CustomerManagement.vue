@@ -8,6 +8,9 @@
                         Customers
 
 
+
+
+
                     </div>
 
                     <div class="panel-body">
@@ -21,7 +24,7 @@
                                     </li>
 
                                     <li role="presentation">
-                                        <a href="#form" aria-controls="form" role="tab" data-toggle="tab">
+                                        <a href="#form" aria-controls="form" role="tab" data-toggle="tab" v-on:click="initForm()">
                                             <i class="fa fa-fw fa-btn fa-plus"></i>Add Customer
                                         </a>
                                     </li>
@@ -83,6 +86,8 @@
 
         methods: {
             loadCustomers() {
+                this.initForm();
+
                 axios.get('/api/customers')
                     .then((response) => {
                         this.customers = response.data.customers;
@@ -104,20 +109,41 @@
             },
 
             initForm() {
-                this.form = new SparkForm({
-                    account_number: '',
-                    company_name: '',
-                    contact_name: '',
-                    contact_email: '',
-                    contact_phone: '',
-                    address1: '',
-                    address2: '',
-                    city: '',
-                    state: '',
-                    zip: '',
-                    shipping_account_provider: '',
-                    shipping_account_number: ''
-                });
+                if (this.customer) {
+                    let customer = this.customer;
+                    this.customer = {};
+
+                    this.form = new SparkForm({
+                        id: customer.id,
+                        account_number: customer.account_number,
+                        company_name: customer.company_name,
+                        contact_name: customer.contact_name,
+                        contact_email: customer.contact_email,
+                        contact_phone: customer.contact_phone,
+                        address1: customer.address1,
+                        address2: customer.address2,
+                        city: customer.city,
+                        state: customer.state || '',
+                        zip: customer.zip,
+                        shipping_account_provider: customer.shipping_account_provider,
+                        shipping_account_number: customer.shipping_account_number
+                    });
+                } else {
+                    this.form = new SparkForm({
+                        account_number: '',
+                        company_name: '',
+                        contact_name: '',
+                        contact_email: '',
+                        contact_phone: '',
+                        address1: '',
+                        address2: '',
+                        city: '',
+                        state: '',
+                        zip: '',
+                        shipping_account_provider: '',
+                        shipping_account_number: ''
+                    });
+                }
             },
 
             handleFormSaved(){

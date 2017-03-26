@@ -37,10 +37,24 @@ class CustomerService implements CustomerServiceInterface
         return $viewModels;
     }
 
-    public function saveFromJson(string $json, Team $team): Customer
+    public function createFromJson(string $json, Team $team): Customer
     {
         /** @var Customer $customer */
-        $customer = $this->jsonConverter->convert($json, $team);
+        $customer = new Customer();
+        $customer->team()->associate($team);
+        $customer = $this->jsonConverter->convert($customer, $json);
+
+        $this->repo->save($customer);
+
+        return $customer;
+    }
+
+    public function updateFromJson(string $json, int $id): Customer
+    {
+        /** @var Customer $customer */
+        $customer = $this->repo->find($id);
+        $customer = $this->jsonConverter->convert($customer, $json);
+
         $this->repo->save($customer);
 
         return $customer;

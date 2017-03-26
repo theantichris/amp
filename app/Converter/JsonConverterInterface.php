@@ -2,10 +2,9 @@
 
 namespace AMP\Converter;
 
-use AMP\Team;
 use Illuminate\Database\Eloquent\Model;
 
 interface JsonConverterInterface
 {
-    public function convert(string $json, Team $team): Model;
+    public function convert(Model $customer, string $json): Model;
 }

@@ -4,21 +4,19 @@ namespace AMP\Converter\Customer;
 
 use AMP\Converter\JsonConverterInterface;
 use AMP\Domain\Customer\Customer;
-use AMP\Team;
 use Illuminate\Database\Eloquent\Model;
 
 class CustomerJsonConverter implements JsonConverterInterface
 {
-    public function convert(string $json, Team $team): Model
+    public function convert(Model $customer, string $json): Model
     {
         $data = json_decode($json);
 
-        $customer = new Customer();
+        /** @var Customer $customer */
         $customer->setAccountNumber($data->account_number)
                  ->setCompanyName($data->company_name)
                  ->setContactName($data->contact_name)
-                 ->setContactEmail($data->contact_email)
-                 ->team()->associate($team);
+                 ->setContactEmail($data->contact_email);
 
         if (isset($data->contact_phone)) {
             $customer->setContactPhone($data->contact_phone);
