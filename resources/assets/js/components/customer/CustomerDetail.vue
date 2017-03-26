@@ -1,3 +1,4 @@
+<!--suppress HtmlUnknownAnchorTarget -->
 <template>
     <div class="col-xs-12">
         <div class="panel panel-default">
