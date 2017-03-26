@@ -18,6 +18,8 @@ class StateController extends Controller
     {
         $states = StateAbbreviation::getConstants();
 
-        return Response::json($states);
+        return Response::json([
+            'states' => $states,
+        ]);
     }
 }

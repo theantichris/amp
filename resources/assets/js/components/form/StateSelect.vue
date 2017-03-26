@@ -1,7 +1,7 @@
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
+<template>
     <div>
         <label for="state" class="control-label">State</label>
-        <select id="state" class="form-control" v-model="selectedState" v-on:change="onSelection">
+        <select id="state" class="form-control" v-model="$parent.form.state">
             <option value="">State</option>
             <option v-for="state in states" :value="state">{{ state }}</option>
         </select>
@@ -10,11 +10,10 @@
 
 <script>
     export default {
-        props: ['select-state'],
+        props: [],
 
         data (){
             return {
-                selectedState: '',
                 states: []
             }
         },
@@ -27,14 +26,11 @@
             getStates(){
                 axios.get('/api/states')
                     .then((response) => {
-                        this.states = response.data;
+                        this.states = response.data.states;
                     })
                     .catch((error) => {
                         console.error(error);
                     });
-            },
-            onSelection: function () {
-                this.selectState(this.selectedState);
             }
         }
     }
