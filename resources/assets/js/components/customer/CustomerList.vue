@@ -11,16 +11,16 @@
                             <thead>
                             <tr>
                                 <th class="sortable-table__heading" v-on:click="sortBy('accountNumber')">Account
-                                <i class="fa" v-bind:class="sortClass('accountNumber')"></i>
+                                    <i class="fa" v-bind:class="sortClass('accountNumber')"></i>
                                 </th>
                                 <th class="sortable-table__heading" v-on:click="sortBy('companyName')">Company
-                                <i class="fa" v-bind:class="sortClass('companyName')"></i>
+                                    <i class="fa" v-bind:class="sortClass('companyName')"></i>
                                 </th>
                                 <th class="sortable-table__heading" v-on:click="sortBy('contactName')">Contact
-                                <i class="fa" v-bind:class="sortClass('contactName')"></i>
+                                    <i class="fa" v-bind:class="sortClass('contactName')"></i>
                                 </th>
                                 <th class="sortable-table__heading" v-on:click="sortBy('contactEmail')">Email
-                                <i class="fa" v-bind:class="sortClass('contactEmail')"></i>
+                                    <i class="fa" v-bind:class="sortClass('contactEmail')"></i>
                                 </th>
 
                                 <th></th>
