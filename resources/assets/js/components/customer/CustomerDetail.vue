@@ -86,7 +86,7 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <a href="#form" aria-controls="form" role="tab" data-toggle="tab" class="btn btn-primary" title="Edit" v-on:click="$parent.initForm()">
+                        <a href="#form" aria-controls="form" role="tab" data-toggle="tab" class="btn btn-primary" title="Edit" v-on:click="$parent.initForm(true)">
                             <i class="fa fa-edit"></i> Edit
                         </a>
                     </div>

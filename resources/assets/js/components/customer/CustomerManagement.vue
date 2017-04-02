@@ -17,7 +17,7 @@
                                     </li>
 
                                     <li role="presentation">
-                                        <a href="#form" aria-controls="form" role="tab" data-toggle="tab" v-on:click="initForm()">
+                                        <a href="#form" aria-controls="form" role="tab" data-toggle="tab" v-on:click="initForm(false)">
                                             <i class="fa fa-fw fa-btn fa-plus"></i>Add Customer
                                         </a>
                                     </li>
@@ -101,8 +101,8 @@
                         });
             },
 
-            initForm() {
-                if (this.customer) {
+            initForm(editCustomer) {
+                if (editCustomer && this.customer) {
                     let customer = this.customer;
                     this.customer = {};
 
