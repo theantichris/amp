@@ -89,10 +89,6 @@
                         <a href="#form" aria-controls="form" role="tab" data-toggle="tab" class="btn btn-primary" title="Edit" v-on:click="$parent.initForm()">
                             <i class="fa fa-edit"></i> Edit
                         </a>
-
-                        <a href="#list" aria-controls="list" role="tab" data-toggle="tab" class="btn btn-danger" title="Delete">
-                            <i class="fa fa-trash"></i> Delete
-                        </a>
                     </div>
                 </div>
             </div>
