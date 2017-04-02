@@ -34,7 +34,7 @@ class CustomerJsonConverter implements JsonConverterInterface
             $customer->setCity($data->city);
         }
 
-        if (isset($data->state)) {
+        if (isset($data->state) && !empty($data->state)) {
             $customer->setState($data->state);
         }
 
