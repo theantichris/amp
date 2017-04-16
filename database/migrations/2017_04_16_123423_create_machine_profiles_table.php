@@ -11,6 +11,23 @@ class CreateMachineProfilesTable extends Migration
         Schema::create('machine_profiles', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->string('type')->unique();
+            $table->float('setup_fee');
+            $table->float('rate');
+
+            $table->string('material');
+            $table->float('material_cost');
+
+            $table->float('markup');
+
+            $table->string('time_calculation_method');
+            $table->float('build_rate');
+
+            $table->integer('team_id')->unsigned();
+            $table->foreign('team_id')
+                  ->references('id')->on('teams')
+                  ->onDelete('cascade');
+
             $table->softDeletes();
             $table->timestamps();
         });
