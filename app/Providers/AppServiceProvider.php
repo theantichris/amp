@@ -12,6 +12,7 @@ use AMP\Service\Customer\CustomerService;
 use AMP\Service\Customer\CustomerServiceInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Tinker\TinkerServiceProvider;
 
 /**
  * @codeCoverageIgnore
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment() == 'local') {
             $this->app->register(IdeHelperServiceProvider::class);
+            $this->app->register(TinkerServiceProvider::class);
         }
 
         $this->app->bind(CustomerServiceInterface::class, CustomerService::class);
