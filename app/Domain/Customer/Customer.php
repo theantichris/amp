@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use InvalidArgumentException;
 
-/** @codeCoverageIgnore */
 class Customer extends Model
 {
     use SoftDeletes;
