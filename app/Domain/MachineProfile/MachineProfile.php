@@ -76,6 +76,7 @@ class MachineProfile extends Model
         return $this;
     }
 
+    // TODO: Extract to model. Materials are part of the quote process.
     public function getMaterial(): string
     {
         return $this->attributes['material'];
