@@ -1,5 +1,7 @@
 <?php
 
+use AMP\Enum\Density;
+use AMP\Enum\Weight;
 use AMP\Team;
 use Illuminate\Database\Seeder;
 
@@ -12,21 +14,30 @@ class MaterialSeeder extends Seeder
         $additerra = Team::where('name', '=', 'Additerra, Inc.')->first();
 
         DB::table('materials')->insert([
-            'name'    => 'Material One',
-            'cost'    => 1.00,
-            'team_id' => $additerra->getQueueableId(),
+            'name'         => 'ABS',
+            'cost'         => 25.00,
+            'weight_unit'  => Weight::KILOGRAM,
+            'density'      => 1.05,
+            'density_unit' => Density::GRAM_PER_CUBIC_CENTIMETER,
+            'team_id'      => $additerra->getQueueableId(),
         ]);
 
         DB::table('materials')->insert([
-            'name'    => 'Material Two',
-            'cost'    => 2.00,
-            'team_id' => $additerra->getQueueableId(),
+            'name'         => 'Aluminum 6061 Powder',
+            'cost'         => 10.00,
+            'weight_unit'  => Weight::KILOGRAM,
+            'density'      => 2.7,
+            'density_unit' => Density::GRAM_PER_CUBIC_CENTIMETER,
+            'team_id'      => $additerra->getQueueableId(),
         ]);
 
         DB::table('materials')->insert([
-            'name'    => 'Material Three',
-            'cost'    => 3.00,
-            'team_id' => $additerra->getQueueableId(),
+            'name'         => 'PLA',
+            'cost'         => 25.00,
+            'weight_unit'  => Weight::KILOGRAM,
+            'density'      => 1.25,
+            'density_unit' => Density::GRAM_PER_CUBIC_CENTIMETER,
+            'team_id'      => $additerra->getQueueableId(),
         ]);
     }
 }
