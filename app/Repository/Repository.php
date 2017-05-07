@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package AMP\Repository
  *
- * @TODO    : Clean up.
+ * @TODO    : Clean up. I am not happy with this.
  */
 abstract class Repository implements RepositoryInterface
 {

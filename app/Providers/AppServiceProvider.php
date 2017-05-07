@@ -4,14 +4,19 @@ namespace AMP\Providers;
 
 use AMP\Converter\Customer\CustomerJsonConverter;
 use AMP\Converter\JsonConverterInterface;
+use AMP\Converter\Material\MaterialJsonConverter;
 use AMP\Map\Customer\CustomerListViewModelMapper;
+use AMP\Map\Material\MaterialListViewModelMapper;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Repository\Customer\CustomerRepository;
 use AMP\Repository\RepositoryInterface;
 use AMP\Service\Customer\CustomerService;
 use AMP\Service\Customer\CustomerServiceInterface;
+use AMP\Service\Material\MaterialService;
+use AMP\Service\Material\MaterialServiceInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Tinker\TinkerServiceProvider;
 
 /**
  * @codeCoverageIgnore
@@ -27,7 +32,10 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment() == 'local') {
             $this->app->register(IdeHelperServiceProvider::class);
+            $this->app->register(TinkerServiceProvider::class);
         }
+
+        // Customers
 
         $this->app->bind(CustomerServiceInterface::class, CustomerService::class);
 
@@ -42,5 +50,17 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(CustomerService::class)
                   ->needs(ViewModelMapperInterface::class)
                   ->give(CustomerListViewModelMapper::class);
+
+        // Materials
+
+        $this->app->bind(MaterialServiceInterface::class, MaterialService::class);
+
+        $this->app->when(MaterialService::class)
+                  ->needs(JsonConverterInterface::class)
+                  ->give(MaterialJsonConverter::class);
+
+        $this->app->when(MaterialService::class)
+                  ->needs(ViewModelMapperInterface::class)
+                  ->give(MaterialListViewModelMapper::class);
     }
 }
