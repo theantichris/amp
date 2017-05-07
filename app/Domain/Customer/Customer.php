@@ -2,29 +2,12 @@
 
 namespace AMP\Domain\Customer;
 
+use AMP\Domain\BaseModel;
 use AMP\Enum\StateAbbreviation;
-use AMP\Team;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use InvalidArgumentException;
 
-class Customer extends Model
+class Customer extends BaseModel
 {
-    use SoftDeletes;
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    public function getId(): int
-    {
-        return $this->attributes['id'];
-    }
-
     public function getAccountNumber(): string
     {
         return $this->attributes['account_number'];
@@ -175,30 +158,5 @@ class Customer extends Model
         $this->attributes['shipping_account_number'] = $shippingAccountNumber;
 
         return $this;
-    }
-
-    public function getCreatedAt(): Carbon
-    {
-        return $this->attributes['created_at'];
-    }
-
-    public function getUpdatedAt(): Carbon
-    {
-        return $this->attributes['updated_at'];
-    }
-
-    public function getDeletedAt(): ?Carbon
-    {
-        return $this->attributes['deleted_at'];
-    }
-
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
-
-    public function getTeamId(): int
-    {
-        return $this->attributes['team_id'];
     }
 }

@@ -15,9 +15,6 @@ class CreateMachineProfilesTable extends Migration
             $table->float('setup_fee');
             $table->float('rate');
 
-            $table->string('material');
-            $table->float('material_cost');
-
             $table->float('markup');
 
             $table->string('time_calculation_method');

@@ -3,43 +3,10 @@
 namespace AMP\Domain;
 
 use AMP\Enum\MachineProfile\TimeCalculationMethod;
-use AMP\Team;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use InvalidArgumentException;
 
-class MachineProfile extends Model
+class MachineProfile extends BaseModel
 {
-    use SoftDeletes;
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    public function getId(): int
-    {
-        return $this->attributes['id'];
-    }
-
-    public function getCreatedAt(): Carbon
-    {
-        return $this->attributes['created_at'];
-    }
-
-    public function getUpdatedAt(): Carbon
-    {
-        return $this->attributes['updated_at'];
-    }
-
-    public function getDeletedAt(): Carbon
-    {
-        return $this->attributes['deleted_at'];
-    }
-
     public function getType(): string
     {
         return $this->attributes['type'];
@@ -72,31 +39,6 @@ class MachineProfile extends Model
     public function setRate(float $rate): MachineProfile
     {
         $this->attributes['rate'] = $rate;
-
-        return $this;
-    }
-
-    // TODO: Extract to model. Materials are part of the quote process.
-    public function getMaterial(): string
-    {
-        return $this->attributes['material'];
-    }
-
-    public function setMaterial(string $material): MachineProfile
-    {
-        $this->attributes['material'] = $material;
-
-        return $this;
-    }
-
-    public function getMaterialCost(): float
-    {
-        return $this->attributes['material_cost'];
-    }
-
-    public function setMaterialCost(float $materialCost): MachineProfile
-    {
-        $this->attributes['material_cost'] = $materialCost;
 
         return $this;
     }
@@ -139,15 +81,5 @@ class MachineProfile extends Model
         $this->attributes['build_rate'] = $buildRate;
 
         return $this;
-    }
-
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
-
-    public function getTeamId(): int
-    {
-        return $this->attributes['team_id'];
     }
 }
