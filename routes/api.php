@@ -10,6 +10,15 @@ Route::group([
         Route::post('', 'Customer\CustomerApiController@create');
         Route::put('/{id}', 'Customer\CustomerApiController@update');
     });
+    Route::group(['prefix' => 'materials'], function () {
+        Route::get('/{id}', 'Material\MaterialApiController@show');
+        Route::get('', 'Material\MaterialApiController@index');
+
+        Route::post('', 'Material\MaterialApiController@create');
+        Route::put('/{id}', 'Material\MaterialApiController@update');
+    });
 
     Route::get('/states', 'Data\StateController@index');
+    Route::get('/weights', 'Data\WeightController@index');
+    Route::get('/densities', 'Data\DensityController@index');
 });

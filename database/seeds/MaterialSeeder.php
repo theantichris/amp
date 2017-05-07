@@ -3,6 +3,7 @@
 use AMP\Enum\Density;
 use AMP\Enum\Weight;
 use AMP\Team;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class MaterialSeeder extends Seeder
@@ -20,6 +21,7 @@ class MaterialSeeder extends Seeder
             'density'      => 1.05,
             'density_unit' => Density::GRAM_PER_CUBIC_CENTIMETER,
             'team_id'      => $additerra->getQueueableId(),
+            'created_at'   => Carbon::now(),
         ]);
 
         DB::table('materials')->insert([
@@ -29,6 +31,7 @@ class MaterialSeeder extends Seeder
             'density'      => 2.7,
             'density_unit' => Density::GRAM_PER_CUBIC_CENTIMETER,
             'team_id'      => $additerra->getQueueableId(),
+            'created_at'   => Carbon::now(),
         ]);
 
         DB::table('materials')->insert([
@@ -38,6 +41,7 @@ class MaterialSeeder extends Seeder
             'density'      => 1.25,
             'density_unit' => Density::GRAM_PER_CUBIC_CENTIMETER,
             'team_id'      => $additerra->getQueueableId(),
+            'created_at'   => Carbon::now(),
         ]);
     }
 }

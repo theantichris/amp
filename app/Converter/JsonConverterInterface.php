@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 interface JsonConverterInterface
 {
-    public function convert(Model $customer, string $json): Model;
+    public function convert(Model $model, string $json): Model;
 }

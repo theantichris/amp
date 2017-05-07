@@ -8,5 +8,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TeamsUsersSeeder::class);
         $this->call(CustomersSeeder::class);
+        $this->call(MaterialSeeder::class);
     }
 }

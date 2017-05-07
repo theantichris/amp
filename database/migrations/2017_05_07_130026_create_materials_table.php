@@ -21,7 +21,7 @@ class CreateMaterialsTable extends Migration
 
             $table->float('density');
             $table->enum('density_unit', [
-                'kg/cc',
+                'g/cc',
                 'lb/cf',
             ]);
 
