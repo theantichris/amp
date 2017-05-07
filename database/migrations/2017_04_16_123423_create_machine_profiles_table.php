@@ -17,7 +17,11 @@ class CreateMachineProfilesTable extends Migration
 
             $table->float('markup');
 
-            $table->string('time_calculation_method');
+            $table->enum('time_calculation_method', [
+                'Volumetric (cc/hr)',
+                'Z-Height (cm/hr)',
+            ]);
+
             $table->float('build_rate');
 
             $table->integer('team_id')->unsigned();
