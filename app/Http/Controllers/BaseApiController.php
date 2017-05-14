@@ -3,6 +3,7 @@
 namespace AMP\Http\Controllers;
 
 use AMP\Team;
+use Auth;
 
 class BaseApiController extends Controller
 {

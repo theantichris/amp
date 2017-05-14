@@ -1,7 +1,8 @@
 <?php
 
-namespace AMP\Domain;
+namespace AMP\Domain\MachineProfile;
 
+use AMP\Domain\BaseModel;
 use AMP\Enum\MachineProfile\TimeCalculationMethod;
 use InvalidArgumentException;
 

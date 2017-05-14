@@ -3,7 +3,7 @@
 namespace AMP\Converter\MachineProfile;
 
 use AMP\Converter\JsonConverterInterface;
-use AMP\Domain\MachineProfile;
+use AMP\Domain\MachineProfile\MachineProfile;
 use Illuminate\Database\Eloquent\Model;
 
 class MachineProfileJsonConverter implements JsonConverterInterface
@@ -14,8 +14,8 @@ class MachineProfileJsonConverter implements JsonConverterInterface
 
         /** @var MachineProfile $model */
         $model->setType($data->type)
-              ->setSetupFee($data->setupFee)
-              ->setRate($data->setRate)
+              ->setSetupFee($data->setup_fee)
+              ->setRate($data->rate)
               ->setTimeCalculationMethod($data->time_calculation_method)
               ->setBuildRate($data->build_rate);
 

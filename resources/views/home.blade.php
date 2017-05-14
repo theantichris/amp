@@ -18,6 +18,13 @@
                                 </div>
 
                                 <div class="dashboard__icon col-md-2">
+                                    <a class="dashboard__link" title="Machine Profiles" href="machine-profiles">
+                                        <div class="dashboard__image"><i class="fa fa-server"></i></div>
+                                        <div class="dashboard__text">Machine Profiles</div>
+                                    </a>
+                                </div>
+
+                                <div class="dashboard__icon col-md-2">
                                     <a class="dashboard__link" title="Materials" href="materials">
                                         <div class="dashboard__image"><i class="fa fa-cubes"></i></div>
                                         <div class="dashboard__text">Materials</div>

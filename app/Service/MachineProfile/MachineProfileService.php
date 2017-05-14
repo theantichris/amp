@@ -3,9 +3,7 @@
 namespace AMP\Service\MachineProfile;
 
 use AMP\Converter\JsonConverterInterface;
-use AMP\Domain\MachineProfile;
-use AMP\Domain\Material\Material;
-use AMP\Enum\MachineProfile\TimeCalculationMethod;
+use AMP\Domain\MachineProfile\MachineProfile;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Team;
 use Illuminate\Validation\UnauthorizedException;
@@ -39,8 +37,7 @@ class MachineProfileService implements MachineProfileServiceInterface
     {
         /** @var MachineProfile $machineProfile */
         $machineProfile = new MachineProfile();
-        $machineProfile->setTimeCalculationMethod(TimeCalculationMethod::VOLUMETRIC)
-                       ->team()->associate($team);
+        $machineProfile->team()->associate($team);
         $machineProfile = $this->jsonConverter->convert($machineProfile, $json);
 
         $machineProfile->save();
@@ -62,7 +59,7 @@ class MachineProfileService implements MachineProfileServiceInterface
     public function getMachineProfile(int $id, int $teamId): MachineProfile
     {
         /** @var MachineProfile $machineProfile */
-        $machineProfile = Material::find($id);
+        $machineProfile = MachineProfile::find($id);
 
         if ($machineProfile->getTeamId() !== $teamId) {
             throw new UnauthorizedException("You do not have access to this team's machine profiles.");

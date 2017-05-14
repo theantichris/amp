@@ -2,7 +2,7 @@
 
 namespace AMP\Service\MachineProfile;
 
-use AMP\Domain\MachineProfile;
+use AMP\Domain\MachineProfile\MachineProfile;
 use AMP\Team;
 
 interface MachineProfileServiceInterface
