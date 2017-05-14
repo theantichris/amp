@@ -43,18 +43,6 @@ class MachineProfile extends BaseModel
         return $this;
     }
 
-    public function getMarkup(): float
-    {
-        return $this->attributes['markup'];
-    }
-
-    public function setMarkup(float $markup): MachineProfile
-    {
-        $this->attributes['markup'] = $markup;
-
-        return $this;
-    }
-
     public function getTimeCalculationMethod(): string
     {
         return $this->attributes['time_calculation_method'];

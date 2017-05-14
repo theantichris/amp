@@ -16,7 +16,6 @@ class MachineProfileJsonConverter implements JsonConverterInterface
         $model->setType($data->type)
               ->setSetupFee($data->setupFee)
               ->setRate($data->setRate)
-              ->setMarkup($data->markup)
               ->setTimeCalculationMethod($data->time_calculation_method)
               ->setBuildRate($data->build_rate);
 
