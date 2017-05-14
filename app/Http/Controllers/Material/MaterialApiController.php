@@ -2,7 +2,7 @@
 
 namespace AMP\Http\Controllers\Material;
 
-use AMP\Http\Controllers\Controller;
+use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\Material\MaterialServiceInterface;
 use AMP\Team;
 use Auth;
@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Response;
 
-class MaterialApiController extends Controller
+class MaterialApiController extends BaseApiController
 {
     private $materialService;
 
@@ -60,13 +60,4 @@ class MaterialApiController extends Controller
             'material' => $material,
         ]);
     }
-
-    private function getTeam(): Team
-    {
-        /** @var Team $team */
-        $team = Auth::user()->currentTeam();
-
-        return $team;
-    }
-
 }

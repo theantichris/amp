@@ -2,10 +2,10 @@
 
 namespace AMP\Map;
 
-use Illuminate\Database\Eloquent\Model;
+use AMP\Domain\BaseModel;
 use AMP\ViewModel\ViewModel;
 
 interface ViewModelMapperInterface
 {
-    public function map(Model $model): ViewModel;
+    public function map(BaseModel $model): ViewModel;
 }

@@ -2,15 +2,15 @@
 
 namespace AMP\Map\Material;
 
+use AMP\Domain\BaseModel;
 use AMP\Domain\Material\Material;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\ViewModel\Material\MaterialListViewModel;
 use AMP\ViewModel\ViewModel;
-use Illuminate\Database\Eloquent\Model;
 
 class MaterialListViewModelMapper implements ViewModelMapperInterface
 {
-    public function map(Model $model): ViewModel
+    public function map(BaseModel $model): ViewModel
     {
         /** @var Material $model */
         $viewModel = new MaterialListViewModel(

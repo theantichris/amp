@@ -1,7 +1,8 @@
 <?php
 
-namespace AMP\Domain;
+namespace AMP\Domain\MachineProfile;
 
+use AMP\Domain\BaseModel;
 use AMP\Enum\MachineProfile\TimeCalculationMethod;
 use InvalidArgumentException;
 
@@ -39,18 +40,6 @@ class MachineProfile extends BaseModel
     public function setRate(float $rate): MachineProfile
     {
         $this->attributes['rate'] = $rate;
-
-        return $this;
-    }
-
-    public function getMarkup(): float
-    {
-        return $this->attributes['markup'];
-    }
-
-    public function setMarkup(float $markup): MachineProfile
-    {
-        $this->attributes['markup'] = $markup;
 
         return $this;
     }

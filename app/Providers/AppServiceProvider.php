@@ -4,14 +4,18 @@ namespace AMP\Providers;
 
 use AMP\Converter\Customer\CustomerJsonConverter;
 use AMP\Converter\JsonConverterInterface;
+use AMP\Converter\MachineProfile\MachineProfileJsonConverter;
 use AMP\Converter\Material\MaterialJsonConverter;
 use AMP\Map\Customer\CustomerListViewModelMapper;
+use AMP\Map\MachineProfile\MachineProfileListViewModelMapper;
 use AMP\Map\Material\MaterialListViewModelMapper;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Repository\Customer\CustomerRepository;
 use AMP\Repository\RepositoryInterface;
 use AMP\Service\Customer\CustomerService;
 use AMP\Service\Customer\CustomerServiceInterface;
+use AMP\Service\MachineProfile\MachineProfileService;
+use AMP\Service\MachineProfile\MachineProfileServiceInterface;
 use AMP\Service\Material\MaterialService;
 use AMP\Service\Material\MaterialServiceInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
@@ -62,5 +66,17 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(MaterialService::class)
                   ->needs(ViewModelMapperInterface::class)
                   ->give(MaterialListViewModelMapper::class);
+
+        // MachineProfiles
+
+        $this->app->bind(MachineProfileServiceInterface::class, MachineProfileService::class);
+
+        $this->app->when(MachineProfileService::class)
+                  ->needs(JsonConverterInterface::class)
+                  ->give(MachineProfileJsonConverter::class);
+
+        $this->app->when(MachineProfileService::class)
+                  ->needs(ViewModelMapperInterface::class)
+                  ->give(MachineProfileListViewModelMapper::class);
     }
 }

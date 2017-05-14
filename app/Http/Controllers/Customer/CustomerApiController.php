@@ -2,7 +2,7 @@
 
 namespace AMP\Http\Controllers\Customer;
 
-use AMP\Http\Controllers\Controller;
+use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\Customer\CustomerServiceInterface;
 use AMP\Team;
 use Auth;
@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Response;
 
-class CustomerApiController extends Controller
+class CustomerApiController extends BaseApiController
 {
     private $customerService;
 
@@ -60,13 +60,4 @@ class CustomerApiController extends Controller
             'customer' => $customer,
         ]);
     }
-
-    private function getTeam(): Team
-    {
-        /** @var Team $team */
-        $team = Auth::user()->currentTeam();
-
-        return $team;
-    }
-
 }

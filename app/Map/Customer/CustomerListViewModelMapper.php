@@ -2,15 +2,15 @@
 
 namespace AMP\Map\Customer;
 
+use AMP\Domain\BaseModel;
 use AMP\Domain\Customer\Customer;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\ViewModel\Customer\CustomerListViewModel;
 use AMP\ViewModel\ViewModel;
-use Illuminate\Database\Eloquent\Model;
 
 class CustomerListViewModelMapper implements ViewModelMapperInterface
 {
-    public function map(Model $model): ViewModel
+    public function map(BaseModel $model): ViewModel
     {
         /** @var Customer $model */
         $viewModel = new CustomerListViewModel(

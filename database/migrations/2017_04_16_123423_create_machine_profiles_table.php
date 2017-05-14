@@ -15,8 +15,6 @@ class CreateMachineProfilesTable extends Migration
             $table->float('setup_fee');
             $table->float('rate');
 
-            $table->float('markup');
-
             $table->enum('time_calculation_method', [
                 'Volumetric (cc/hr)',
                 'Z-Height (cm/hr)',
