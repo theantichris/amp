@@ -58,7 +58,7 @@
 
                         <div class="form-group col-xs-6 required">
                             <label for="densityUnit" class="control-label">Unit</label>
-                            <select id="densityUnit" class="form-control" v-model="form.density_unit">
+                            <select id="densityUnit" class="form-control" v-model="form.density_unit" required>
                                 <option value="">Unit</option>
                                 <option v-for="density in densities" :value="density">{{ density }}</option>
                             </select>
