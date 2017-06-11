@@ -21,22 +21,20 @@
                     </div>
 
                     <div class="detail-group col-xs-12 col-md-6">
-                        <div class="detail-label">Rate</div>
+                        <div class="detail-label">Rate (per hour)</div>
                         <div>${{ machineProfile.rate }}</div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="detail-group col-xs-12">
-                        <div class="detail-label">Time Calculation Method</div>
-                        <div>{{ machineProfile.time_calculation_method }}</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="detail-group col-xs-12">
+                    <div class="detail-group col-xs-6">
                         <div class="detail-label">Build Rate</div>
                         <div>{{ machineProfile.build_rate }}</div>
+                    </div>
+
+                    <div class="detail-group col-xs-6">
+                        <div class="detail-label">Time Calculation Method</div>
+                        <div>{{ machineProfile.time_calculation_method }}</div>
                     </div>
                 </div>
 
