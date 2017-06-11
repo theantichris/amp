@@ -1,17 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace AMP\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class WelcomeController extends Controller
 {
-    /**
-     * Show the application splash screen.
-     *
-     * @return Response
-     */
-    public function show()
+    public function show(): View
     {
         return view('welcome');
     }
