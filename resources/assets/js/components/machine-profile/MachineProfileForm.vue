@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="form-group col-xs-12 col-md-6 required">
-                            <label for="rate" class="control-label">Rate</label>
+                            <label for="rate" class="control-label">Rate (per hour)</label>
                             <div class="input-group">
                                 <div class="input-group-addon">$</div>
 
@@ -53,7 +53,19 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-6 required">
+                            <label for="buildRate" class="control-label">Build Rate</label>
+                            <input id="buildRate"
+                                   name="buildRate"
+                                   type="number"
+                                   min="0"
+                                   step="0.01"
+                                   class="form-control"
+                                   v-model="form.build_rate"
+                                   required>
+                        </div>
+
+                        <div class="form-group col-xs-6">
                             <label for="timeCalculationMethod" class="control-label">Time Calculation Method</label>
                             <input id="timeCalculationMethod"
                                    name="timeCalculationMethod"
@@ -61,24 +73,6 @@
                                    class="form-control"
                                    v-model="form.time_calculation_method"
                                    readonly>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-xs-12 col-md-6 required">
-                            <label for="buildRate" class="control-label">Build Rate</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">$</div>
-
-                                <input id="buildRate"
-                                       name="buildRate"
-                                       type="number"
-                                       min="0"
-                                       step="0.01"
-                                       class="form-control"
-                                       v-model="form.build_rate"
-                                       required>
-                            </div>
                         </div>
                     </div>
 
