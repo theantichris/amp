@@ -12,11 +12,11 @@ Route::group([
     });
 
     Route::group(['prefix' => 'materials'], function () {
-        Route::get('/{id}', 'Material\MaterialApiController@show');
-        Route::get('', 'Material\MaterialApiController@index');
+        Route::get('/{id}', 'Project\MaterialApiController@show');
+        Route::get('', 'Project\MaterialApiController@index');
 
-        Route::post('', 'Material\MaterialApiController@create');
-        Route::put('/{id}', 'Material\MaterialApiController@update');
+        Route::post('', 'Project\MaterialApiController@create');
+        Route::put('/{id}', 'Project\MaterialApiController@update');
     });
 
     Route::group(['prefix' => 'machine-profiles'], function () {

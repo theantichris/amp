@@ -1,11 +1,11 @@
 <?php
 
-namespace AMP\Map\Material;
+namespace AMP\Map\Project;
 
 use AMP\Domain\BaseModel;
-use AMP\Domain\Material\Material;
+use AMP\Domain\Project\Material;
 use AMP\Map\ViewModelMapperInterface;
-use AMP\ViewModel\Material\MaterialListViewModel;
+use AMP\ViewModel\Project\MaterialListViewModel;
 use AMP\ViewModel\ViewModel;
 
 class MaterialListViewModelMapper implements ViewModelMapperInterface

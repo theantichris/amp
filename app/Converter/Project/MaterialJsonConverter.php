@@ -1,9 +1,9 @@
 <?php
 
-namespace AMP\Converter\Material;
+namespace AMP\Converter\Project;
 
 use AMP\Converter\JsonConverterInterface;
-use AMP\Domain\Material\Material;
+use AMP\Domain\Project\Material;
 use Illuminate\Database\Eloquent\Model;
 
 class MaterialJsonConverter implements JsonConverterInterface

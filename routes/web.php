@@ -9,7 +9,7 @@ Route::group(['prefix' => 'customers'], function () {
 });
 
 Route::group(['prefix' => 'materials'], function () {
-    Route::get('', 'Material\MaterialController@index');
+    Route::get('', 'Project\MaterialController@index');
 });
 
 Route::group(['prefix' => 'machine-profiles'], function () {

@@ -1,9 +1,9 @@
 <?php
 
-namespace AMP\Service\Material;
+namespace AMP\Service\Project;
 
 use AMP\Converter\JsonConverterInterface;
-use AMP\Domain\Material\Material;
+use AMP\Domain\Project\Material;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Team;
 use Illuminate\Validation\UnauthorizedException;

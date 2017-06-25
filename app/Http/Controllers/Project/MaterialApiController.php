@@ -1,9 +1,9 @@
 <?php
 
-namespace AMP\Http\Controllers\Material;
+namespace AMP\Http\Controllers\Project;
 
 use AMP\Http\Controllers\BaseApiController;
-use AMP\Service\Material\MaterialServiceInterface;
+use AMP\Service\Project\MaterialServiceInterface;
 use AMP\Team;
 use Auth;
 use Illuminate\Http\JsonResponse;
