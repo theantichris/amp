@@ -5,7 +5,6 @@ namespace AMP\Domain\Project;
 use AMP\Domain\BaseModel;
 use AMP\Enum\Density;
 use AMP\Enum\Weight;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use InvalidArgumentException;
 
 class Material extends BaseModel
@@ -76,10 +75,5 @@ class Material extends BaseModel
         $this->attributes['density_unit'] = $densityUnit;
 
         return $this;
-    }
-
-    public function parts(): BelongsToMany
-    {
-        return $this->belongsToMany(Part::class);
     }
 }

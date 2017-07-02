@@ -82,7 +82,7 @@
             loadMaterials() {
                 this.initForm();
 
-                axios.get('/api/materials')
+                axios.get('/api/projects/materials')
                     .then((response) => {
                         this.materials = response.data.materials;
                     })
@@ -93,7 +93,7 @@
 
             loadMaterial(id) {
                 if (id)
-                    axios.get('/api/materials/' + id)
+                    axios.get('/api/projects/materials/' + id)
                         .then((response) => {
                             this.material = response.data.material;
                         })

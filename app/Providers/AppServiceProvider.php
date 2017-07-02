@@ -6,9 +6,11 @@ use AMP\Converter\Customer\CustomerJsonConverter;
 use AMP\Converter\JsonConverterInterface;
 use AMP\Converter\MachineProfile\MachineProfileJsonConverter;
 use AMP\Converter\Project\MaterialJsonConverter;
+use AMP\Converter\Project\PartJsonConverter;
 use AMP\Map\Customer\CustomerListViewModelMapper;
 use AMP\Map\MachineProfile\MachineProfileListViewModelMapper;
 use AMP\Map\Project\MaterialListViewModelMapper;
+use AMP\Map\Project\PartListViewModelMapper;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Repository\Customer\CustomerRepository;
 use AMP\Repository\RepositoryInterface;
@@ -18,6 +20,8 @@ use AMP\Service\MachineProfile\MachineProfileService;
 use AMP\Service\MachineProfile\MachineProfileServiceInterface;
 use AMP\Service\Project\MaterialService;
 use AMP\Service\Project\MaterialServiceInterface;
+use AMP\Service\Project\PartService;
+use AMP\Service\Project\PartServiceInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Tinker\TinkerServiceProvider;
@@ -66,6 +70,18 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(MaterialService::class)
                   ->needs(ViewModelMapperInterface::class)
                   ->give(MaterialListViewModelMapper::class);
+
+        // Parts
+
+        $this->app->bind(PartServiceInterface::class, PartService::class);
+
+        $this->app->when(PartService::class)
+                  ->needs(JsonConverterInterface::class)
+                  ->give(PartJsonConverter::class);
+
+        $this->app->when(PartService::class)
+                  ->needs(ViewModelMapperInterface::class)
+                  ->give(PartListViewModelMapper::class);
 
         // MachineProfiles
 

@@ -99,7 +99,7 @@
         methods: {
             save() {
                 if (this.form.id) {
-                    axios.put('/api/materials/' + this.form.id, this.form)
+                    axios.put('/api/projects/materials/' + this.form.id, this.form)
                         .then(() => {
                             this.$emit('formSaved');
                         })
@@ -107,7 +107,7 @@
                             console.error(error);
                         });
                 } else {
-                    axios.post('/api/materials', this.form)
+                    axios.post('/api/projects/materials', this.form)
                         .then(() => {
                             this.$emit('formSaved');
                         })

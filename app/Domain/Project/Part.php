@@ -4,7 +4,6 @@ namespace AMP\Domain\Project;
 
 use AMP\Domain\BaseModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Part extends BaseModel
 {
@@ -49,8 +48,8 @@ class Part extends BaseModel
         return $this->belongsTo(Project::class);
     }
 
-    public function materials(): BelongsToMany
+    public function material(): BelongsTo
     {
-        return $this->belongsToMany(Material::class);
+        return $this->belongsTo(Material::class);
     }
 }

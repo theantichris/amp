@@ -11,12 +11,22 @@ Route::group([
         Route::put('/{id}', 'Customer\CustomerApiController@update');
     });
 
-    Route::group(['prefix' => 'materials'], function () {
-        Route::get('/{id}', 'Project\MaterialApiController@show');
-        Route::get('', 'Project\MaterialApiController@index');
+    Route::group(['prefix' => 'projects'], function () {
+        Route::group(['prefix' => 'materials'], function () {
+            Route::get('/{id}', 'Project\MaterialApiController@show');
+            Route::get('', 'Project\MaterialApiController@index');
 
-        Route::post('', 'Project\MaterialApiController@create');
-        Route::put('/{id}', 'Project\MaterialApiController@update');
+            Route::post('', 'Project\MaterialApiController@create');
+            Route::put('/{id}', 'Project\MaterialApiController@update');
+        });
+
+        Route::group(['prefix' => 'parts'], function () {
+            Route::get('/{id}', 'Project\PartApiController@show');
+            Route::get('', 'Project\PartApiController@index');
+
+            Route::post('', 'Project\PartApiController@create');
+            Route::put('/{id}', 'Project\PartApiController@update');
+        });
     });
 
     Route::group(['prefix' => 'machine-profiles'], function () {
