@@ -9,10 +9,12 @@
                         <div class="panel-heading">Dashboard</div>
 
                         <div class="panel-body">
+                            <h3>Resources</h3>
+
                             <div class="row">
                                 <div class="dashboard__icon col-md-2">
                                     <a class="dashboard__link" title="Customers" href="customers">
-                                        <div class="dashboard__image"><i class="fa fa-users"></i></div>
+                                        <div class="dashboard__image"><i class="fa fa-vcard"></i></div>
                                         <div class="dashboard__text">Customers</div>
                                     </a>
                                 </div>
@@ -23,11 +25,22 @@
                                         <div class="dashboard__text">Machine Profiles</div>
                                     </a>
                                 </div>
+                            </div>
 
+                            <h3>Projects</h3>
+
+                            <div class="row">
                                 <div class="dashboard__icon col-md-2">
                                     <a class="dashboard__link" title="Materials" href="materials">
                                         <div class="dashboard__image"><i class="fa fa-cubes"></i></div>
                                         <div class="dashboard__text">Materials</div>
+                                    </a>
+                                </div>
+
+                                <div class="dashboard__icon col-md-2">
+                                    <a class="dashboard__link" title="Parts" href="">
+                                        <div class="dashboard__image"><i class="fa fa-cube"></i></div>
+                                        <div class="dashboard__text">Parts</div>
                                     </a>
                                 </div>
                             </div>
