@@ -8,6 +8,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Part extends BaseModel
 {
+    public function getName(): string
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName(string $name): Part
+    {
+        $this->attributes['name'] = $name;
+
+        return $this;
+    }
+
     public function getQuantity(): ?int
     {
         return $this->attributes['quantity'];
