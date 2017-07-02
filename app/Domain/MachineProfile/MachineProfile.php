@@ -6,31 +6,6 @@ use AMP\Domain\BaseModel;
 use AMP\Enum\MachineProfile\TimeCalculationMethod;
 use InvalidArgumentException;
 
-/**
- * AMP\Domain\MachineProfile\MachineProfile
- *
- * @property int                 $id
- * @property string              $type
- * @property float               $setup_fee
- * @property float               $rate
- * @property string              $time_calculation_method
- * @property float               $build_rate
- * @property int                 $team_id
- * @property \Carbon\Carbon|null $deleted_at
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereBuildRate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereRate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereSetupFee($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereTeamId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereTimeCalculationMethod($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\AMP\Domain\MachineProfile\MachineProfile whereUpdatedAt($value)
- * @mixin \Eloquent
- */
 class MachineProfile extends BaseModel
 {
     public function getType(): string
