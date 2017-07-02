@@ -31,16 +31,16 @@
 
                             <div class="row">
                                 <div class="dashboard__icon col-md-2">
-                                    <a class="dashboard__link" title="Materials" href="materials">
-                                        <div class="dashboard__image"><i class="fa fa-cubes"></i></div>
-                                        <div class="dashboard__text">Materials</div>
+                                    <a class="dashboard__link" title="Projects" href="">
+                                        <div class="dashboard__image"><i class="fa fa-file"></i></div>
+                                        <div class="dashboard__text">Projects</div>
                                     </a>
                                 </div>
 
                                 <div class="dashboard__icon col-md-2">
-                                    <a class="dashboard__link" title="Parts" href="">
-                                        <div class="dashboard__image"><i class="fa fa-cube"></i></div>
-                                        <div class="dashboard__text">Parts</div>
+                                    <a class="dashboard__link" title="Materials" href="materials">
+                                        <div class="dashboard__image"><i class="fa fa-cubes"></i></div>
+                                        <div class="dashboard__text">Materials</div>
                                     </a>
                                 </div>
                             </div>
