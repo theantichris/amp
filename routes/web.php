@@ -8,7 +8,7 @@ Route::group(['prefix' => 'customers'], function () {
     Route::get('', 'Customer\CustomerController@index');
 });
 
-Router::group(['prefix' => 'projects'], function () {
+Route::group(['prefix' => 'projects'], function () {
     Route::group(['prefix' => 'materials'], function () {
         Route::get('', 'Project\MaterialController@index');
     });
