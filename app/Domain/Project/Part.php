@@ -3,7 +3,7 @@
 namespace AMP\Domain\Project;
 
 use AMP\Domain\BaseModel;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Part extends BaseModel
 {
@@ -43,13 +43,8 @@ class Part extends BaseModel
         return $this;
     }
 
-    public function project(): BelongsTo
+    public function material(): HasOne
     {
-        return $this->belongsTo(Project::class);
-    }
-
-    public function material(): BelongsTo
-    {
-        return $this->belongsTo(Material::class);
+        return $this->hasOne(Material::class);
     }
 }
