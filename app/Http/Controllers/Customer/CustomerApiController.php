@@ -9,7 +9,6 @@ use Auth;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Response;
 
 class CustomerApiController extends BaseApiController
 {
@@ -42,7 +41,7 @@ class CustomerApiController extends BaseApiController
 
         $customer = $this->customerService->createFromJson($json, $team);
 
-        return Response::json([], 201, [
+        return new JsonResponse([], 201, [
             'Location' => '/customers/' . $customer->getId(),
         ]);
     }
@@ -52,7 +51,7 @@ class CustomerApiController extends BaseApiController
         $json = $request->getContent();
         $this->customerService->updateFromJson($json, $id);
 
-        return Response::json([], 204);
+        return new JsonResponse([], 204);
     }
 
     public function show(int $id): JsonResponse
