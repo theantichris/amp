@@ -37,7 +37,7 @@ Route::group([
         Route::put('/{id}', 'MachineProfile\MachineProfileApiController@update');
     });
 
-    Route::get('/states', 'Data\StateController@index');
-    Route::get('/weights', 'Data\WeightController@index');
-    Route::get('/densities', 'Data\DensityController@index');
+    Route::get('/states', 'Data\StateApiController@index');
+    Route::get('/weights', 'Data\WeightApiController@index');
+    Route::get('/densities', 'Data\DensityApiController@index');
 });

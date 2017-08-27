@@ -7,7 +7,7 @@ use AMP\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Response;
 
-class StateController extends Controller
+class StateApiController extends Controller
 {
     public function __construct()
     {

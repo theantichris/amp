@@ -6,6 +6,7 @@ use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\Project\PartServiceInterface;
 use AMP\Team;
 use Auth;
+use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Response;
@@ -14,10 +15,12 @@ class PartApiController extends BaseApiController
 {
     private $partService;
 
-    public function __construct(PartServiceInterface $partService)
+    public function __construct(Factory $auth, PartServiceInterface $partService)
     {
         $this->middleware('auth');
 
+        parent::__construct($auth);
+        
         $this->partService = $partService;
     }
 

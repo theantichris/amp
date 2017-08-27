@@ -2,12 +2,12 @@
 
 namespace AMP\Http\Controllers\Data;
 
-use AMP\Enum\Weight;
+use AMP\Enum\Density;
 use AMP\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Response;
 
-class WeightController extends Controller
+class DensityApiController extends Controller
 {
     public function __construct()
     {
@@ -16,10 +16,10 @@ class WeightController extends Controller
 
     public function index(): JsonResponse
     {
-        $weights = Weight::getConstants();
+        $densities = Density::getConstants();
 
         return Response::json([
-            'weights' => $weights,
+            'densities' => $densities,
         ]);
     }
 }

@@ -38,7 +38,7 @@
                                 </div>
 
                                 <div class="dashboard__icon col-md-2">
-                                    <a class="dashboard__link" title="Materials" href="materials">
+                                    <a class="dashboard__link" title="Materials" href="projects/materials">
                                         <div class="dashboard__image"><i class="fa fa-cubes"></i></div>
                                         <div class="dashboard__text">Materials</div>
                                     </a>

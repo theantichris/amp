@@ -6,6 +6,7 @@ use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\MachineProfile\MachineProfileServiceInterface;
 use AMP\Team;
 use Auth;
+use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Response;
@@ -14,9 +15,11 @@ class MachineProfileApiController extends BaseApiController
 {
     private $machineProfileService;
 
-    public function __construct(MachineProfileServiceInterface $machineProfileService)
+    public function __construct(Factory $auth, MachineProfileServiceInterface $machineProfileService)
     {
         $this->middleware('auth');
+
+        parent::__construct($auth);
 
         $this->machineProfileService = $machineProfileService;
     }

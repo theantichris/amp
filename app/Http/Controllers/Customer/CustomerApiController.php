@@ -6,6 +6,7 @@ use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\Customer\CustomerServiceInterface;
 use AMP\Team;
 use Auth;
+use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Response;
@@ -14,9 +15,11 @@ class CustomerApiController extends BaseApiController
 {
     private $customerService;
 
-    public function __construct(CustomerServiceInterface $customerService)
+    public function __construct(Factory $auth, CustomerServiceInterface $customerService)
     {
         $this->middleware('auth');
+
+        parent::__construct($auth);
 
         $this->customerService = $customerService;
     }
@@ -25,7 +28,7 @@ class CustomerApiController extends BaseApiController
     {
         $customers = $this->customerService->getListViewModels($this->getTeam()->getQueueableId());
 
-        return Response::json([
+        return new JsonResponse([
             'customers' => $customers,
         ]);
     }
