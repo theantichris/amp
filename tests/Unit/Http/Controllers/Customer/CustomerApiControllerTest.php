@@ -5,17 +5,13 @@ namespace Tests\Unit\Http\Controllers\Customer;
 use AMP\Domain\Customer\Customer;
 use AMP\Http\Controllers\Customer\CustomerApiController;
 use AMP\Service\Customer\CustomerServiceInterface;
-use AMP\Team;
-use AMP\User;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
+use Tests\ApiControllerTestCase;
 
-class CustomerApiControllerTest extends \TestCase
+class CustomerApiControllerTest extends ApiControllerTestCase
 {
-    use MockeryPHPUnitIntegration;
-
     /** @var  MockInterface */
     private $mockAuth;
 
@@ -35,7 +31,7 @@ class CustomerApiControllerTest extends \TestCase
 
     public function test_index()
     {
-        $mockTeam = $this->getTeam();
+        $mockTeam = $this->getTeam($this->mockAuth);
 
         $teamId = 1;
         $mockTeam->shouldReceive('getQueueableId')
@@ -61,18 +57,4 @@ class CustomerApiControllerTest extends \TestCase
         $this->assertEquals($expected->getContent(), $actual->getContent());
     }
 
-    private function getTeam(): MockInterface
-    {
-        $mockUser = \Mockery::mock(User::class);
-        $this->mockAuth->shouldReceive('user')
-                       ->once()
-                       ->andReturn($mockUser);
-
-        $mockTeam = \Mockery::mock(Team::class);
-        $mockUser->shouldReceive('currentTeam')
-                 ->once()
-                 ->andReturn($mockTeam);
-
-        return $mockTeam;
-    }
 }
