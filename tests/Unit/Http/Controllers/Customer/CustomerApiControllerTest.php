@@ -11,9 +11,8 @@ use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
-use PHPUnit\Framework\TestCase;
 
-class CustomerApiControllerTest extends TestCase
+class CustomerApiControllerTest extends \TestCase
 {
     use MockeryPHPUnitIntegration;
 
@@ -36,15 +35,7 @@ class CustomerApiControllerTest extends TestCase
 
     public function test_index()
     {
-        $mockUser = \Mockery::mock(User::class);
-        $this->mockAuth->shouldReceive('user')
-                       ->once()
-                       ->andReturn($mockUser);
-
-        $mockTeam = \Mockery::mock(Team::class);
-        $mockUser->shouldReceive('currentTeam')
-                 ->once()
-                 ->andReturn($mockTeam);
+        $mockTeam = $this->getTeam();
 
         $teamId = 1;
         $mockTeam->shouldReceive('getQueueableId')
@@ -68,5 +59,20 @@ class CustomerApiControllerTest extends TestCase
         $actual = $this->uut->index();
 
         $this->assertEquals($expected->getContent(), $actual->getContent());
+    }
+
+    private function getTeam(): MockInterface
+    {
+        $mockUser = \Mockery::mock(User::class);
+        $this->mockAuth->shouldReceive('user')
+                       ->once()
+                       ->andReturn($mockUser);
+
+        $mockTeam = \Mockery::mock(Team::class);
+        $mockUser->shouldReceive('currentTeam')
+                 ->once()
+                 ->andReturn($mockTeam);
+
+        return $mockTeam;
     }
 }
