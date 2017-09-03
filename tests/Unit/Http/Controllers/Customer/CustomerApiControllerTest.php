@@ -31,7 +31,8 @@ class CustomerApiControllerTest extends ApiControllerTestCase
         $this->uut = new CustomerApiController($this->mockAuth, $this->mockCustomerService);
     }
 
-    public function test_index()
+    /** @test */
+    public function returns_a_json_response_with_customer_view_models()
     {
         $mockTeam = $this->getTeam($this->mockAuth);
 
@@ -59,7 +60,8 @@ class CustomerApiControllerTest extends ApiControllerTestCase
         $this->assertEquals($expected->getContent(), $actual->getContent());
     }
 
-    public function test_create()
+    /** @test */
+    public function creates_a_customer_and_returns_a_json_response()
     {
         $mockRequest = \Mockery::mock(Request::class);
 
@@ -91,7 +93,8 @@ class CustomerApiControllerTest extends ApiControllerTestCase
         $this->assertEquals($expected->headers->get('Location'), $actual->headers->get('Location'));
     }
 
-    public function test_update()
+    /** @test */
+    public function updates_a_customer_and_returns_a_json_response()
     {
         $id          = 1;
         $mockRequest = \Mockery::mock(Request::class);
@@ -112,7 +115,8 @@ class CustomerApiControllerTest extends ApiControllerTestCase
         $this->assertEquals($expected->getStatusCode(), $actual->getStatusCode());
     }
 
-    public function test_show()
+    /** @test */
+    public function serializes_a_customer_and_returns_a_json_response()
     {
         $customerId = 1;
 
