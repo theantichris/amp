@@ -5,10 +5,10 @@ namespace AMP\Http\Controllers\Customer;
 use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\Customer\CustomerServiceInterface;
 use AMP\Team;
-use Auth;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CustomerApiController extends BaseApiController
 {
@@ -37,11 +37,11 @@ class CustomerApiController extends BaseApiController
         $json = $request->getContent();
 
         /** @var Team $team */
-        $team = Auth::user()->currentTeam();
+        $team = $this->auth->user()->currentTeam();
 
         $customer = $this->customerService->createFromJson($json, $team);
 
-        return new JsonResponse([], 201, [
+        return new JsonResponse([], Response::HTTP_CREATED, [
             'Location' => '/customers/' . $customer->getId(),
         ]);
     }
@@ -51,7 +51,7 @@ class CustomerApiController extends BaseApiController
         $json = $request->getContent();
         $this->customerService->updateFromJson($json, $id);
 
-        return new JsonResponse([], 204);
+        return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 
     public function show(int $id): JsonResponse
