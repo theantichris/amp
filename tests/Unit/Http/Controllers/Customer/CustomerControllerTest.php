@@ -31,7 +31,8 @@ class CustomerControllerTest extends TestCase
         );
     }
 
-    public function test_index()
+    /** @test */
+    public function returns_the_customer_index_view()
     {
         $mockView = \Mockery::mock(View::class);
 
