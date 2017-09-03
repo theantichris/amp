@@ -10,9 +10,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Mockery\MockInterface;
-use Tests\ApiControllerTestCase;
 
-class CustomerApiControllerTest extends ApiControllerTestCase
+class CustomerApiControllerTest extends \TestCase
 {
     /** @var  MockInterface */
     private $mockAuth;

@@ -7,9 +7,8 @@ use AMP\Service\Customer\CustomerServiceInterface;
 use Illuminate\Contracts\View\Factory as Templating;
 use Illuminate\View\View;
 use Mockery\MockInterface;
-use PHPUnit\Framework\TestCase;
 
-class CustomerControllerTest extends TestCase
+class CustomerControllerTest extends \TestCase
 {
     /** @var  MockInterface */
     private $mockTemplating;
