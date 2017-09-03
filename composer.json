@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=7.1.0",
-    "laravel/framework": "5.4.*",
+    "laravel/framework": "5.5.*",
     "laravel/spark": "~4.0",
     "laravel/cashier-braintree": "~2.0",
     "theantichris/enum": "^1.0"
@@ -19,12 +19,13 @@
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "dev-master",
-    "phpunit/phpunit": "~5.0",
+    "phpunit/phpunit": "~6.0",
     "symfony/css-selector": "3.1.*",
     "symfony/dom-crawler": "3.1.*",
     "barryvdh/laravel-ide-helper": "^2.2",
     "laravel/tinker": "v1.0.0",
-    "doctrine/dbal": "2.5.*"
+    "doctrine/dbal": "2.5.*",
+    "laravel/dusk": "2.*"
   },
   "autoload": {
     "classmap": [
