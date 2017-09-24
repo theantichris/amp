@@ -15,7 +15,7 @@ class CommentTest extends \TestCase
     }
 
     /** @test */
-    public function has_comment()
+    public function has_comment_text()
     {
         $comment = 'This is rad!';
 
