@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 $factory->define(AMP\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -12,7 +13,12 @@ $factory->define(AMP\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(\AMP\Team::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+    ];
+});
+
 $factory->define(\AMP\Domain\Customer\Customer::class, function (Faker\Generator $faker) {
     return [
         'account_number' => $faker->bankAccountNumber,
