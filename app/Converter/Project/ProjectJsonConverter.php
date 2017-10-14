@@ -3,21 +3,21 @@
 namespace AMP\Converter\Project;
 
 use AMP\Converter\JsonConverterInterface;
-use AMP\Domain\Project\Part;
+use AMP\Domain\Project\Project;
 use Illuminate\Database\Eloquent\Model;
 
-class PartJsonConverter implements JsonConverterInterface
+class ProjectJsonConverter implements JsonConverterInterface
 {
     public function convert(Model $model, string $json): Model
     {
         $data = json_decode($json);
 
-        /** @var Part $model */
+        /** @var Project $model */
         $model->setName($data->name)
-              ->setQuantity($data->quantity)
-              ->setRequirements($data->requirements);
+              ->setManager($data->manager)
+              ->setStatus($data->status);
 
-        $model->material()->associate($data->material);
+        $model->customer()->save($data->customer);
 
         return $model;
     }

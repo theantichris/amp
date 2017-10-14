@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Project;
+namespace AMP\Domain\Project;
 
 use AMP\Domain\BaseModel;
 use AMP\Domain\Customer\Customer;
@@ -50,7 +50,10 @@ class Project extends BaseModel
         return $this;
     }
 
-    public function customers(): HasOne
+    /**
+     * @return HasOne|Customer
+     */
+    public function customer(): HasOne
     {
         return $this->hasOne(Customer::class);
     }

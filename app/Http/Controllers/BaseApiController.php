@@ -16,7 +16,7 @@ class BaseApiController extends Controller
 
     protected function getTeam(): Team
     {
-        /** @var Team $team */
+        /** @noinspection PhpUndefinedMethodInspection */
         $team = $this->auth->user()->currentTeam();
 
         return $team;
