@@ -31,7 +31,7 @@
 
                             <div class="row">
                                 <div class="dashboard__icon col-md-2">
-                                    <a class="dashboard__link" title="Projects" href="">
+                                    <a class="dashboard__link" title="Projects" href="projects">
                                         <div class="dashboard__image"><i class="fa fa-file"></i></div>
                                         <div class="dashboard__text">Projects</div>
                                     </a>

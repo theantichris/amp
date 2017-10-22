@@ -57,7 +57,7 @@
     import MaterialList from './MaterialList.vue';
     import MaterialForm from './MaterialForm.vue';
     import MaterialDetail from './MaterialDetail.vue';
-    import TabState from '../../../../../vendor/laravel/spark/resources/assets/js/mixins/tab-state';
+    import TabState from '../../../../../../vendor/laravel/spark/resources/assets/js/mixins/tab-state';
 
     export default {
         mixins: [TabState],
