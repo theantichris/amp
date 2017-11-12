@@ -3,7 +3,9 @@
 namespace AMP\Domain\Customer;
 
 use AMP\Domain\BaseModel;
+use AMP\Domain\Project\Project;
 use AMP\Enum\StateAbbreviation;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use InvalidArgumentException;
 
 class Customer extends BaseModel
@@ -158,5 +160,13 @@ class Customer extends BaseModel
         $this->attributes['shipping_account_number'] = $shippingAccountNumber;
 
         return $this;
+    }
+
+    /**
+     * @return HasMany|Project[]
+     */
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class);
     }
 }

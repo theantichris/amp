@@ -5,7 +5,8 @@ namespace AMP\Domain\Project;
 use AMP\Domain\BaseModel;
 use AMP\Domain\Customer\Customer;
 use AMP\Enum\Project\Status;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use AMP\User;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use InvalidArgumentException;
 
 class Project extends BaseModel
@@ -18,18 +19,6 @@ class Project extends BaseModel
     public function setName(string $name): Project
     {
         $this->attributes['name'] = $name;
-
-        return $this;
-    }
-
-    public function getManager(): string
-    {
-        return $this->attributes['manager'];
-    }
-
-    public function setManager(string $manager): Project
-    {
-        $this->attributes['manager'] = $manager;
 
         return $this;
     }
@@ -51,10 +40,18 @@ class Project extends BaseModel
     }
 
     /**
-     * @return HasOne|Customer
+     * @return BelongsTo|Customer
      */
-    public function customer(): HasOne
+    public function customer(): BelongsTo
     {
-        return $this->hasOne(Customer::class);
+        return $this->belongsTo(Customer::class);
+    }
+
+    /**
+     * @return BelongsTo|User
+     */
+    public function manager(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

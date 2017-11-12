@@ -13,16 +13,7 @@ class CreateProjectsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->integer('team_id')
-                  ->unsigned();
-
-            $table->foreign('team_id')
-                  ->references('id')
-                  ->on('teams')
-                  ->onDelete('cascade');
-
             $table->string('name');
-            $table->string('manager');
 
             $table->enum('status', [
                 'New',
@@ -51,6 +42,24 @@ class CreateProjectsTable extends Migration
             $table->foreign('customer_id')
                   ->references('id')
                   ->on('customers')
+                  ->onDelete('cascade');
+
+            $table->integer('manager_id')
+                  ->unsigned()
+                  ->index()
+                  ->nullable();
+
+            $table->foreign('manager_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
+
+            $table->integer('team_id')
+                  ->unsigned();
+
+            $table->foreign('team_id')
+                  ->references('id')
+                  ->on('teams')
                   ->onDelete('cascade');
         });
     }

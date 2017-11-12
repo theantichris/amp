@@ -12,9 +12,9 @@
 
                 <form v-on:submit.prevent="save">
                     <div class="row">
-                        <div class="form-group col-xs-12 col-md-6 required">
+                        <div class="form-group col-xs-12 col-md-6">
                             <label for="customer" class="control-label">Customer</label>
-                            <select id="customer" class="form-control" v-model="form.customer" required>
+                            <select id="customer" class="form-control" v-model="form.customer">
                                 <option value="">Internal</option>
                                 <option v-for="customer in customers" :value="customer">{{ customer.companyName }}
                                 </option>

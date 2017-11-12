@@ -22,7 +22,11 @@ Route::group(['middleware' => 'auth:api'], function () {
             Route::put('/{id}', 'Project\Material\MaterialApiController@update');
         });
 
-        Route::resource('', 'Project\Project\ProjectApiController');
+        Route::get('/{id}', 'Project\Project\ProjectApiController@show');
+        Route::get('', 'Project\Project\ProjectApiController@index');
+
+        Route::post('', 'Project\Project\ProjectApiController@create');
+        Route::put('/{id}', 'Project\Project\ProjectApiController@update');
     });
 
     Route::group(['prefix' => 'machine-profiles'], function () {

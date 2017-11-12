@@ -36,7 +36,7 @@ class ProjectApiController extends BaseApiController
         $json = $request->getContent();
 
         /** @noinspection PhpUndefinedMethodInspection */
-        $team = Auth::user()->currentTeam();
+        $team = $this->auth->user()->currentTeam();
 
         $project = $this->projectService->createFromJson($json, $team);
 

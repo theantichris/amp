@@ -14,10 +14,7 @@ class ProjectJsonConverter implements JsonConverterInterface
 
         /** @var Project $model */
         $model->setName($data->name)
-              ->setManager($data->manager)
               ->setStatus($data->status);
-
-        $model->customer()->save($data->customer);
 
         return $model;
     }

@@ -2,7 +2,9 @@
 
 namespace AMP;
 
+use AMP\Domain\Project\Project;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Spark\CanJoinTeams;
 use Laravel\Spark\User as SparkUser;
@@ -59,5 +61,13 @@ class User extends SparkUser
     public function getTeamId(): int
     {
         return $this->attributes['team_id'];
+    }
+
+    /**
+     * @return HasMany|Project[]
+     */
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class, 'id', 'manager_id');
     }
 }

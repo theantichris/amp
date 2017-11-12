@@ -3,9 +3,11 @@
 namespace AMP\Service\Project\Project;
 
 use AMP\Converter\JsonConverterInterface;
+use AMP\Domain\Customer\Customer;
 use AMP\Domain\Project\Project;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Team;
+use AMP\User;
 use Illuminate\Validation\UnauthorizedException;
 
 class EloquentProjectService implements ProjectServiceInterface
@@ -23,6 +25,7 @@ class EloquentProjectService implements ProjectServiceInterface
 
     public function getListViewModels(int $teamId): array
     {
+        /** @noinspection PhpUndefinedMethodInspection */
         $projects = Project::whereTeamId($teamId)->get();
 
         $viewModels = [];
@@ -38,8 +41,18 @@ class EloquentProjectService implements ProjectServiceInterface
         /** @var Project $project */
         $project = new Project();
         $project->team()->associate($team);
-        $project = $this->jsonConverter->convert($project, $json);
 
+        $data = json_decode($json);
+
+        if ($data->customer) {
+            $customer = Customer::find($data->customer->id);
+            $project->customer()->associate($customer);
+        }
+
+        $manager = User::find($data->manager->id);
+        $project->manager()->associate($manager);
+
+        $project = $this->jsonConverter->convert($project, $json);
         $project->save();
 
         return $project;
