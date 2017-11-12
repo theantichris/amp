@@ -82,7 +82,7 @@
             loadProjects() {
                 this.initForm();
 
-                axios.get('/api/projects/project')
+                axios.get('/api/projects')
                     .then((response) => {
                         this.projects = response.data.projects;
                     })
@@ -93,7 +93,7 @@
 
             loadProject(id) {
                 if (id)
-                    axios.get('/api/projects/projects/' + id)
+                    axios.get('/api/projects/' + id)
                         .then((response) => {
                             this.project = response.data.project;
                         })

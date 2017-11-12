@@ -52,7 +52,7 @@
         methods: {
             save() {
                 if (this.form.id) {
-                    axios.put('/api/projects/projects/' + this.form.id, this.form)
+                    axios.put('/api/projects/' + this.form.id, this.form)
                         .then(() => {
                             this.$emit('formSaved');
                         })
@@ -60,7 +60,7 @@
                             console.error(error);
                         });
                 } else {
-                    axios.post('/api/projects/projects', this.form)
+                    axios.post('/api/projects', this.form)
                         .then(() => {
                             this.$emit('formSaved');
                         })

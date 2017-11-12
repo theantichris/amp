@@ -1,8 +1,6 @@
 <?php
 
-Route::group([
-    'middleware' => 'auth:api',
-], function () {
+Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'customers'], function () {
         Route::get('/{id}', 'Customer\CustomerApiController@show');
         Route::get('', 'Customer\CustomerApiController@index');
@@ -19,6 +17,8 @@ Route::group([
             Route::post('', 'Project\Material\MaterialApiController@create');
             Route::put('/{id}', 'Project\Material\MaterialApiController@update');
         });
+
+        Route::resource('', 'Project\Project\ProjectApiController');
     });
 
     Route::group(['prefix' => 'machine-profiles'], function () {
