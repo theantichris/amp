@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Http\Controllers\Project;
+namespace AMP\Http\Controllers\Project\Material;
 
 use AMP\Http\Controllers\Controller;
 use Illuminate\View\View;
@@ -14,6 +14,6 @@ class MaterialController extends Controller
 
     public function index(): View
     {
-        return view('materials.material-management');
+        return view('projects.materials.material-management');
     }
 }

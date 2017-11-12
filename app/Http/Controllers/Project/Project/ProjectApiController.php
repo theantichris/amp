@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Http\Controllers\Project;
+namespace AMP\Http\Controllers\Project\Project;
 
 use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\Project\ProjectService;

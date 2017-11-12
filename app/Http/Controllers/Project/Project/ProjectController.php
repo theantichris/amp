@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Http\Controllers\Project;
+namespace AMP\Http\Controllers\Project\Project;
 
 use AMP\Http\Controllers\Controller;
 use Illuminate\View\View;
@@ -14,6 +14,6 @@ class ProjectController extends Controller
 
     public function index(): View
     {
-        return view('projects.project-management');
+        return view('projects.projects.project-management');
     }
 }
