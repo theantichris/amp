@@ -14,8 +14,8 @@ class ProjectListViewModelMapper implements ViewModelMapperInterface
     {
         /** @var Project $model */
 
-        if ($model->customer()) {
-            $customer = $model->customer()->getCompanyName();
+        if ($model->getCustomer()) {
+            $customer = $model->getCustomer()->getCompanyName();
         } else {
             $customer = 'Internal';
         }
@@ -23,7 +23,7 @@ class ProjectListViewModelMapper implements ViewModelMapperInterface
         $viewModel = new ProjectListViewModel(
             $model->getId(),
             $model->getName(),
-            $model->getManager(),
+            $model->getManager()->getName(),
             $model->getStatus(),
             $customer
         );

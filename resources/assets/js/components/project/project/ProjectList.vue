@@ -13,6 +13,15 @@
                                 <th class="sortable-table__heading" v-on:click="sortBy('name')">Name
                                     <i class="fa" v-bind:class="sortClass('name')"></i>
                                 </th>
+                                <th class="sortable-table__heading" v-on:click="sortBy('manager')">Manager
+                                    <i class="fa" v-bind:class="sortClass('manager')"></i>
+                                </th>
+                                <th class="sortable-table__heading" v-on:click="sortBy('status')">Status
+                                    <i class="fa" v-bind:class="sortClass('status')"></i>
+                                </th>
+                                <th class="sortable-table__heading" v-on:click="sortBy('customer')">Customer
+                                    <i class="fa" v-bind:class="sortClass('customer')"></i>
+                                </th>
 
                                 <th></th>
                             </tr>
@@ -22,6 +31,15 @@
                             <tr v-for="item in items">
                                 <td>
                                     <div class="btn-table-align">{{ item.name }}</div>
+                                </td>
+                                <td>
+                                    <div class="btn-table-align">{{ item.manager }}</div>
+                                </td>
+                                <td>
+                                    <div class="btn-table-align">{{ item.status }}</div>
+                                </td>
+                                <td>
+                                    <div class="btn-table-align">{{ item.customer }}</div>
                                 </td>
 
                                 <td>

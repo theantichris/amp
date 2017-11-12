@@ -15,7 +15,7 @@ class ProjectListViewModel extends ViewModel
     public function __construct(
         int $id,
         string $name,
-        string $manager,
+        ?string $manager,
         string $status,
         string $customer
     ) {

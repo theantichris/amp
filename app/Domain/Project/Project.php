@@ -39,6 +39,16 @@ class Project extends BaseModel
         return $this;
     }
 
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    public function getManager(): ?User
+    {
+        return $this->manager;
+    }
+
     /**
      * @return BelongsTo|Customer
      */
