@@ -3,13 +3,12 @@
 namespace AMP\Http\Controllers\Project\Material;
 
 use AMP\Http\Controllers\BaseApiController;
-use AMP\Service\Project\MaterialServiceInterface;
-use AMP\Team;
-use Auth;
+use AMP\Service\Project\Material\MaterialServiceInterface;
 use Illuminate\Contracts\Auth\Factory;
+use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Response;
+use Illuminate\Http\Response;
 
 class MaterialApiController extends BaseApiController
 {
@@ -28,7 +27,7 @@ class MaterialApiController extends BaseApiController
     {
         $materials = $this->materialService->getListViewModels($this->getTeam()->getQueueableId());
 
-        return Response::json([
+        return new JsonResponse([
             'materials' => $materials,
         ]);
     }
@@ -37,14 +36,14 @@ class MaterialApiController extends BaseApiController
     {
         $json = $request->getContent();
 
-        /** @var Team $team */
+        /** @noinspection PhpUndefinedMethodInspection */
         $team = Auth::user()->currentTeam();
 
         $material = $this->materialService->createFromJson($json, $team);
 
-        return Response::json([], 201, [
+        return new JsonResponse([
             'Location' => '/materials/' . $material->getId(),
-        ]);
+        ], Response::HTTP_CREATED);
     }
 
     public function update(int $id, Request $request): JsonResponse
@@ -52,7 +51,7 @@ class MaterialApiController extends BaseApiController
         $json = $request->getContent();
         $this->materialService->updateFromJson($json, $id);
 
-        return Response::json([], 204);
+        return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 
     public function show(int $id): JsonResponse

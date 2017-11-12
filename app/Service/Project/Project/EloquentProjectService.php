@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Service\Project;
+namespace AMP\Service\Project\Project;
 
 use AMP\Converter\JsonConverterInterface;
 use AMP\Domain\Project\Project;
@@ -8,7 +8,7 @@ use AMP\Map\ViewModelMapperInterface;
 use AMP\Team;
 use Illuminate\Validation\UnauthorizedException;
 
-class ProjectService
+class EloquentProjectService implements ProjectServiceInterface
 {
     private $listMapper;
     private $jsonConverter;
@@ -48,7 +48,7 @@ class ProjectService
     public function updateFromJson(string $json, int $id): Project
     {
         /** @var Project $project */
-        $project = Project::whereId($id)->get();
+        $project = Project::find($id);
         $project = $this->jsonConverter->convert($project, $json);
 
         $project->save();
@@ -59,7 +59,7 @@ class ProjectService
     public function getProject(int $id, int $teamId): Project
     {
         /** @var Project $project */
-        $project = Project::whereId($id)->get();
+        $project = Project::find($id);
 
         if ($project->getTeamId() !== $teamId) {
             throw new UnauthorizedException("You do not have access to this team's projects.");

@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Service\Project;
+namespace AMP\Service\Project\Material;
 
 use AMP\Domain\Project\Material;
 use AMP\Team;

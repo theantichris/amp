@@ -6,12 +6,10 @@ use AMP\Converter\Customer\CustomerJsonConverter;
 use AMP\Converter\JsonConverterInterface;
 use AMP\Converter\MachineProfile\MachineProfileJsonConverter;
 use AMP\Converter\Project\MaterialJsonConverter;
-use AMP\Converter\Project\PartJsonConverter;
 use AMP\Converter\Project\ProjectJsonConverter;
 use AMP\Map\Customer\CustomerListViewModelMapper;
 use AMP\Map\MachineProfile\MachineProfileListViewModelMapper;
 use AMP\Map\Project\MaterialListViewModelMapper;
-use AMP\Map\Project\PartListViewModelMapper;
 use AMP\Map\Project\ProjectListViewModelMapper;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Repository\Customer\CustomerRepository;
@@ -20,11 +18,10 @@ use AMP\Service\Customer\CustomerService;
 use AMP\Service\Customer\CustomerServiceInterface;
 use AMP\Service\MachineProfile\MachineProfileService;
 use AMP\Service\MachineProfile\MachineProfileServiceInterface;
-use AMP\Service\Project\MaterialService;
-use AMP\Service\Project\MaterialServiceInterface;
-use AMP\Service\Project\PartService;
-use AMP\Service\Project\PartServiceInterface;
-use AMP\Service\Project\ProjectService;
+use AMP\Service\Project\Material\EloquentMaterialService;
+use AMP\Service\Project\Material\MaterialServiceInterface;
+use AMP\Service\Project\Project\EloquentProjectService;
+use AMP\Service\Project\Project\ProjectServiceInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Tinker\TinkerServiceProvider;
@@ -64,13 +61,13 @@ class AppServiceProvider extends ServiceProvider
 
         // Materials
 
-        $this->app->bind(MaterialServiceInterface::class, MaterialService::class);
+        $this->app->bind(MaterialServiceInterface::class, EloquentMaterialService::class);
 
-        $this->app->when(MaterialService::class)
+        $this->app->when(EloquentMaterialService::class)
                   ->needs(JsonConverterInterface::class)
                   ->give(MaterialJsonConverter::class);
 
-        $this->app->when(MaterialService::class)
+        $this->app->when(EloquentMaterialService::class)
                   ->needs(ViewModelMapperInterface::class)
                   ->give(MaterialListViewModelMapper::class);
 
@@ -88,11 +85,13 @@ class AppServiceProvider extends ServiceProvider
 
         // Projects
 
-        $this->app->when(ProjectService::class)
+        $this->app->bind(ProjectServiceInterface::class, EloquentProjectService::class);
+
+        $this->app->when(EloquentProjectService::class)
                   ->needs(JsonConverterInterface::class)
                   ->give(ProjectJsonConverter::class);
 
-        $this->app->when(ProjectService::class)
+        $this->app->when(EloquentProjectService::class)
                   ->needs(ViewModelMapperInterface::class)
                   ->give(ProjectListViewModelMapper::class);
     }
