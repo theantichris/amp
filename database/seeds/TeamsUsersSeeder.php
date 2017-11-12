@@ -23,8 +23,8 @@ class TeamsUsersSeeder extends Seeder
         ]);
 
         $matt = User::create([
-            'name'           => 'Matt Serkland',
-            'email'          => 'mattserkland@additerra.com',
+            'name'           => 'Bill Sames',
+            'email'          => 'bill@@additerra.com',
             'password'       => bcrypt('secret'),
             'remember_token' => str_random(10),
         ]);
