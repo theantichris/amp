@@ -14,8 +14,8 @@ class CreateProjectsTable extends Migration
             $table->softDeletes();
 
             $table->integer('team_id')
-                  ->unsigned()
-                  ->index();
+                  ->unsigned();
+
             $table->foreign('team_id')
                   ->references('id')
                   ->on('teams')
@@ -23,6 +23,7 @@ class CreateProjectsTable extends Migration
 
             $table->string('name');
             $table->string('manager');
+
             $table->enum('status', [
                 'New',
                 'Ready To Quote',

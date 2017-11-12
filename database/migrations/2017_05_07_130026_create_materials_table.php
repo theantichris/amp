@@ -25,9 +25,12 @@ class CreateMaterialsTable extends Migration
                 'lb/cf',
             ]);
 
-            $table->integer('team_id')->unsigned();
+            $table->integer('team_id')
+                  ->unsigned();
+
             $table->foreign('team_id')
-                  ->references('id')->on('teams')
+                  ->references('id')
+                  ->on('teams')
                   ->onDelete('cascade');
 
             $table->softDeletes();
