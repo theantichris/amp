@@ -12,6 +12,25 @@
 
                 <form v-on:submit.prevent="save">
                     <div class="row">
+                        <div class="form-group col-xs-12 col-md-6 required">
+                            <label for="customer" class="control-label">Customer</label>
+                            <select id="customer" class="form-control" v-model="form.customer" required>
+                                <option value="">Internal</option>
+                                <option v-for="customer in customers" :value="customer">{{ customer.companyName }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-xs-12 col-md-6 required">
+                            <label for="manager" class="control-label">Manager</label>
+                            <select id="manager" class="form-control" v-model="form.manager" required>
+                                <option value="">Manager</option>
+                                <option v-for="user in users" :value="user">{{ user.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="form-group col-xs-12 required">
                             <label for="name" class="control-label">Name</label>
                             <input id="name" name="name" type="text" class="form-control" v-model="form.name" required>
@@ -39,14 +58,14 @@
 
         data() {
             return {
-//                weights: [],
-//                densities: []
+                customers: [],
+                users: []
             }
         },
 
         mounted() {
-//            this.getWeights();
-//            this.getDensities();
+            this.getCustomers();
+            this.getUsers();
         },
 
         methods: {
@@ -70,25 +89,25 @@
                 }
             },
 
-//            getWeights() {
-//                axios.get('/api/weights')
-//                    .then((response) => {
-//                        this.weights = response.data.weights;
-//                    })
-//                    .catch((error) => {
-//                        console.error(error);
-//                    });
-//            },
-//
-//            getDensities() {
-//                axios.get('/api/densities')
-//                    .then((response) => {
-//                        this.densities = response.data.densities;
-//                    })
-//                    .catch((error) => {
-//                        console.error(error);
-//                    });
-//            }
+            getCustomers() {
+                axios.get('/api/customers')
+                    .then((response) => {
+                        this.customers = response.data.customers;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            },
+
+            getUsers() {
+                axios.get('/api/users')
+                    .then((response) => {
+                        this.users = response.data.users;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            },
         }
     }
 </script>
