@@ -4,7 +4,6 @@ namespace AMP\Http\Controllers\Project\Project;
 
 use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\Project\Project\ProjectServiceInterface;
-use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,7 +13,7 @@ class ProjectApiController extends BaseApiController
 {
     private $projectService;
 
-    public function __construct(Factory $auth, ProjectServiceInterface $projectService)
+    public function __construct(Auth $auth, ProjectServiceInterface $projectService)
     {
         $this->middleware('auth');
 

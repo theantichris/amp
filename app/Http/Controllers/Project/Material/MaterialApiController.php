@@ -4,7 +4,6 @@ namespace AMP\Http\Controllers\Project\Material;
 
 use AMP\Http\Controllers\BaseApiController;
 use AMP\Service\Project\Material\MaterialServiceInterface;
-use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,7 +13,7 @@ class MaterialApiController extends BaseApiController
 {
     private $materialService;
 
-    public function __construct(Factory $auth, MaterialServiceInterface $materialService)
+    public function __construct(Auth $auth, MaterialServiceInterface $materialService)
     {
         $this->middleware('auth');
 
