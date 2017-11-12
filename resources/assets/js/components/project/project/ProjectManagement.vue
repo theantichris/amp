@@ -110,12 +110,14 @@
                     this.form = new SparkForm({
                         id: project.id,
                         name: project.name,
-                        customer: project.customer
+                        customer: project.customer,
+                        manager: project.manager
                     });
                 } else {
                     this.form = new SparkForm({
                         name: '',
-                        customer: ''
+                        customer: '',
+                        manager: ''
                     });
                 }
             },

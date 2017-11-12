@@ -1,6 +1,10 @@
 <?php
 
 Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['prefix' => 'users'], function () {
+        Route::resource('', 'User\UserApiController');
+    });
+
     Route::group(['prefix' => 'customers'], function () {
         Route::get('/{id}', 'Customer\CustomerApiController@show');
         Route::get('', 'Customer\CustomerApiController@index');

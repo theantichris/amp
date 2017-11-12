@@ -2,6 +2,7 @@
 
 namespace AMP;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Spark\CanJoinTeams;
 use Laravel\Spark\User as SparkUser;
@@ -39,4 +40,24 @@ class User extends SparkUser
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function getId(): ?int
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getName(): string
+    {
+        return $this->attributes['name'];
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    public function getTeamId(): int
+    {
+        return $this->attributes['team_id'];
+    }
 }

@@ -22,6 +22,8 @@ use AMP\Service\Project\Material\EloquentMaterialService;
 use AMP\Service\Project\Material\MaterialServiceInterface;
 use AMP\Service\Project\Project\EloquentProjectService;
 use AMP\Service\Project\Project\ProjectServiceInterface;
+use AMP\Service\User\EloquentUserService;
+use AMP\Service\User\UserServiceInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Tinker\TinkerServiceProvider;
@@ -94,5 +96,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(EloquentProjectService::class)
                   ->needs(ViewModelMapperInterface::class)
                   ->give(ProjectListViewModelMapper::class);
+
+        // Users
+
+        $this->app->bind(UserServiceInterface::class, EloquentUserService::class);
     }
 }
