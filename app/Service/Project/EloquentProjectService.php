@@ -59,7 +59,7 @@ class EloquentProjectService implements ProjectServiceInterface
     public function getProject(int $id, int $teamId): Project
     {
         /** @var Project $project */
-        $project = Project::find($id);
+        $project = Project::with(['customer', 'manager'])->find($id);
 
         if ($project->getTeamId() !== $teamId) {
             throw new UnauthorizedException("You do not have access to this team's projects.");

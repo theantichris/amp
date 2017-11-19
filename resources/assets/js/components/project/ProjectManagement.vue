@@ -57,7 +57,7 @@
     import ProjectList from './ProjectList.vue';
     import ProjectForm from './ProjectForm.vue';
     import ProjectDetail from './ProjectDetail.vue';
-    import TabState from '../../../../../../vendor/laravel/spark/resources/assets/js/mixins/tab-state';
+    import TabState from '../../../../../vendor/laravel/spark/resources/assets/js/mixins/tab-state';
 
     export default {
         mixins: [TabState],
@@ -67,7 +67,10 @@
         data() {
             return {
                 projects: [],
-                project: {},
+                project: {
+                    customer: {},
+                    manager: {}
+                },
                 form: {}
             }
         },
@@ -105,7 +108,11 @@
             initForm(editProject) {
                 if (editProject && this.project) {
                     let project = this.project;
-                    this.project = {};
+
+                    this.project = {
+                        customer: {},
+                        manager: {}
+                    };
 
                     this.form = new SparkForm({
                         id: project.id,

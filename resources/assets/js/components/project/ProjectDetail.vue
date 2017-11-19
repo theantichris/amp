@@ -9,6 +9,18 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="detail-group col-xs-12 col-md-6">
+                        <div class="detail-label">Customer</div>
+                        <div>{{ project.customer.company_name }}</div>
+                    </div>
+
+                    <div class="detail-group col-xs-12 col-md-6">
+                        <div class="detail-label">Manager</div>
+                        <div>{{ project.manager.name }}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="detail-group col-xs-12 col-md-6">
                         <div class="detail-label">Name</div>
                         <div>{{ project.name }}</div>
                     </div>
