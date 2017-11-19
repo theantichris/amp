@@ -16,7 +16,8 @@
                             <label for="customer" class="control-label">Customer</label>
                             <select id="customer" class="form-control" v-model="form.customer">
                                 <option value="">Internal</option>
-                                <option v-for="customer in customers" :value="customer">{{ customer.companyName }}
+                                <option v-for="customer in customers" :value="customer">
+                                    {{ customer.companyName }}
                                 </option>
                             </select>
                         </div>
@@ -25,7 +26,9 @@
                             <label for="manager" class="control-label">Manager</label>
                             <select id="manager" class="form-control" v-model="form.manager" required>
                                 <option value="">Manager</option>
-                                <option v-for="user in users" :value="user">{{ user.name }}</option>
+                                <option v-for="user in users" :value="user">
+                                    {{ user.name }}
+                                </option>
                             </select>
                         </div>
                     </div>
