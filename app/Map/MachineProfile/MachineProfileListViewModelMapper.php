@@ -3,7 +3,7 @@
 namespace AMP\Map\MachineProfile;
 
 use AMP\Domain\BaseModel;
-use AMP\Domain\MachineProfile;
+use AMP\Domain\MachineProfile\MachineProfile;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\ViewModel\MachineProfile\MachineProfileListViewModel;
 use AMP\ViewModel\ViewModel;

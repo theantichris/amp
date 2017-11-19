@@ -37,6 +37,7 @@ class CustomerApiController extends BaseApiController
         $json = $request->getContent();
 
         /** @var Team $team */
+        /** @noinspection PhpUndefinedMethodInspection */
         $team = $this->auth->user()->currentTeam();
 
         $customer = $this->customerService->createFromJson($json, $team);

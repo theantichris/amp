@@ -57,6 +57,7 @@ abstract class Repository implements RepositoryInterface
 
     public function delete(int $id): bool
     {
+        /** @noinspection PhpMethodParametersCountMismatchInspection */
         return $this->model->delete($id);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Service\Project\Project;
+namespace AMP\Service\Project;
 
 use AMP\Converter\JsonConverterInterface;
 use AMP\Domain\Project\Project;

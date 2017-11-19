@@ -41,11 +41,13 @@ class Project extends BaseModel
 
     public function getCustomer()
     {
+        /** @noinspection PhpUndefinedFieldInspection */
         return $this->customer;
     }
 
     public function getManager(): ?User
     {
+        /** @noinspection PhpUndefinedFieldInspection */
         return $this->manager;
     }
 

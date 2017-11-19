@@ -3,7 +3,7 @@
 namespace AMP\Service\Project\Material;
 
 use AMP\Converter\JsonConverterInterface;
-use AMP\Domain\Project\Material;
+use AMP\Domain\Project\Material\Material;
 use AMP\Map\ViewModelMapperInterface;
 use AMP\Team;
 use Illuminate\Validation\UnauthorizedException;
@@ -23,6 +23,7 @@ class EloquentMaterialService implements MaterialServiceInterface
 
     public function getListViewModels(int $teamId): array
     {
+        /** @noinspection PhpUndefinedMethodInspection */
         $materials = Material::where('team_id', $teamId)->get();
 
         $viewModels = [];
@@ -48,6 +49,7 @@ class EloquentMaterialService implements MaterialServiceInterface
     public function updateFromJson(string $json, int $id): Material
     {
         /** @var Material $material */
+        /** @noinspection PhpUndefinedMethodInspection */
         $material = Material::find($id);
         $material = $this->jsonConverter->convert($material, $json);
 
@@ -59,6 +61,7 @@ class EloquentMaterialService implements MaterialServiceInterface
     public function getMaterial(int $id, int $teamId): Material
     {
         /** @var Material $material */
+        /** @noinspection PhpUndefinedMethodInspection */
         $material = Material::find($id);
 
         if ($material->getTeamId() !== $teamId) {

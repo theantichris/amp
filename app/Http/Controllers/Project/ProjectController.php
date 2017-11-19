@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Http\Controllers\Project\Project;
+namespace AMP\Http\Controllers\Project;
 
 use AMP\Http\Controllers\Controller;
 use Illuminate\View\View;

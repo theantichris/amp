@@ -3,7 +3,7 @@
 namespace AMP\Converter\Project;
 
 use AMP\Converter\JsonConverterInterface;
-use AMP\Domain\Project\Material;
+use AMP\Domain\Project\Material\Material;
 use Illuminate\Database\Eloquent\Model;
 
 class MaterialJsonConverter implements JsonConverterInterface

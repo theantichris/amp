@@ -2,7 +2,7 @@
 
 namespace AMP\Service\Project\Material;
 
-use AMP\Domain\Project\Material;
+use AMP\Domain\Project\Material\Material;
 use AMP\Team;
 
 interface MaterialServiceInterface

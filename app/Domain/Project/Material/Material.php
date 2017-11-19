@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\Domain\Project;
+namespace AMP\Domain\Project\Material;
 
 use AMP\Domain\BaseModel;
 use AMP\Enum\Density;

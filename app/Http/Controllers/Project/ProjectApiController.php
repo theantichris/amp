@@ -1,9 +1,9 @@
 <?php
 
-namespace AMP\Http\Controllers\Project\Project;
+namespace AMP\Http\Controllers\Project;
 
 use AMP\Http\Controllers\BaseApiController;
-use AMP\Service\Project\Project\ProjectServiceInterface;
+use AMP\Service\Project\ProjectServiceInterface;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

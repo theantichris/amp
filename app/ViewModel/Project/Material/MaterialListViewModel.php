@@ -1,6 +1,6 @@
 <?php
 
-namespace AMP\ViewModel\Project;
+namespace AMP\ViewModel\Project\Material;
 
 use AMP\ViewModel\ViewModel;
 
