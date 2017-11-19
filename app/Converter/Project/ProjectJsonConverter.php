@@ -19,11 +19,11 @@ class ProjectJsonConverter implements JsonConverterInterface
               ->setStatus($data->status);
 
         if ($data->customer) {
-            $customer = Customer::find($data->customer->id);
+            $customer = Customer::find($data->customer);
             $model->customer()->associate($customer);
         }
 
-        $manager = User::find($data->manager->id);
+        $manager = User::find($data->manager);
         $model->manager()->associate($manager);
 
         return $model;

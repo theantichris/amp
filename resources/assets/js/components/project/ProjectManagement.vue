@@ -117,8 +117,9 @@
                     this.form = new SparkForm({
                         id: project.id,
                         name: project.name,
-                        customer: project.customer,
-                        manager: project.manager
+                        status: project.status,
+                        customer: project.customer ? project.customer.id : '',
+                        manager: project.manager.id
                     });
                 } else {
                     this.form = new SparkForm({
