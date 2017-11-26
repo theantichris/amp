@@ -67,10 +67,7 @@
         data() {
             return {
                 projects: [],
-                project: {
-                    customer: {},
-                    manager: {}
-                },
+                project: {},
                 form: {}
             }
         },

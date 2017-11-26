@@ -17,12 +17,12 @@
                 <div class="row">
                     <div class="detail-group col-xs-12 col-md-6">
                         <div class="detail-label">Customer</div>
-                        <div>{{ project.customer ? project.customer.company_name : 'Internal' }}</div>
+                        <div>{{ project.customer }}</div>
                     </div>
 
                     <div class="detail-group col-xs-12 col-md-6">
                         <div class="detail-label">Manager</div>
-                        <div>{{ project.manager.name }}</div>
+                        <div>{{ project.manager }}</div>
                     </div>
                 </div>
 
@@ -36,21 +36,9 @@
                 <fieldset>
                     <legend>History</legend>
 
-                    <div class="row" v-for="audit in project.audits">
+                    <div class="row" v-for="history in project.history">
                         <div class="detail-group col-xs-12">
-                            <div v-if="audit.event === 'created'">
-                                {{ audit.user.name }} {{ audit.event }} the project on {{ audit.created_at }}
-                            </div>
-
-                            <div v-if="audit.event === 'updated'">
-                                {{ audit.user.name }} {{ audit.event }} the following information on {{ audit.created_at
-                                }}:
-                                <ul>
-                                    <li v-for="(item, index) in audit.new_values">
-                                        {{ index }} to {{ item }} from {{ audit.old_values[index] }}
-                                    </li>
-                                </ul>
-                            </div>
+                            {{ history }}
                         </div>
                     </div>
                 </fieldset>

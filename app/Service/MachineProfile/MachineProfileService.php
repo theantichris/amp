@@ -4,7 +4,7 @@ namespace AMP\Service\MachineProfile;
 
 use AMP\Converter\JsonConverterInterface;
 use AMP\Domain\MachineProfile\MachineProfile;
-use AMP\Map\ViewModelMapperInterface;
+use AMP\Map\ListViewModelMapperInterface;
 use AMP\Team;
 use Illuminate\Validation\UnauthorizedException;
 
@@ -14,7 +14,7 @@ class MachineProfileService implements MachineProfileServiceInterface
     private $jsonConverter;
 
     public function __construct(
-        ViewModelMapperInterface $listMapper,
+        ListViewModelMapperInterface $listMapper,
         JsonConverterInterface $jsonConverter
     ) {
         $this->listMapper    = $listMapper;

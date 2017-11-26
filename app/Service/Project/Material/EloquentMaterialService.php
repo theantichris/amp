@@ -4,7 +4,7 @@ namespace AMP\Service\Project\Material;
 
 use AMP\Converter\JsonConverterInterface;
 use AMP\Domain\Project\Material\Material;
-use AMP\Map\ViewModelMapperInterface;
+use AMP\Map\ListViewModelMapperInterface;
 use AMP\Team;
 use Illuminate\Validation\UnauthorizedException;
 
@@ -14,7 +14,7 @@ class EloquentMaterialService implements MaterialServiceInterface
     private $jsonConverter;
 
     public function __construct(
-        ViewModelMapperInterface $listMapper,
+        ListViewModelMapperInterface $listMapper,
         JsonConverterInterface $jsonConverter
     ) {
         $this->listMapper    = $listMapper;

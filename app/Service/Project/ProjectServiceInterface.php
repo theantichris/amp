@@ -4,6 +4,7 @@ namespace AMP\Service\Project;
 
 use AMP\Domain\Project\Project;
 use AMP\Team;
+use AMP\ViewModel\Project\ProjectDetailViewModel;
 
 interface ProjectServiceInterface
 {
@@ -13,5 +14,5 @@ interface ProjectServiceInterface
 
     public function updateFromJson(string $json, int $id): Project;
 
-    public function getProject(int $id, int $teamId): Project;
+    public function getProjectDetailViewModel(int $id, int $teamId): ProjectDetailViewModel;
 }

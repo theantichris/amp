@@ -4,11 +4,11 @@ namespace AMP\Map\MachineProfile;
 
 use AMP\Domain\BaseModel;
 use AMP\Domain\MachineProfile\MachineProfile;
-use AMP\Map\ViewModelMapperInterface;
+use AMP\Map\ListViewModelMapperInterface;
 use AMP\ViewModel\MachineProfile\MachineProfileListViewModel;
 use AMP\ViewModel\ViewModel;
 
-class MachineProfileListViewModelMapper implements ViewModelMapperInterface
+class MachineProfileListListViewModelMapperInterface implements ListViewModelMapperInterface
 {
     public function map(BaseModel $model): ViewModel
     {

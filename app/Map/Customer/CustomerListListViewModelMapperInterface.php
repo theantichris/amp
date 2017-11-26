@@ -4,11 +4,11 @@ namespace AMP\Map\Customer;
 
 use AMP\Domain\BaseModel;
 use AMP\Domain\Customer\Customer;
-use AMP\Map\ViewModelMapperInterface;
+use AMP\Map\ListViewModelMapperInterface;
 use AMP\ViewModel\Customer\CustomerListViewModel;
 use AMP\ViewModel\ViewModel;
 
-class CustomerListViewModelMapper implements ViewModelMapperInterface
+class CustomerListListViewModelMapperInterface implements ListViewModelMapperInterface
 {
     public function map(BaseModel $model): ViewModel
     {

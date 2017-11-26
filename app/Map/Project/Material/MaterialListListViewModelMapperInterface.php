@@ -4,11 +4,11 @@ namespace AMP\Map\Project\Material;
 
 use AMP\Domain\BaseModel;
 use AMP\Domain\Project\Material\Material;
-use AMP\Map\ViewModelMapperInterface;
+use AMP\Map\ListViewModelMapperInterface;
 use AMP\ViewModel\Project\Material\MaterialListViewModel;
 use AMP\ViewModel\ViewModel;
 
-class MaterialListViewModelMapper implements ViewModelMapperInterface
+class MaterialListListViewModelMapperInterface implements ListViewModelMapperInterface
 {
     public function map(BaseModel $model): ViewModel
     {

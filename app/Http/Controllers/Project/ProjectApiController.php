@@ -55,7 +55,7 @@ class ProjectApiController extends BaseApiController
 
     public function show(int $id): JsonResponse
     {
-        $project = $this->projectService->getProject($id, $this->getTeam()->getQueueableId());
+        $project = $this->projectService->getProjectDetailViewModel($id, $this->getTeam()->getQueueableId());
 
         return new JsonResponse([
             'project' => $project,

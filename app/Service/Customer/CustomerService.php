@@ -4,7 +4,7 @@ namespace AMP\Service\Customer;
 
 use AMP\Converter\JsonConverterInterface;
 use AMP\Domain\Customer\Customer;
-use AMP\Map\ViewModelMapperInterface;
+use AMP\Map\ListViewModelMapperInterface;
 use AMP\Repository\RepositoryInterface;
 use AMP\Team;
 use Illuminate\Validation\UnauthorizedException;
@@ -17,7 +17,7 @@ class CustomerService implements CustomerServiceInterface
 
     public function __construct(
         RepositoryInterface $repo,
-        ViewModelMapperInterface $listMapper,
+        ListViewModelMapperInterface $listMapper,
         JsonConverterInterface $jsonConverter
     ) {
         $this->repo          = $repo;

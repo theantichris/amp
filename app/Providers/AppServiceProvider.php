@@ -7,11 +7,13 @@ use AMP\Converter\JsonConverterInterface;
 use AMP\Converter\MachineProfile\MachineProfileJsonConverter;
 use AMP\Converter\Project\MaterialJsonConverter;
 use AMP\Converter\Project\ProjectJsonConverter;
-use AMP\Map\Customer\CustomerListViewModelMapper;
-use AMP\Map\MachineProfile\MachineProfileListViewModelMapper;
+use AMP\Map\Customer\CustomerListListViewModelMapperInterface;
+use AMP\Map\DetailViewModelMapperInterface;
+use AMP\Map\ListViewModelMapperInterface;
+use AMP\Map\MachineProfile\MachineProfileListListViewModelMapperInterface;
 use AMP\Map\Project\MaterialListViewModelMapper;
-use AMP\Map\Project\ProjectListViewModelMapper;
-use AMP\Map\ViewModelMapperInterface;
+use AMP\Map\Project\ProjectDetailViewModelMapper;
+use AMP\Map\Project\ProjectListListViewModelMapperInterface;
 use AMP\Repository\Customer\CustomerRepository;
 use AMP\Repository\RepositoryInterface;
 use AMP\Service\Customer\CustomerService;
@@ -58,8 +60,8 @@ class AppServiceProvider extends ServiceProvider
                   ->give(CustomerRepository::class);
 
         $this->app->when(CustomerService::class)
-                  ->needs(ViewModelMapperInterface::class)
-                  ->give(CustomerListViewModelMapper::class);
+                  ->needs(ListViewModelMapperInterface::class)
+                  ->give(CustomerListListViewModelMapperInterface::class);
 
         // Materials
 
@@ -70,7 +72,7 @@ class AppServiceProvider extends ServiceProvider
                   ->give(MaterialJsonConverter::class);
 
         $this->app->when(EloquentMaterialService::class)
-                  ->needs(ViewModelMapperInterface::class)
+                  ->needs(ListViewModelMapperInterface::class)
                   ->give(MaterialListViewModelMapper::class);
 
         // MachineProfiles
@@ -82,8 +84,8 @@ class AppServiceProvider extends ServiceProvider
                   ->give(MachineProfileJsonConverter::class);
 
         $this->app->when(MachineProfileService::class)
-                  ->needs(ViewModelMapperInterface::class)
-                  ->give(MachineProfileListViewModelMapper::class);
+                  ->needs(ListViewModelMapperInterface::class)
+                  ->give(MachineProfileListListViewModelMapperInterface::class);
 
         // Projects
 
@@ -94,8 +96,12 @@ class AppServiceProvider extends ServiceProvider
                   ->give(ProjectJsonConverter::class);
 
         $this->app->when(EloquentProjectService::class)
-                  ->needs(ViewModelMapperInterface::class)
-                  ->give(ProjectListViewModelMapper::class);
+                  ->needs(ListViewModelMapperInterface::class)
+                  ->give(ProjectListListViewModelMapperInterface::class);
+
+        $this->app->when(EloquentProjectService::class)
+                  ->needs(DetailViewModelMapperInterface::class)
+                  ->give(ProjectDetailViewModelMapper::class);
 
         // Users
 
