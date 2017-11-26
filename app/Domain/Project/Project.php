@@ -8,9 +8,12 @@ use AMP\Enum\Project\Status;
 use AMP\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use InvalidArgumentException;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Project extends BaseModel
+class Project extends BaseModel implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     public function getName(): string
     {
         return $this->attributes['name'];

@@ -14,7 +14,8 @@
     "laravel/framework": "5.5.*",
     "laravel/spark": "~4.0",
     "laravel/cashier-braintree": "~2.0",
-    "theantichris/enum": "^1.0"
+    "theantichris/enum": "^1.0",
+    "owen-it/laravel-auditing": "^4.1"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

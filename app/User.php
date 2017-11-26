@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Spark\CanJoinTeams;
 use Laravel\Spark\User as SparkUser;
+use OwenIt\Auditing\Contracts\UserResolver;
 
-class User extends SparkUser
+class User extends SparkUser implements UserResolver
 {
     use CanJoinTeams;
     use SoftDeletes;
@@ -42,6 +43,11 @@ class User extends SparkUser
     ];
 
     protected $dates = ['deleted_at'];
+
+    public static function resolveId()
+    {
+        return \Auth::check() ? \Auth::user()->getAuthIdentifier() : null;
+    }
 
     public function getId(): ?int
     {
