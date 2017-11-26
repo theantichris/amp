@@ -3,6 +3,7 @@
 namespace AMP;
 
 use AMP\Domain\Project\Project;
+use Auth;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -46,7 +47,7 @@ class User extends SparkUser implements UserResolver
 
     public static function resolveId()
     {
-        return \Auth::check() ? \Auth::user()->getAuthIdentifier() : null;
+        return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
     }
 
     public function getId(): ?int
