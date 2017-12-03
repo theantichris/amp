@@ -50,8 +50,10 @@
                             </div>
 
                             <div class="col-xs-12 col-md-2">
-                                <a v-on:click="setCommentToEdit(comment.id)"><i class="fa fa-edit"></i> </a>
-                                <a v-on:click="deleteComment(comment.id)"><i class="fa fa-trash text-danger"></i></a>
+                                <div class="pull-right">
+                                    <a v-on:click="setCommentToEdit(comment.id)"><i class="fa fa-edit"></i> </a>
+                                    <a v-on:click="deleteComment(comment.id)"><i class="fa fa-trash text-danger"></i></a>
+                                </div>
                             </div>
                         </div>
                     </li>
