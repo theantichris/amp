@@ -12,6 +12,7 @@ class ProjectDetailViewModel extends ViewModel
     public $status;
     public $customer;
     public $history;
+    public $comments;
 
     public function __construct(
         int $id,
@@ -19,7 +20,8 @@ class ProjectDetailViewModel extends ViewModel
         ?string $manager,
         string $status,
         string $customer,
-        array $history
+        array $history,
+    array $comments
     ) {
         $this->id       = $id;
         $this->name     = $name;
@@ -27,5 +29,6 @@ class ProjectDetailViewModel extends ViewModel
         $this->status   = $status;
         $this->customer = $customer;
         $this->history  = $history;
+        $this->comments = $comments;
     }
 }

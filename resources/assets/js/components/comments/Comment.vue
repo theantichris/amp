@@ -1,8 +1,12 @@
 <template>
     <fieldset>
-        <legend>Comments</legend>
+        <legend>
+            Comments
 
-        <form v-on:submit.prevent="save">
+            <a v-on:click="showForm = true"><i class="fa fa-plus-circle text-success"></i> </a>
+        </legend>
+
+        <form v-on:submit.prevent="save" v-show="showForm">
             <div class="row">
                 <div class="form-group col-xs-12">
                         <textarea title="Comment Body"
@@ -11,29 +15,49 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-xs-12">
+            <div class="row pull-right">
+                <div class="form-group col-xs-12">
                     <button type="submit"
-                            class="btn btn-primary"
-                            v-show="!edit">Add Comment
+                            class="btn-sm btn-primary">Save
                     </button>
 
-                    <button type="submit"
-                            class="btn btn-primary"
-                            v-show="edit">Edit Comment
-                    </button>
+                    <button type="button"
+                            class="btn-sm btn-danger"
+                            v-on:click="cancelForm()">Cancel</button>
                 </div>
             </div>
         </form>
 
-        <ul class="list-group">
-            <li class="list-group-item" v-for="comment in comments">
-                {{ comment.body }}
+        <div class="row">
+            <div class="detail-group col-xs-12">
+                <ul class="list-group">
+                    <li class="list-group-item" v-for="comment in comments">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-10">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        {{ comment.body }}
+                                    </div>
+                                </div>
 
-                <a class="btn btn-default" v-on:click="setCommentToEdit(comment.id)">Edit</a>
-                <a class="btn btn-danger" v-on:click="deleteComment(comment.id)">Delete</a>
-            </li>
-        </ul>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <small>
+                                            By {{ comment.createdBy }} at {{ comment.updatedAt.date | datetime }}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-md-2">
+                                <a v-on:click="setCommentToEdit(comment.id)"><i class="fa fa-edit"></i> </a>
+                                <a v-on:click="deleteComment(comment.id)"><i class="fa fa-trash text-danger"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </fieldset>
 </template>
 
@@ -41,8 +65,7 @@
     export default {
         data: function () {
             return {
-                edit: false,
-                comments: [],
+                showForm: false,
                 comment: {
                     title: '',
                     body: '',
@@ -51,7 +74,7 @@
             }
         },
 
-        props: ['model', 'projectId'],
+        props: ['model', 'projectId', 'comments'],
 
         methods: {
             save: function () {
@@ -61,10 +84,18 @@
                     this.createComment();
             },
 
+            cancelForm: function(){
+                this.showForm = false;
+                this.comment = {
+                    body: '',
+                    id: ''
+                }
+            },
+
             createComment: function () {
                 axios.post('/api/' + this.model + '/' + this.projectId + '/comments', this.comment)
                     .then(() => {
-                        this.$emit('formSaved');
+                        this.showForm = false;
                     })
                     .catch((error) => {
                         console.error(error);
@@ -74,8 +105,6 @@
             editComment: function () {
                 axios.put('/api/' + this.model + '/' + this.projectId + '/comments/' + this.comment.id, this.comment)
                     .then(() => {
-                        this.$emit('formSaved');
-
                         this.comment = {
                             body: '',
                             id: '',
@@ -83,7 +112,7 @@
 
                         this.getComments();
 
-                        this.edit = false;
+                        this.showForm = false;
                     })
                     .catch((error) => {
                         console.error(error);
@@ -110,7 +139,6 @@
                     if (this.comments[i].id === commentId) {
                         this.comment.body = this.comments[i].body;
                         this.comment.id = this.comments[i].id;
-                        this.edit = true;
                     }
                 }
             }

@@ -56,13 +56,24 @@ class ProjectDetailViewModelMapper implements DetailViewModelMapperInterface
             }
         }
 
+        $comments = [];
+        foreach ($model->comments()->get() as $comment) {
+            $comments[] = [
+                'id' => $comment->id,
+                'body' => $comment->body,
+                'updatedAt' => $comment->updated_at,
+                'createdBy' => User::find($comment->creator_id)->getName(),
+            ];
+        }
+
         $viewModel = new ProjectDetailViewModel(
             $model->getId(),
             $model->getName(),
             $model->getManager()->getName(),
             $model->getStatus(),
             $customer,
-            $history
+            $history,
+            $comments
         );
 
         return $viewModel;

@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <comments :model="'projects'" :project-id="project.id"></comments>
+                <comments :model="'projects'" :project-id="project.id" :comments="project.comments"></comments>
 
                 <fieldset>
                     <legend>History</legend>
