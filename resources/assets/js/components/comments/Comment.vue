@@ -54,6 +54,13 @@
         props: ['model', 'projectId'],
 
         methods: {
+            save: function () {
+                if (this.comment.id)
+                    this.editComment();
+                else
+                    this.createComment();
+            },
+
             createComment: function () {
                 axios.post('/api/' + this.model + '/' + this.projectId + '/comments', this.comment)
                     .then(() => {

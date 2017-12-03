@@ -22,6 +22,10 @@ Route::group(['middleware' => 'auth:api'], function () {
             Route::put('/{id}', 'Project\Material\MaterialApiController@update');
         });
 
+        Route::group(['prefix' => '{projectId}/comments'], function () {
+            Route::post('', 'Project\Comment\CommentApiController@create');
+        });
+
         Route::get('/{id}', 'Project\ProjectApiController@show');
         Route::get('', 'Project\ProjectApiController@index');
 
