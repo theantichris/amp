@@ -48,6 +48,7 @@ return [
         AMP\Providers\SparkServiceProvider::class,
         // AMP\Providers\BroadcastServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
+        BrianFaust\Commentable\CommentableServiceProvider::class,
     ],
     'aliases'         => [
         'App'          => Illuminate\Support\Facades\App::class,

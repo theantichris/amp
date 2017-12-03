@@ -33,6 +33,8 @@
                     </div>
                 </div>
 
+                <comments :project-id="project.id"></comments>
+
                 <fieldset>
                     <legend>History</legend>
 
@@ -62,7 +64,10 @@
 </template>
 
 <script>
+    import Comments from '../comments/Comment';
+
     export default {
+        components: {Comments},
         props: ['project'],
     }
 </script>

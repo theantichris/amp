@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
         Route::post('', 'Project\ProjectApiController@create');
         Route::put('/{id}', 'Project\ProjectApiController@update');
+
     });
 
     Route::group(['prefix' => 'machine-profiles'], function () {

@@ -6,6 +6,7 @@ use AMP\Domain\BaseModel;
 use AMP\Domain\Customer\Customer;
 use AMP\Enum\Project\Status;
 use AMP\User;
+use BrianFaust\Commentable\Traits\HasComments;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use InvalidArgumentException;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -13,6 +14,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 class Project extends BaseModel implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+    use HasComments;
 
     public function getName(): string
     {
