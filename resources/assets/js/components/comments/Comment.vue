@@ -51,26 +51,11 @@
             }
         },
 
-        props: ['projectId'],
-
-        mounted() {
-            if (this.projectId)
-                this.getComments();
-        },
+        props: ['model', 'projectId'],
 
         methods: {
-            getComments: function () {
-                axios.get('/api/projects/' + this.projectId + '/comments')
-                    .then((response) => {
-                        this.comments = response.data.comments;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-            },
-
             createComment: function () {
-                axios.post('/api/projects/' + this.projectId + '/comments', this.comment)
+                axios.post('/api/' + this.model + '/' + this.projectId + '/comments', this.comment)
                     .then(() => {
                         this.$emit('formSaved');
                     })
@@ -80,7 +65,7 @@
             },
 
             editComment: function () {
-                axios.put('/api/projects/' + this.projectId + '/comments/' + this.comment.id, this.comment)
+                axios.put('/api/' + this.model + '/' + this.projectId + '/comments/' + this.comment.id, this.comment)
                     .then(() => {
                         this.$emit('formSaved');
 
@@ -99,7 +84,7 @@
             },
 
             deleteComment: function (commentId) {
-                axios.delete('/api/projects/' + this.projectId + '/comments/' + commentId)
+                axios.delete('/api/' + this.model + '/' + this.projectId + '/comments/' + commentId)
                     .then(() => {
                         this.comment = {
                             body: '',
