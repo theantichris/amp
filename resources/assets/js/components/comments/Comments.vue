@@ -48,13 +48,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-xs-12 col-md-2">
-                                <div class="pull-right">
-                                    <a v-on:click="setCommentToEdit(comment.id)"><i class="fa fa-edit"></i> </a>
-                                    <a v-on:click="deleteComment(comment.id)"><i class="fa fa-trash text-danger"></i></a>
-                                </div>
-                            </div>
                         </div>
                     </li>
                 </ul>
@@ -102,47 +95,6 @@
                     .catch((error) => {
                         console.error(error);
                     })
-            },
-
-            editComment: function () {
-                axios.put('/api/' + this.model + '/' + this.projectId + '/comments/' + this.comment.id, this.comment)
-                    .then(() => {
-                        this.comment = {
-                            body: '',
-                            id: '',
-                        };
-
-                        this.getComments();
-
-                        this.showForm = false;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-            },
-
-            deleteComment: function (commentId) {
-                axios.delete('/api/' + this.model + '/' + this.projectId + '/comments/' + commentId)
-                    .then(() => {
-                        this.comment = {
-                            body: '',
-                            id: ''
-                        };
-
-                        this.getComments();
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-            },
-
-            setCommentToEdit: function (commentId) {
-                for (let i = 0; i < this.comments.length; i++) {
-                    if (this.comments[i].id === commentId) {
-                        this.comment.body = this.comments[i].body;
-                        this.comment.id = this.comments[i].id;
-                    }
-                }
             }
         }
     }

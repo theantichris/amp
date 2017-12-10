@@ -60,7 +60,7 @@
 </template>
 
 <script>
-    import Comments from '../comments/Comment';
+    import Comments from '../comments/Comments';
 
     export default {
         components: {Comments},
