@@ -23,7 +23,8 @@
 
                     <button type="button"
                             class="btn-sm btn-danger"
-                            v-on:click="cancelForm()">Cancel</button>
+                            v-on:click="cancelForm()">Cancel
+                    </button>
                 </div>
             </div>
         </form>
@@ -43,7 +44,7 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <small>
-                                            By {{ comment.createdBy }} at {{ comment.updatedAt.date | datetime }}
+                                            By {{ comment.createdBy }} at {{ comment.updatedAt | datetime }}
                                         </small>
                                     </div>
                                 </div>
@@ -73,13 +74,10 @@
 
         methods: {
             save: function () {
-                if (this.comment.id)
-                    this.editComment();
-                else
-                    this.createComment();
+                this.createComment();
             },
 
-            cancelForm: function(){
+            cancelForm: function () {
                 this.showForm = false;
                 this.comment = {
                     body: '',

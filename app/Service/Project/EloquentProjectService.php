@@ -64,7 +64,7 @@ class EloquentProjectService implements ProjectServiceInterface
     public function getProjectDetailViewModel(int $id, int $teamId): ProjectDetailViewModel
     {
         /** @var Project $project */
-        $project = Project::with(['customer', 'manager', 'audits.user', 'comments'])->find($id);
+        $project = Project::with(['customer', 'manager', 'audits.user'])->find($id);
 
         if ($project->getTeamId() !== $teamId) {
             throw new UnauthorizedException("You do not have access to this team's projects.");

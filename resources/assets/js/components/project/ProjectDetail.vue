@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                <comments :model="'projects'" :project-id="project.id" :comments="project.comments"></comments>
+                <comments :model="'projects'" :project-id="project.id" :comments="comments"></comments>
 
                 <!-- TODO: Pull into component -->
                 <fieldset>
@@ -64,6 +64,6 @@
 
     export default {
         components: {Comments},
-        props: ['project'],
+        props: ['project', 'comments'],
     }
 </script>

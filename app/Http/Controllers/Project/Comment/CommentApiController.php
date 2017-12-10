@@ -10,6 +10,15 @@ use Illuminate\Http\Response;
 
 class CommentApiController extends BaseApiController
 {
+    public function index(int $projectId): JsonResponse
+    {
+        $comments = Project::find($projectId)->comments;
+
+        return new JsonResponse([
+            'comments' => $comments,
+        ]);
+    }
+
     public function create(int $projectId, Request $request): JsonResponse
     {
         // TODO: Break out into service.

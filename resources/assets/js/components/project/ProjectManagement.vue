@@ -44,7 +44,7 @@
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="detail">
-                        <project-detail :project="project"></project-detail>
+                        <project-detail :project="project" :comments="comments"></project-detail>
                     </div>
                 </div>
             </div>
@@ -68,6 +68,7 @@
             return {
                 projects: [],
                 project: {},
+                comments: [],
                 form: {}
             }
         },
@@ -96,6 +97,8 @@
                     axios.get('/api/projects/' + id)
                         .then((response) => {
                             this.project = response.data.project;
+
+                            this.loadComments(id);
                         })
                         .catch((error) => {
                             console.error(error);
@@ -135,6 +138,16 @@
                 setInterval(() => {
                     this.form.successful = false;
                 }, 10000);
+            },
+
+            loadComments(projectId) {
+                axios.get('/api/projects/' + projectId + '/comments')
+                    .then((response) => {
+                        this.comments = response.data.comments;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             }
         }
     }
