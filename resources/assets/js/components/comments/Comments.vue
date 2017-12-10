@@ -63,14 +63,13 @@
             return {
                 showForm: false,
                 comment: {
-                    title: '',
                     body: '',
                     id: '',
                 }
             }
         },
 
-        props: ['model', 'projectId', 'comments'],
+        props: ['model', 'modelId', 'comments'],
 
         methods: {
             save: function () {
@@ -86,14 +85,16 @@
             },
 
             createComment: function () {
-                axios.post('/api/' + this.model + '/' + this.projectId + '/comments', this.comment)
+                axios.post('/api/' + this.model + '/' + this.modelId + '/comments', this.comment)
                     .then(() => {
                         this.showForm = false;
+
+                        this.$emit('commentSaved');
                     })
                     .catch((error) => {
                         console.error(error);
                     })
-            }
+            },
         }
     }
 </script>

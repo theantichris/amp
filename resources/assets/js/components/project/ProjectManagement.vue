@@ -44,7 +44,7 @@
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="detail">
-                        <project-detail :project="project" :comments="comments"></project-detail>
+                        <project-detail :project="project" :comments="comments" v-on:commentSaved="handleCommentSaved"></project-detail>
                     </div>
                 </div>
             </div>
@@ -68,6 +68,7 @@
             return {
                 projects: [],
                 project: {},
+                projectId: '',
                 comments: [],
                 form: {}
             }
@@ -94,11 +95,13 @@
 
             loadProject(id) {
                 if (id)
-                    axios.get('/api/projects/' + id)
+                    this.projectId = id;
+
+                    axios.get('/api/projects/' + this.projectId)
                         .then((response) => {
                             this.project = response.data.project;
 
-                            this.loadComments(id);
+                            this.loadComments(this.projectId);
                         })
                         .catch((error) => {
                             console.error(error);
@@ -138,6 +141,10 @@
                 setInterval(() => {
                     this.form.successful = false;
                 }, 10000);
+            },
+
+            handleCommentSaved() {
+                this.loadComments(this.projectId)
             },
 
             loadComments(projectId) {

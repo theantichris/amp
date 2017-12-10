@@ -24,7 +24,10 @@
                     </div>
                 </div>
 
-                <comments :model="'projects'" :project-id="project.id" :comments="comments"></comments>
+                <comments :model="'projects'"
+                          :model-id="project.id"
+                          :comments="comments"
+                          v-on:commentSaved="handleCommentSaved"></comments>
 
                 <!-- TODO: Pull into component -->
                 <fieldset>
@@ -65,5 +68,10 @@
     export default {
         components: {Comments},
         props: ['project', 'comments'],
+        methods: {
+            handleCommentSaved: function () {
+                this.$emit('commentSaved');
+            }
+        }
     }
 </script>
