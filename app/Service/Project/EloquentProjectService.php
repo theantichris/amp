@@ -45,6 +45,7 @@ class EloquentProjectService implements ProjectServiceInterface
         $project = new Project();
         $project->team()->associate($team);
         $project = $this->jsonConverter->convert($project, $json);
+
         $project->save();
 
         return $project;
