@@ -37,7 +37,7 @@
                         <div class="detail-group col-xs-12">
                             <ul class="list-group">
                                 <li class="list-group-item" v-for="history in project.history">
-                                    {{ history }}
+                                    {{ history.user }} {{ history.event }} on {{ history.date | datetime }}.
                                 </li>
                             </ul>
                         </div>

@@ -25,8 +25,13 @@ class ProjectDetailViewModelMapper implements DetailViewModelMapperInterface
         $history = [];
         /** @noinspection PhpUndefinedMethodInspection */
         foreach ($model->audits()->get() as $audit) {
+            $item = [
+                'user' => $audit->user->name,
+                'date' => $audit->created_at->getTimestamp() * 1000,
+            ];
+
             if ($audit->event === 'created') {
-                $history[] = $audit->user->name . ' created the project on ' . $audit->created_at;
+                $item['event'] = 'created the project';
             }
 
             if ($audit->event === 'updated') {
@@ -36,24 +41,26 @@ class ProjectDetailViewModelMapper implements DetailViewModelMapperInterface
                             $newCustomer = Customer::find($value);
                             $oldCustomer = Customer::find($audit->old_values[$index]);
 
-                            $history[] = $audit->user->name . ' updated Customer to ' . $newCustomer->getCompanyName() . ' from ' . $oldCustomer->getCompanyName() . ' on ' . $audit->created_at;
+                            $item['event'] = ' updated Customer to ' . $newCustomer->getCompanyName() . ' from ' . $oldCustomer->getCompanyName();
 
                             break;
                         case 'manager_id':
                             $newManager = User::find($value);
                             $oldManager = User::find($audit->old_values[$index]);
 
-                            $history[] = $audit->user->name . ' updated Manager to ' . $oldManager->getName() . ' from ' . $newManager->getName() . ' on ' . $audit->created_at;
+                            $item['event'] = ' updated Manager to ' . $newManager->getName() . ' from ' . $oldManager->getName();
 
                             break;
                         default:
-                            $history[] = $audit->user->name . ' updated ' . ucwords($index) . ' to ' . $value . ' from ' . $audit->old_values[$index] . ' on ' . $audit->created_at;
+                            $item['event'] = 'updated ' . ucwords($index) . ' to ' . $value . ' from ' . $audit->old_values[$index];
 
                             break;
                     }
                 }
 
             }
+
+            $history[] = $item;
         }
 
         $viewModel = new ProjectDetailViewModel(
