@@ -22,6 +22,7 @@ class ProjectDetailViewModelMapper implements DetailViewModelMapperInterface
             $customer = 'Internal';
         }
 
+        // TODO: Pull into view model.
         $history = [];
         /** @noinspection PhpUndefinedMethodInspection */
         foreach ($model->audits()->get() as $audit) {
