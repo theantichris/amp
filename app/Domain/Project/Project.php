@@ -9,12 +9,20 @@ use AMP\User;
 use BrianFaust\Commentable\Traits\HasComments;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use InvalidArgumentException;
+use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 
 class Project extends BaseModel implements Auditable
 {
-    use \OwenIt\Auditing\Auditable;
+    use AuditableTrait;
     use HasComments;
+
+    protected $fillable = [
+        'name',
+        'status',
+        'customer',
+        'manager',
+    ];
 
     public function getName(): string
     {

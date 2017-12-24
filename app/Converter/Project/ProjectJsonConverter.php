@@ -12,18 +12,18 @@ class ProjectJsonConverter implements JsonConverterInterface
 {
     public function convert(Model $model, string $json): Model
     {
-        $data = json_decode($json);
-
         /** @var Project $model */
-        $model->setName($data->name)
-              ->setStatus($data->status);
 
-        if ($data->customer) {
-            $customer = Customer::find($data->customer);
+        $data = json_decode($json, true);
+
+        $model->fill($data);
+
+        if ($data['customer']) {
+            $customer = Customer::find($data['customer']['id']);
             $model->customer()->associate($customer);
         }
 
-        $manager = User::find($data->manager);
+        $manager = User::find($data['manager']['id']);
         $model->manager()->associate($manager);
 
         return $model;
