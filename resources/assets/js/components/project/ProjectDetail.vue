@@ -15,12 +15,12 @@
 
                     <div class="detail-group col-xs-12 col-md-4">
                         <div class="detail-label">Customer</div>
-                        <div>{{ project.customer }}</div>
+                        <div>{{ project.customer ? project.customer.company_name : 'Internal' }}</div>
                     </div>
 
                     <div class="detail-group col-xs-12 col-md-4">
                         <div class="detail-label">Manager</div>
-                        <div>{{ project.manager }}</div>
+                        <div>{{ project.manager ? project.manager.name : '' }}</div>
                     </div>
                 </div>
 

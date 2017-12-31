@@ -16,9 +16,9 @@ class ProjectDetailViewModel extends ViewModel
     public function __construct(
         int $id,
         string $name,
-        ?string $manager,
+        ?array $manager,
         string $status,
-        string $customer,
+        ?array $customer,
         array $history
     ) {
         $this->id       = $id;

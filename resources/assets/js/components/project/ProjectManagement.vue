@@ -121,8 +121,8 @@
                         id: project.id,
                         name: project.name,
                         status: project.status,
-                        customer: project.customer ? project.customer.id : '',
-                        manager: project.manager.id
+                        customer: project.customer ? project.customer : '',
+                        manager: project.manager
                     });
                 } else {
                     this.form = new SparkForm({

@@ -22,9 +22,9 @@ class ProjectDetailViewModelMapper implements DetailViewModelMapperInterface
         $viewModel = new ProjectDetailViewModel(
             $model->getId(),
             $model->getName(),
-            $model->getManager()->getName(),
+            $model->getManager()->toArray(),
             $model->getStatus(),
-            $model->getCustomer() ? $model->getCustomer()->getCompanyName() : 'Internal',
+            $model->getCustomer() ? $model->getCustomer()->toArray() : null,
             $history
         );
 
