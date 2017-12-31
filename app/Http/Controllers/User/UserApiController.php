@@ -3,29 +3,31 @@
 namespace AMP\Http\Controllers\User;
 
 use AMP\Http\Controllers\BaseApiController;
-use AMP\Service\User\UserServiceInterface;
+use AMP\Http\Resources\UserResource;
+use AMP\Team;
+use AMP\User;
 use Illuminate\Contracts\Auth\Factory as Auth;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class UserApiController extends BaseApiController
 {
-    private $userService;
-
-    public function __construct(Auth $auth, UserServiceInterface $userService)
+    public function __construct(Auth $auth)
     {
         $this->middleware('auth');
 
         parent::__construct($auth);
-
-        $this->userService = $userService;
     }
 
-    public function index(): JsonResponse
+    public function index(): ResourceCollection
     {
-        $users = $this->userService->getListViewModels($this->getTeam()->getQueueableId());
+        $team  = Team::find($this->getTeam()->getQueueableId());
+        $users = $team->users;
 
-        return new JsonResponse([
-            'users' => $users,
-        ]);
+        return UserResource::collection($users);
+    }
+
+    public function show(int $id): UserResource
+    {
+        return new UserResource(User::find($id));
     }
 }

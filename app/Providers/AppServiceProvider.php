@@ -7,12 +7,10 @@ use AMP\Converter\JsonConverterInterface;
 use AMP\Converter\MachineProfile\MachineProfileJsonConverter;
 use AMP\Converter\Project\MaterialJsonConverter;
 use AMP\Converter\Project\ProjectJsonConverter;
-use AMP\Http\Controllers\Project\Comment\CommentApiController;
 use AMP\Map\Customer\CustomerListListViewModelMapperInterface;
 use AMP\Map\DetailViewModelMapperInterface;
 use AMP\Map\ListViewModelMapperInterface;
 use AMP\Map\MachineProfile\MachineProfileListListViewModelMapperInterface;
-use AMP\Map\Project\Comment\CommentListViewModelMapper;
 use AMP\Map\Project\MaterialListViewModelMapper;
 use AMP\Map\Project\ProjectDetailViewModelMapper;
 use AMP\Map\Project\ProjectListListViewModelMapperInterface;
@@ -26,8 +24,6 @@ use AMP\Service\Project\EloquentProjectService;
 use AMP\Service\Project\Material\EloquentMaterialService;
 use AMP\Service\Project\Material\MaterialServiceInterface;
 use AMP\Service\Project\ProjectServiceInterface;
-use AMP\Service\User\EloquentUserService;
-use AMP\Service\User\UserServiceInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Tinker\TinkerServiceProvider;
@@ -104,9 +100,5 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when(EloquentProjectService::class)
                   ->needs(DetailViewModelMapperInterface::class)
                   ->give(ProjectDetailViewModelMapper::class);
-
-        // Users
-
-        $this->app->bind(UserServiceInterface::class, EloquentUserService::class);
     }
 }

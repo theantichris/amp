@@ -2,7 +2,8 @@
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'users'], function () {
-        Route::resource('', 'User\UserApiController');
+        Route::get('', 'User\UserApiController@index');
+        Route::get('/{id}', 'User\UserApiController@show');
     });
 
     Route::group(['prefix' => 'customers'], function () {
