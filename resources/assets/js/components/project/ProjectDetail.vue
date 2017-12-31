@@ -27,7 +27,7 @@
                 <comments :model="'projects'"
                           :model-id="project.id"
                           :comments="comments"
-                          v-on:commentSaved="handleCommentSaved"></comments>
+                          v-on:commentSaved="handleCommentSaved"/>
 
                 <!-- TODO: Pull into component -->
                 <fieldset>

@@ -16,13 +16,23 @@ class ProjectDetailViewModelMapper implements DetailViewModelMapperInterface
     {
         /** @var Project $model */
 
-        if ($model->getCustomer()) {
-            $customer = $model->getCustomer()->getCompanyName();
-        } else {
-            $customer = 'Internal';
-        }
-
         // TODO: Pull into view model.
+        $history = $this->getHistory($model);
+
+        $viewModel = new ProjectDetailViewModel(
+            $model->getId(),
+            $model->getName(),
+            $model->getManager()->getName(),
+            $model->getStatus(),
+            $model->getCustomer() ? $model->getCustomer()->getCompanyName() : 'Internal',
+            $history
+        );
+
+        return $viewModel;
+    }
+
+    private function getHistory(BaseModel $model): array
+    {
         $history = [];
         /** @noinspection PhpUndefinedMethodInspection */
         foreach ($model->audits()->get() as $audit) {
@@ -64,15 +74,6 @@ class ProjectDetailViewModelMapper implements DetailViewModelMapperInterface
             $history[] = $item;
         }
 
-        $viewModel = new ProjectDetailViewModel(
-            $model->getId(),
-            $model->getName(),
-            $model->getManager()->getName(),
-            $model->getStatus(),
-            $customer,
-            $history
-        );
-
-        return $viewModel;
+        return $history;
     }
 }

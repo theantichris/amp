@@ -20,8 +20,6 @@ class Project extends BaseModel implements Auditable
     protected $fillable = [
         'name',
         'status',
-        'customer',
-        'manager',
     ];
 
     public function getName(): string
