@@ -4,9 +4,7 @@ namespace AMP\Domain\Customer;
 
 use AMP\Domain\BaseModel;
 use AMP\Domain\Project\Project;
-use AMP\Enum\StateAbbreviation;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use InvalidArgumentException;
 
 class Customer extends BaseModel
 {
@@ -17,7 +15,7 @@ class Customer extends BaseModel
         'contact_email',
         'contact_phone',
         'address1',
-        'address2,',
+        'address2',
         'city',
         'state',
         'zip',
@@ -64,6 +62,8 @@ class Customer extends BaseModel
     {
         return $this->attributes['city'];
     }
+
+    // TODO: Need to enforce State enum.
 
     public function getState(): ?string
     {

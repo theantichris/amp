@@ -11,6 +11,9 @@ use Laravel\Spark\CanJoinTeams;
 use Laravel\Spark\User as SparkUser;
 use OwenIt\Auditing\Contracts\UserResolver;
 
+/**
+ * @codeCoverageIgnore
+ */
 class User extends SparkUser implements UserResolver
 {
     use CanJoinTeams;
