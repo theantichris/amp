@@ -2,7 +2,10 @@
 
 namespace AMP\Http\Controllers\Customer;
 
+use AMP\Domain\Customer\Customer;
 use AMP\Http\Controllers\BaseApiController;
+use AMP\Http\Resources\Customer\CustomerResource;
+use AMP\Http\Resources\Customer\CustomerCollection;
 use AMP\Service\Customer\CustomerServiceInterface;
 use AMP\Team;
 use Illuminate\Contracts\Auth\Factory;
@@ -23,13 +26,11 @@ class CustomerApiController extends BaseApiController
         $this->customerService = $customerService;
     }
 
-    public function index(): JsonResponse
+    public function index(): CustomerCollection
     {
-        $customers = $this->customerService->getListViewModels($this->getTeam()->getQueueableId());
+        $customers = Customer::whereTeamId($this->getTeam()->getQueueableId())->get();
 
-        return new JsonResponse([
-            'customers' => $customers,
-        ]);
+        return new CustomerCollection($customers);
     }
 
     public function create(Request $request): JsonResponse
@@ -55,12 +56,10 @@ class CustomerApiController extends BaseApiController
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id): CustomerResource
     {
-        $customer = $this->customerService->getCustomer($id, $this->getTeam()->getQueueableId());
+        $customer = Customer::find($id);
 
-        return new JsonResponse([
-            'customer' => $customer,
-        ]);
+        return new CustomerResource($customer);
     }
 }
