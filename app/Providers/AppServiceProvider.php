@@ -2,22 +2,18 @@
 
 namespace AMP\Providers;
 
-use AMP\Converter\Customer\CustomerJsonConverter;
 use AMP\Converter\JsonConverterInterface;
 use AMP\Converter\MachineProfile\MachineProfileJsonConverter;
 use AMP\Converter\Project\MaterialJsonConverter;
 use AMP\Converter\Project\ProjectJsonConverter;
-use AMP\Map\Customer\CustomerListListViewModelMapperInterface;
 use AMP\Map\DetailViewModelMapperInterface;
 use AMP\Map\ListViewModelMapperInterface;
 use AMP\Map\MachineProfile\MachineProfileListListViewModelMapperInterface;
 use AMP\Map\Project\MaterialListViewModelMapper;
 use AMP\Map\Project\ProjectDetailViewModelMapper;
 use AMP\Map\Project\ProjectListListViewModelMapperInterface;
-use AMP\Repository\Customer\CustomerRepository;
-use AMP\Repository\RepositoryInterface;
-use AMP\Service\Customer\CustomerService;
 use AMP\Service\Customer\CustomerServiceInterface;
+use AMP\Service\Customer\EloquentCustomerService;
 use AMP\Service\MachineProfile\MachineProfileService;
 use AMP\Service\MachineProfile\MachineProfileServiceInterface;
 use AMP\Service\Project\EloquentProjectService;
@@ -47,19 +43,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Customers
 
-        $this->app->bind(CustomerServiceInterface::class, CustomerService::class);
-
-        $this->app->when(CustomerService::class)
-                  ->needs(JsonConverterInterface::class)
-                  ->give(CustomerJsonConverter::class);
-
-        $this->app->when(CustomerService::class)
-                  ->needs(RepositoryInterface::class)
-                  ->give(CustomerRepository::class);
-
-        $this->app->when(CustomerService::class)
-                  ->needs(ListViewModelMapperInterface::class)
-                  ->give(CustomerListListViewModelMapperInterface::class);
+        $this->app->bind(CustomerServiceInterface::class, EloquentCustomerService::class);
 
         // Materials
 

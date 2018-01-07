@@ -4,10 +4,9 @@ namespace AMP\Http\Controllers\Customer;
 
 use AMP\Domain\Customer\Customer;
 use AMP\Http\Controllers\BaseApiController;
-use AMP\Http\Resources\Customer\CustomerResource;
 use AMP\Http\Resources\Customer\CustomerCollection;
+use AMP\Http\Resources\Customer\CustomerResource;
 use AMP\Service\Customer\CustomerServiceInterface;
-use AMP\Team;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -35,13 +34,11 @@ class CustomerApiController extends BaseApiController
 
     public function create(Request $request): JsonResponse
     {
-        $json = $request->getContent();
-
-        /** @var Team $team */
         /** @noinspection PhpUndefinedMethodInspection */
-        $team = $this->auth->user()->currentTeam();
-
-        $customer = $this->customerService->createFromJson($json, $team);
+        $customer = $this->customerService->createFromJson(
+            $request->getContent(),
+            $this->auth->user()->currentTeam()
+        );
 
         return new JsonResponse([], Response::HTTP_CREATED, [
             'Location' => '/customers/' . $customer->getId(),
@@ -50,8 +47,7 @@ class CustomerApiController extends BaseApiController
 
     public function update(int $id, Request $request): JsonResponse
     {
-        $json = $request->getContent();
-        $this->customerService->updateFromJson($json, $id);
+        $this->customerService->updateFromJson($request->getContent(), $id);
 
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
