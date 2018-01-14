@@ -30,10 +30,10 @@
                                     <div class="btn-table-align">{{ item.name }}</div>
                                 </td>
                                 <td>
-                                    <div class="btn-table-align">{{ item.cost }}</div>
+                                    <div class="btn-table-align">${{ item.cost }} {{ item.weight_unit }}</div>
                                 </td>
                                 <td>
-                                    <div class="btn-table-align">{{ item.density }}</div>
+                                    <div class="btn-table-align">{{ item.density }} {{ item.density_unit }}</div>
                                 </td>
 
                                 <td>

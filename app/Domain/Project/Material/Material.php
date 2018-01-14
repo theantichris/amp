@@ -9,28 +9,22 @@ use InvalidArgumentException;
 
 class Material extends BaseModel
 {
+    protected $fillable = [
+        'name',
+        'cost',
+        'weight_unit',
+        'density',
+        'density_unit',
+    ];
+
     public function getName(): string
     {
         return $this->attributes['name'];
     }
 
-    public function setName(string $name): Material
-    {
-        $this->attributes['name'] = $name;
-
-        return $this;
-    }
-
     public function getCost(): float
     {
         return $this->attributes['cost'];
-    }
-
-    public function setCost(float $cost): Material
-    {
-        $this->attributes['cost'] = $cost;
-
-        return $this;
     }
 
     public function getWeightUnit(): string
@@ -52,13 +46,6 @@ class Material extends BaseModel
     public function getDensity(): float
     {
         return $this->attributes['density'];
-    }
-
-    public function setDensity(float $density): Material
-    {
-        $this->attributes['density'] = $density;
-
-        return $this;
     }
 
     public function getDensityUnit(): string

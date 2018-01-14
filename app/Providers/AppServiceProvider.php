@@ -47,14 +47,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(MaterialServiceInterface::class, EloquentMaterialService::class);
 
-        $this->app->when(EloquentMaterialService::class)
-                  ->needs(JsonConverterInterface::class)
-                  ->give(MaterialJsonConverter::class);
-
-        $this->app->when(EloquentMaterialService::class)
-                  ->needs(ListViewModelMapperInterface::class)
-                  ->give(MaterialListViewModelMapper::class);
-
         // MachineProfiles
 
         $this->app->bind(MachineProfileServiceInterface::class, EloquentMachineProfileService::class);

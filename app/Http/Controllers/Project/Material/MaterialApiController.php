@@ -2,11 +2,14 @@
 
 namespace AMP\Http\Controllers\Project\Material;
 
+use AMP\Domain\Project\Material\Material;
 use AMP\Http\Controllers\BaseApiController;
+use AMP\Http\Resources\Project\Material\MaterialResource;
 use AMP\Service\Project\Material\MaterialServiceInterface;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
 class MaterialApiController extends BaseApiController
@@ -22,23 +25,20 @@ class MaterialApiController extends BaseApiController
         $this->materialService = $materialService;
     }
 
-    public function index(): JsonResponse
+    public function index(): ResourceCollection
     {
-        $materials = $this->materialService->getListViewModels($this->getTeam()->getQueueableId());
+        $materials = Material::whereTeamId($this->getTeam()->getQueueableId())->get();
 
-        return new JsonResponse([
-            'materials' => $materials,
-        ]);
+        return MaterialResource::collection($materials);
     }
 
     public function create(Request $request): JsonResponse
     {
-        $json = $request->getContent();
-
         /** @noinspection PhpUndefinedMethodInspection */
-        $team = Auth::user()->currentTeam();
-
-        $material = $this->materialService->createFromJson($json, $team);
+        $material = $this->materialService->createFromJson(
+            $request->getContent(),
+            $this->auth->user()->currentTeam()
+        );
 
         return new JsonResponse([
             'Location' => '/materials/' . $material->getId(),
@@ -47,18 +47,18 @@ class MaterialApiController extends BaseApiController
 
     public function update(int $id, Request $request): JsonResponse
     {
-        $json = $request->getContent();
-        $this->materialService->updateFromJson($json, $id);
+        $this->materialService->updateFromJson(
+            $request->getContent(),
+            $id
+        );
 
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id): MaterialResource
     {
-        $material = $this->materialService->getMaterial($id, $this->getTeam()->getQueueableId());
+        $material = Material::find($id);
 
-        return new JsonResponse([
-            'material' => $material,
-        ]);
+        return new MaterialResource($material);
     }
 }

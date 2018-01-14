@@ -36,15 +36,15 @@
             <div class="col-md-8">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="list">
-                        <material-list :materials="materials"></material-list>
+                        <material-list :materials="materials" />
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="form">
-                        <material-form :form="form" v-on:formSaved="handleFormSaved"></material-form>
+                        <material-form :form="form" v-on:formSaved="handleFormSaved" />
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="detail">
-                        <material-detail :material="material"></material-detail>
+                        <material-detail :material="material" />
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
 
                 axios.get('/api/projects/materials')
                     .then((response) => {
-                        this.materials = response.data.materials;
+                        this.materials = response.data.data;
                     })
                     .catch((error) => {
                         console.error(error);
@@ -95,7 +95,7 @@
                 if (id)
                     axios.get('/api/projects/materials/' + id)
                         .then((response) => {
-                            this.material = response.data.material;
+                            this.material = response.data.data;
                         })
                         .catch((error) => {
                             console.error(error);
