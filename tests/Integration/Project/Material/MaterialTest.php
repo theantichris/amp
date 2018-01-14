@@ -55,9 +55,7 @@ class MaterialTest extends IntegrationTest
     public function it_sets_weight_unit()
     {
         $weightUnit = Weight::POUND;
-        $this->uut->update([
-            'weight_unit' => $weightUnit,
-        ]);
+        $this->uut->setWeightUnit($weightUnit);
 
         $this->assertEquals($weightUnit, Material::find($this->uut->id)->getWeightUnit());
     }
