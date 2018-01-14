@@ -3,18 +3,16 @@
 namespace AMP\Providers;
 
 use AMP\Converter\JsonConverterInterface;
-use AMP\Converter\MachineProfile\MachineProfileJsonConverter;
 use AMP\Converter\Project\MaterialJsonConverter;
 use AMP\Converter\Project\ProjectJsonConverter;
 use AMP\Map\DetailViewModelMapperInterface;
 use AMP\Map\ListViewModelMapperInterface;
-use AMP\Map\MachineProfile\MachineProfileListListViewModelMapperInterface;
 use AMP\Map\Project\MaterialListViewModelMapper;
 use AMP\Map\Project\ProjectDetailViewModelMapper;
 use AMP\Map\Project\ProjectListListViewModelMapperInterface;
 use AMP\Service\Customer\CustomerServiceInterface;
 use AMP\Service\Customer\EloquentCustomerService;
-use AMP\Service\MachineProfile\MachineProfileService;
+use AMP\Service\MachineProfile\EloquentMachineProfileService;
 use AMP\Service\MachineProfile\MachineProfileServiceInterface;
 use AMP\Service\Project\EloquentProjectService;
 use AMP\Service\Project\Material\EloquentMaterialService;
@@ -59,15 +57,7 @@ class AppServiceProvider extends ServiceProvider
 
         // MachineProfiles
 
-        $this->app->bind(MachineProfileServiceInterface::class, MachineProfileService::class);
-
-        $this->app->when(MachineProfileService::class)
-                  ->needs(JsonConverterInterface::class)
-                  ->give(MachineProfileJsonConverter::class);
-
-        $this->app->when(MachineProfileService::class)
-                  ->needs(ListViewModelMapperInterface::class)
-                  ->give(MachineProfileListListViewModelMapperInterface::class);
+        $this->app->bind(MachineProfileServiceInterface::class, EloquentMachineProfileService::class);
 
         // Projects
 

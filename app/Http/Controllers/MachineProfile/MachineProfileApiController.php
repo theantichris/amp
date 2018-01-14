@@ -2,10 +2,11 @@
 
 namespace AMP\Http\Controllers\MachineProfile;
 
+use AMP\Domain\MachineProfile\MachineProfile;
 use AMP\Http\Controllers\BaseApiController;
+use AMP\Http\Resources\MachineProfile\MachineProfileCollection;
+use AMP\Http\Resources\MachineProfile\MachineProfileResource;
 use AMP\Service\MachineProfile\MachineProfileServiceInterface;
-use AMP\Team;
-use Auth;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -24,23 +25,20 @@ class MachineProfileApiController extends BaseApiController
         $this->machineProfileService = $machineProfileService;
     }
 
-    public function index(): JsonResponse
+    public function index(): MachineProfileCollection
     {
-        $machineProfiles = $this->machineProfileService->getListViewModels($this->getTeam()->getQueueableId());
+        $machineProfiles = MachineProfile::whereTeamId($this->getTeam()->getQueueableId())->get();
 
-        return Response::json([
-            'machineProfiles' => $machineProfiles,
-        ]);
+        return new MachineProfileCollection($machineProfiles);
     }
 
     public function create(Request $request): JsonResponse
     {
-        $json = $request->getContent();
-
-        /** @var Team $team */
-        $team = Auth::user()->currentTeam();
-
-        $machineProfile = $this->machineProfileService->createFromJson($json, $team);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $machineProfile = $this->machineProfileService->createFromJson(
+            $request->getContent(),
+            $this->auth->user()->currentTeam()
+        );
 
         return Response::json([], 201, [
             'Location' => '/machine-profiles/' . $machineProfile->getId(),
@@ -49,18 +47,15 @@ class MachineProfileApiController extends BaseApiController
 
     public function update(int $id, Request $request): JsonResponse
     {
-        $json = $request->getContent();
-        $this->machineProfileService->updateFromJson($json, $id);
+        $this->machineProfileService->updateFromJson($request->getContent(), $id);
 
         return Response::json([], 204);
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id): MachineProfileResource
     {
-        $machineProfile = $this->machineProfileService->getMachineProfile($id, $this->getTeam()->getQueueableId());
+        $machineProfile = MachineProfile::find($id);
 
-        return new JsonResponse([
-            'machineProfile' => $machineProfile,
-        ]);
+        return new MachineProfileResource($machineProfile);
     }
 }

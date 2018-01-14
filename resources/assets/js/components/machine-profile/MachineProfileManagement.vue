@@ -36,15 +36,15 @@
             <div class="col-md-8">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="list">
-                        <machine-profile-list :machineProfiles="machineProfiles"></machine-profile-list>
+                        <machine-profile-list :machineProfiles="machineProfiles" />
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="form">
-                        <machine-profile-form :form="form" v-on:formSaved="handleFormSaved"></machine-profile-form>
+                        <machine-profile-form :form="form" v-on:formSaved="handleFormSaved" />
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="detail">
-                        <machine-profile-detail :machineProfile="machineProfile"></machine-profile-detail>
+                        <machine-profile-detail :machineProfile="machineProfile" />
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
 
                 axios.get('/api/machine-profiles')
                     .then((response) => {
-                        this.machineProfiles = response.data.machineProfiles;
+                        this.machineProfiles = response.data.data;
                     })
                     .catch((error) => {
                         console.error(error);
@@ -95,7 +95,7 @@
                 if (id)
                     axios.get('/api/machine-profiles/' + id)
                         .then((response) => {
-                            this.machineProfile = response.data.machineProfile;
+                            this.machineProfile = response.data.data;
                         })
                         .catch((error) => {
                             console.error(error);

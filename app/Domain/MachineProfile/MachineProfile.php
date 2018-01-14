@@ -8,6 +8,14 @@ use InvalidArgumentException;
 
 class MachineProfile extends BaseModel
 {
+    protected $fillable = [
+        'type',
+        'setup_fee',
+        'rate',
+        'time_calculation_method',
+        'build_rate',
+    ];
+
     public function getType(): string
     {
         return $this->attributes['type'];
