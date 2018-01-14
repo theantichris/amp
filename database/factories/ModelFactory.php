@@ -37,3 +37,13 @@ $factory->define(\AMP\Domain\MachineProfile\MachineProfile::class, function (Fak
         'build_rate'              => $faker->randomFloat(),
     ];
 });
+
+$factory->define(\AMP\Domain\Project\Material\Material::class, function (Faker\Generator $faker) {
+    return [
+        'name'         => $faker->shuffleString(),
+        'cost'         => $faker->randomFloat(),
+        'weight_unit'  => \AMP\Enum\Weight::POUND,
+        'density'      => $faker->randomFloat(),
+        'density_unit' => \AMP\Enum\Density::GRAM_PER_CUBIC_CENTIMETER,
+    ];
+});

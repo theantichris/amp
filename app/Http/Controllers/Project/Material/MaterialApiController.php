@@ -40,9 +40,9 @@ class MaterialApiController extends BaseApiController
             $this->auth->user()->currentTeam()
         );
 
-        return new JsonResponse([
-            'Location' => '/materials/' . $material->getId(),
-        ], Response::HTTP_CREATED);
+        return new JsonResponse([], 201, [
+            'Location' => '/machine-profiles/' . $material->getId(),
+        ]);
     }
 
     public function update(int $id, Request $request): JsonResponse
