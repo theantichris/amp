@@ -129,8 +129,8 @@
                     this.form = new SparkForm({
                         name: '',
                         status: 'New',
-                        customer: {},
-                        manager: {}
+                        customer: '',
+                        manager: ''
                     });
                 }
             },
