@@ -17,7 +17,7 @@
                             <select id="customer" class="form-control" v-model="form.customer">
                                 <option value="">Internal</option>
                                 <option v-for="customer in customers" :value="customer" :key="customer.id">
-                                    {{ customer.companyName }}
+                                    {{ customer.company_name }}
                                 </option>
                             </select>
                         </div>
@@ -95,7 +95,7 @@
             getCustomers() {
                 axios.get('/api/customers')
                     .then((response) => {
-                        this.customers = response.data.customers;
+                        this.customers = response.data.data;
                     })
                     .catch((error) => {
                         console.error(error);
@@ -105,7 +105,7 @@
             getUsers() {
                 axios.get('/api/users')
                     .then((response) => {
-                        this.users = response.data.users;
+                        this.users = response.data.data;
                     })
                     .catch((error) => {
                         console.error(error);

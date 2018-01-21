@@ -33,13 +33,15 @@
                                     <div class="btn-table-align">{{ item.name }}</div>
                                 </td>
                                 <td>
-                                    <div class="btn-table-align">{{ item.manager }}</div>
+                                    <div class="btn-table-align">{{ item.manager.name }}</div>
                                 </td>
                                 <td>
                                     <div class="btn-table-align">{{ item.status }}</div>
                                 </td>
                                 <td>
-                                    <div class="btn-table-align">{{ item.customer }}</div>
+                                    <div class="btn-table-align">
+                                        {{ item.customer === 'Internal' ? 'Internal' : item.customer.company_name }}
+                                    </div>
                                 </td>
 
                                 <td>

@@ -86,7 +86,7 @@
 
                 axios.get('/api/projects')
                     .then((response) => {
-                        this.projects = response.data.projects;
+                        this.projects = response.data.data;
                     })
                     .catch((error) => {
                         console.error(error);
@@ -95,13 +95,11 @@
 
             loadProject(id) {
                 if (id)
-                    this.projectId = id;
-
-                    axios.get('/api/projects/' + this.projectId)
+                    axios.get('/api/projects/' + id)
                         .then((response) => {
-                            this.project = response.data.project;
+                            this.project = response.data.data;
 
-                            this.loadComments(this.projectId);
+                            this.loadComments(id);
                         })
                         .catch((error) => {
                             console.error(error);
@@ -111,17 +109,13 @@
             initForm(editProject) {
                 if (editProject && this.project) {
                     let project = this.project;
-
-                    this.project = {
-                        customer: {},
-                        manager: {}
-                    };
+                    this.project = {};
 
                     this.form = new SparkForm({
                         id: project.id,
                         name: project.name,
                         status: project.status,
-                        customer: project.customer ? project.customer : '',
+                        customer: project.customer,
                         manager: project.manager
                     });
                 } else {
@@ -150,7 +144,7 @@
             loadComments(projectId) {
                 axios.get('/api/projects/' + projectId + '/comments')
                     .then((response) => {
-                        this.comments = response.data.comments;
+                        this.comments = response.data.data;
                     })
                     .catch((error) => {
                         console.error(error);
