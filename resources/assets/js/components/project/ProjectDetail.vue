@@ -39,8 +39,8 @@
                     <div class="row">
                         <div class="detail-group col-xs-12">
                             <ul class="list-group">
-                                <li class="list-group-item" v-for="history in project.history">
-                                    {{ history.user }} {{ history.event }} on {{ history.date | datetime }}.
+                                <li class="list-group-item" v-for="item in history">
+                                    {{ item.user.name }} {{ item.event }} on {{ item.created_at.date | datetime }}.
                                 </li>
                             </ul>
                         </div>
@@ -70,7 +70,7 @@
 
     export default {
         components: {Comments},
-        props: ['project', 'comments'],
+        props: ['project', 'comments', 'history'],
         methods: {
             handleCommentSaved: function () {
                 this.$emit('commentSaved');

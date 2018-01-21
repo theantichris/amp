@@ -44,7 +44,10 @@
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="detail">
-                        <project-detail :project="project" :comments="comments" v-on:commentSaved="handleCommentSaved"/>
+                        <project-detail :project="project"
+                                        :history="history"
+                                        :comments="comments"
+                                        v-on:commentSaved="handleCommentSaved"/>
                     </div>
                 </div>
             </div>
@@ -70,6 +73,7 @@
                 project: {},
                 projectId: '',
                 comments: [],
+                history: [],
                 form: {}
             }
         },
@@ -96,12 +100,13 @@
             loadProject(id) {
                 if (id)
                     this.projectId = id;
-                
+
                 axios.get('/api/projects/' + id)
                     .then((response) => {
                         this.project = response.data.data;
 
                         this.loadComments(id);
+                        this.loadHistory(id);
                     })
                     .catch((error) => {
                         console.error(error);
@@ -147,6 +152,16 @@
                 axios.get('/api/projects/' + projectId + '/comments')
                     .then((response) => {
                         this.comments = response.data.data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            },
+
+            loadHistory(projectId) {
+                axios.get('/api/projects/' + projectId + '/history')
+                    .then((response) => {
+                        this.history = response.data.data;
                     })
                     .catch((error) => {
                         console.error(error);

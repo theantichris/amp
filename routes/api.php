@@ -28,6 +28,10 @@ Route::group(['middleware' => 'auth:api'], function () {
             Route::post('', 'Project\Comment\CommentApiController@create');
         });
 
+        Route::group(['prefix' => '{projectId}/history'], function () {
+            Route::get('', 'Project\History\HistoryApiController@index');
+        });
+
         Route::get('/{id}', 'Project\ProjectApiController@show');
         Route::get('', 'Project\ProjectApiController@index');
 
