@@ -25,6 +25,10 @@ class CustomerResource extends Resource
             'zip'                       => $this->zip,
             'shipping_account_provider' => $this->shipping_account_provider,
             'shipping_account_number'   => $this->shipping_account_number,
+            'created_at'                => $this->created_at->toDateTimeString(),
+            'deleted_at'                => $this->deleted_at ? $this->deleted_at->toDateTimeString() : null,
+            'updated_at'                => $this->updated_at->toDateTimeString(),
+            'team_id'                   => $this->team_id,
         ];
     }
 }

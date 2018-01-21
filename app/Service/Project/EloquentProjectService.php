@@ -32,6 +32,15 @@ class EloquentProjectService implements ProjectServiceInterface
     {
         $project = Project::find($id);
         $data    = json_decode($json, true);
+
+        if ($data['customer']) {
+            $project->customer()->associate(Customer::find($data['customer']['id']));
+        } else {
+            $project->customer()->dissociate();
+        }
+
+        $project->manager()->associate(User::find($data['manager']['id']));
+
         $project->update($data);
 
         return $project;

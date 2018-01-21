@@ -4,12 +4,12 @@ namespace AMP\Http\Controllers\Customer;
 
 use AMP\Domain\Customer\Customer;
 use AMP\Http\Controllers\BaseApiController;
-use AMP\Http\Resources\Customer\CustomerCollection;
 use AMP\Http\Resources\Customer\CustomerResource;
 use AMP\Service\Customer\CustomerServiceInterface;
 use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
 class CustomerApiController extends BaseApiController
@@ -25,11 +25,11 @@ class CustomerApiController extends BaseApiController
         $this->customerService = $customerService;
     }
 
-    public function index(): CustomerCollection
+    public function index(): ResourceCollection
     {
         $customers = Customer::whereTeamId($this->getTeam()->getQueueableId())->get();
 
-        return new CustomerCollection($customers);
+        return CustomerResource::collection($customers);
     }
 
     public function create(Request $request): JsonResponse
