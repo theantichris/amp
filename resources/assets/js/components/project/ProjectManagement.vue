@@ -36,15 +36,15 @@
             <div class="col-md-8">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="list">
-                        <project-list :projects="projects" />
+                        <project-list :projects="projects"/>
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="form">
-                        <project-form :form="form" v-on:formSaved="handleFormSaved" />
+                        <project-form :form="form" v-on:formSaved="handleFormSaved"/>
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="detail">
-                        <project-detail :project="project" :comments="comments" v-on:commentSaved="handleCommentSaved" />
+                        <project-detail :project="project" :comments="comments" v-on:commentSaved="handleCommentSaved"/>
                     </div>
                 </div>
             </div>
@@ -95,15 +95,17 @@
 
             loadProject(id) {
                 if (id)
-                    axios.get('/api/projects/' + id)
-                        .then((response) => {
-                            this.project = response.data.data;
+                    this.projectId = id;
+                
+                axios.get('/api/projects/' + id)
+                    .then((response) => {
+                        this.project = response.data.data;
 
-                            this.loadComments(id);
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        });
+                        this.loadComments(id);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             },
 
             initForm(editProject) {

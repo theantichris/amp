@@ -44,7 +44,7 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <small>
-                                            By {{ comment.createdBy }} at {{ comment.updatedAt | datetime }}
+                                            By {{ comment.creator.name }} at {{ comment.updated_at.date | datetime }}
                                         </small>
                                     </div>
                                 </div>
