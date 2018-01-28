@@ -48,6 +48,15 @@ $factory->define(\AMP\Domain\Project\Material\Material::class, function (Faker\G
     ];
 });
 
+$factory->define(\AMP\Domain\Project\Part\Part::class, function (Faker\Generator $faker) {
+    return [
+        'name'         => $faker->shuffleString(),
+        'quantity'     => $faker->randomNumber(2),
+        'requirements' => $faker->text,
+        'description ' => $faker->text,
+    ];
+});
+
 $factory->define(\AMP\Domain\Project\Project::class, function (Faker\Generator $faker) {
     return [
         'name'   => $faker->shuffleString(),
