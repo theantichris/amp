@@ -47,3 +47,10 @@ $factory->define(\AMP\Domain\Project\Material\Material::class, function (Faker\G
         'density_unit' => \AMP\Enum\Density::GRAM_PER_CUBIC_CENTIMETER,
     ];
 });
+
+$factory->define(\AMP\Domain\Project\Project::class, function (Faker\Generator $faker) {
+    return [
+        'name'   => $faker->shuffleString(),
+        'status' => \AMP\Enum\Project\Status::NEW_PROJECT,
+    ];
+});
