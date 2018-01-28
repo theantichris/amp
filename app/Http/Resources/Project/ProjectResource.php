@@ -3,6 +3,8 @@
 namespace AMP\Http\Resources\Project;
 
 use AMP\Domain\Project\Project;
+use AMP\Http\Resources\Customer\CustomerResource;
+use AMP\Http\Resources\UserResource;
 use Illuminate\Http\Resources\Json\Resource;
 
 class ProjectResource extends Resource
@@ -14,9 +16,9 @@ class ProjectResource extends Resource
         return [
             'id'       => $this->id,
             'status'   => $this->status,
-            'customer' => $this->customer ?? 'Internal',
+            'customer' => $this->customer ? new CustomerResource($this->customer) : 'Internal',
             'name'     => $this->name,
-            'manager'  => $this->manager,
+            'manager'  => new UserResource($this->manager),
         ];
     }
 }
