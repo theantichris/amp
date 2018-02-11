@@ -3,15 +3,21 @@
 namespace Tests\Acceptance\Part;
 
 use AMP\Domain\Project\Part\Part;
+use AMP\Domain\Project\Project;
+use AMP\Enum\Project\Status;
 use Illuminate\Http\Response;
 use Tests\AcceptanceTest;
 
 class PartTest extends AcceptanceTest
 {
-    private $url = '/api/projects/parts';
+    /** @var string */
+    private $url;
 
     /** @var Part */
     private $part;
+
+    /** @var Project */
+    private $project;
 
     public function setUp()
     {
@@ -26,6 +32,18 @@ class PartTest extends AcceptanceTest
         ]);
 
         $this->part = Part::whereName('Test Part')->first();
+
+        factory(Project::class)->create([
+            'name'    => 'Test Project',
+            'status'  => Status::NEW_PROJECT,
+            'team_id' => $this->team->id,
+        ]);
+
+        $this->project = Project::whereName('Test Project')->first();
+        $this->project->manager()->associate($this->user);
+        $this->project->parts()->save($this->part);
+
+        $this->url = '/api/projects/' . $this->project->id . '/parts';
     }
 
     /** @test */

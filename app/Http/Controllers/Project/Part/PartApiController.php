@@ -25,19 +25,19 @@ class PartApiController extends BaseApiController
         $this->partService = $partService;
     }
 
-    public function index(): ResourceCollection
+    public function index(int $projectId): ResourceCollection
     {
-        $parts = Part::whereTeamId($this->getTeam()->getQueueableId())->get();
+        $parts = Part::whereProjectId($projectId)->get();
 
         return PartResource::collection($parts);
     }
 
-    public function create(Request $request): JsonResponse
+    public function create(Request $request, int $projectId): JsonResponse
     {
         /** @noinspection PhpUndefinedMethodInspection */
         $part = $this->partService->createFromJson(
-            $request->getContent(),
-            $this->auth->user()->currentTeam()
+            $projectId,
+            $request->getContent()
         );
 
         return new JsonResponse([], 201, [
@@ -55,9 +55,9 @@ class PartApiController extends BaseApiController
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 
-    public function show(int $id): PartResource
+    public function show(int $projectId, int $id): PartResource
     {
-        $part = Part::find($id);
+        $part = Part::whereProjectId($projectId)->find($id);
 
         return new PartResource($part);
     }

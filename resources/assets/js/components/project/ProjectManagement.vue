@@ -148,6 +148,10 @@
                 this.loadComments(this.projectId)
             },
 
+            handlePartSaved() {
+                console.log('Part saved.');
+            },
+
             loadComments(projectId) {
                 axios.get('/api/projects/' + projectId + '/comments')
                     .then((response) => {

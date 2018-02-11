@@ -27,6 +27,9 @@
                     </div>
                 </div>
 
+                <parts :project-id="project.id"
+                       v-on:commentSaved="handlePartSaved"/>
+
                 <comments :model="'projects'"
                           :model-id="project.id"
                           :comments="comments"
@@ -67,13 +70,18 @@
 
 <script>
     import Comments from '../comments/Comments';
+    import Parts from './part/Parts';
 
     export default {
-        components: {Comments},
+        components: {Comments, Parts},
         props: ['project', 'comments', 'history'],
         methods: {
             handleCommentSaved: function () {
                 this.$emit('commentSaved');
+            },
+
+            handlePartSaved: function () {
+                this.$emit('partSaved');
             }
         }
     }
