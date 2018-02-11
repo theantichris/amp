@@ -9,6 +9,8 @@ use AMP\Service\MachineProfile\MachineProfileServiceInterface;
 use AMP\Service\Project\EloquentProjectService;
 use AMP\Service\Project\Material\EloquentMaterialService;
 use AMP\Service\Project\Material\MaterialServiceInterface;
+use AMP\Service\Project\Part\EloquentPartService;
+use AMP\Service\Project\Part\PartServiceInterface;
 use AMP\Service\Project\ProjectServiceInterface;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
@@ -31,20 +33,10 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(TinkerServiceProvider::class);
         }
 
-        // Customers
-
         $this->app->bind(CustomerServiceInterface::class, EloquentCustomerService::class);
-
-        // Materials
-
         $this->app->bind(MaterialServiceInterface::class, EloquentMaterialService::class);
-
-        // MachineProfiles
-
         $this->app->bind(MachineProfileServiceInterface::class, EloquentMachineProfileService::class);
-
-        // Projects
-
+        $this->app->bind(PartServiceInterface::class, EloquentPartService::class);
         $this->app->bind(ProjectServiceInterface::class, EloquentProjectService::class);
     }
 }

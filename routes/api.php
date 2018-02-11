@@ -23,6 +23,14 @@ Route::group(['middleware' => 'auth:api'], function () {
             Route::put('/{id}', 'Project\Material\MaterialApiController@update');
         });
 
+        Route::group(['prefix' => 'parts'], function () {
+            Route::get('/{id}', 'Project\Part\PartApiController@show');
+            Route::get('', 'Project\Part\PartApiController@index');
+
+            Route::post('', 'Project\Part\PartApiController@create');
+            Route::put('/{id}', 'Project\Part\PartApiController@update');
+        });
+
         Route::group(['prefix' => '{projectId}/comments'], function () {
             Route::get('', 'Project\Comment\CommentApiController@index');
             Route::post('', 'Project\Comment\CommentApiController@create');

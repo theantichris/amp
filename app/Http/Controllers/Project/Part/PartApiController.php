@@ -1,53 +1,53 @@
 <?php
 
-namespace AMP\Http\Controllers\Project\Material;
+namespace AMP\Http\Controllers\Project\Part;
 
-use AMP\Domain\Project\Material\Material;
+use AMP\Domain\Project\Part\Part;
 use AMP\Http\Controllers\BaseApiController;
-use AMP\Http\Resources\Project\Material\MaterialResource;
-use AMP\Service\Project\Material\MaterialServiceInterface;
+use AMP\Http\Resources\Project\Part\PartResource;
+use AMP\Service\Project\Part\PartServiceInterface;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
-class MaterialApiController extends BaseApiController
+class PartApiController extends BaseApiController
 {
-    private $materialService;
+    private $partService;
 
-    public function __construct(Auth $auth, MaterialServiceInterface $materialService)
+    public function __construct(Auth $auth, PartServiceInterface $partService)
     {
         $this->middleware('auth');
 
         parent::__construct($auth);
 
-        $this->materialService = $materialService;
+        $this->partService = $partService;
     }
 
     public function index(): ResourceCollection
     {
-        $materials = Material::whereTeamId($this->getTeam()->getQueueableId())->get();
+        $parts = Part::whereTeamId($this->getTeam()->getQueueableId())->get();
 
-        return MaterialResource::collection($materials);
+        return PartResource::collection($parts);
     }
 
     public function create(Request $request): JsonResponse
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $material = $this->materialService->createFromJson(
+        $part = $this->partService->createFromJson(
             $request->getContent(),
             $this->auth->user()->currentTeam()
         );
 
         return new JsonResponse([], 201, [
-            'Location' => '/projects/materials' . $material->getId(),
+            'Location' => '/projects/parts' . $part->getId(),
         ]);
     }
 
     public function update(int $id, Request $request): JsonResponse
     {
-        $this->materialService->updateFromJson(
+        $this->partService->updateFromJson(
             $request->getContent(),
             $id
         );
@@ -55,10 +55,10 @@ class MaterialApiController extends BaseApiController
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 
-    public function show(int $id): MaterialResource
+    public function show(int $id): PartResource
     {
-        $material = Material::find($id);
+        $part = Part::find($id);
 
-        return new MaterialResource($material);
+        return new PartResource($part);
     }
 }
