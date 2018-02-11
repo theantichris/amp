@@ -53,7 +53,6 @@ $factory->define(\AMP\Domain\Project\Part\Part::class, function (Faker\Generator
         'name'         => $faker->shuffleString(),
         'quantity'     => $faker->randomNumber(2),
         'requirements' => $faker->text,
-        'description ' => $faker->text,
     ];
 });
 
