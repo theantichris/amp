@@ -47,6 +47,7 @@
                         <project-detail :project="project"
                                         :history="history"
                                         :comments="comments"
+                                        v-on:partSaved="handlePartSaved"
                                         v-on:commentSaved="handleCommentSaved"/>
                     </div>
                 </div>

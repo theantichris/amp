@@ -29,7 +29,7 @@
 
                 <parts :project-id="project.id"
                        :parts="project.parts"
-                       v-on:commentSaved="handlePartSaved"/>
+                       v-on:partSaved="handlePartSaved"/>
 
                 <comments :model="'projects'"
                           :model-id="project.id"

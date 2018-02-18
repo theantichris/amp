@@ -6,22 +6,6 @@
             <a v-on:click="showForm = true"><i class="fa fa-plus-circle text-success"></i> </a>
         </legend>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th class="sortable-table__heading">Name</th>
-                <th class="sortable-table__heading">Quantity</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr v-for="part in parts">
-                <td><div class="btn-table-align">{{ part.name }}</div></td>
-                <td><div class="btn-table-align">{{ part.quantity }}</div></td>
-            </tr>
-            </tbody>
-        </table>
-
         <form v-on:submit.prevent="save" v-show="showForm">
             <div class="row">
                 <div class="form-group col-xs-12 col-md-10 required">
@@ -77,6 +61,22 @@
                 </div>
             </div>
         </form>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="sortable-table__heading">Name</th>
+                <th class="sortable-table__heading">Quantity</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr v-for="part in parts">
+                <td><div class="btn-table-align">{{ part.name }}</div></td>
+                <td><div class="btn-table-align">{{ part.quantity }}</div></td>
+            </tr>
+            </tbody>
+        </table>
     </fieldset>
 </template>
 
@@ -118,7 +118,7 @@
                     .then(() => {
                         this.showForm = false;
 
-                        this.$emit('commentSaved');
+                        this.$emit('partSaved');
                     })
                     .catch((error) => {
                         console.error(error);
