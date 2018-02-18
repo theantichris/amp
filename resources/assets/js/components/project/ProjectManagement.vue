@@ -45,6 +45,7 @@
 
                     <div role="tabpanel" class="tab-pane" id="detail">
                         <project-detail :project="project"
+                                        :parts="parts"
                                         :history="history"
                                         :comments="comments"
                                         v-on:partSaved="handlePartSaved"
@@ -73,6 +74,7 @@
                 projects: [],
                 project: {},
                 projectId: '',
+                parts: [],
                 comments: [],
                 history: [],
                 form: {}
@@ -106,6 +108,7 @@
                     .then((response) => {
                         this.project = response.data.data;
 
+                        this.loadParts(id);
                         this.loadComments(id);
                         this.loadHistory(id);
                     })
@@ -150,7 +153,17 @@
             },
 
             handlePartSaved() {
-                console.log('Part saved.');
+                this.loadParts(this.projectId)
+            },
+
+            loadParts(projectId) {
+                axios.get('/api/projects/' + projectId + '/parts')
+                    .then((response) => {
+                        this.parts = response.data.data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             },
 
             loadComments(projectId) {
