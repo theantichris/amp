@@ -75,7 +75,9 @@
 
     export default {
         components: {Comments, Parts},
+
         props: ['project', 'parts', 'comments', 'history'],
+
         methods: {
             handleCommentSaved: function () {
                 this.$emit('commentSaved');

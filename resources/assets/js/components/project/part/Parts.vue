@@ -28,6 +28,21 @@
 
             <div class="row">
                 <div class="form-group col-xs-12 required">
+                    <label for="material" class="control-label">Material</label>
+                    <select id="material"
+                            class="form-control"
+                            v-model="part.material"
+                            required>
+                        <option value="">Material</option>
+                        <option v-for="material in materials" :value="material" :key="material.id">
+                            {{ material.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-xs-12 required">
                     <label for="requirements" class="control-label">Requirements</label>
                     <textarea id="requirements"
                               class="form-control"
@@ -72,8 +87,12 @@
 
             <tbody>
             <tr v-for="part in parts">
-                <td><div class="btn-table-align">{{ part.name }}</div></td>
-                <td><div class="btn-table-align">{{ part.quantity }}</div></td>
+                <td>
+                    <div class="btn-table-align">{{ part.name }}</div>
+                </td>
+                <td>
+                    <div class="btn-table-align">{{ part.quantity }}</div>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -85,6 +104,7 @@
         data: function () {
             return {
                 showForm: false,
+                materials: [],
                 part: {
                     id: '',
                     name: '',
@@ -96,6 +116,10 @@
         },
 
         props: ['projectId', 'parts'],
+
+        mounted() {
+            this.loadMaterials();
+        },
 
         methods: {
             save: function () {
@@ -123,6 +147,16 @@
                     .catch((error) => {
                         console.error(error);
                     })
+            },
+
+            loadMaterials() {
+                axios.get('/api/projects/materials')
+                    .then((response) => {
+                        this.materials = response.data.data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             },
         }
     }
