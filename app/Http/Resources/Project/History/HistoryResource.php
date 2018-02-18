@@ -2,6 +2,8 @@
 
 namespace AMP\Http\Resources\Project\History;
 
+use AMP\Domain\Customer\Customer;
+use AMP\User;
 use Illuminate\Http\Resources\Json\Resource;
 
 class HistoryResource extends Resource
@@ -10,8 +12,13 @@ class HistoryResource extends Resource
     {
         $event = '';
 
-        if ($this->event == 'created') {
-            $event = 'created the project';
+        switch ($this->event) {
+            case 'created':
+                $event = 'created the project';
+                break;
+            case 'updated':
+                $event = $this->processUpdatedFields();
+                break;
         }
 
         return [
@@ -20,5 +27,31 @@ class HistoryResource extends Resource
             'user'       => $this->user,
             'event'      => $event,
         ];
+    }
+
+    private function processUpdatedFields(): string
+    {
+        $events = [];
+        foreach ($this->new_values as $property => $value) {
+            switch ($property) {
+                case 'name':
+                    $events[] = 'updated Name to ' . $value;
+                    break;
+                case 'customer_id':
+                    if ($value) {
+                        $events[] = 'updated Customer to ' . Customer::find($value)->company_name;
+                    } else {
+                        $events[] = 'updated Customer to Internal';
+                    }
+                    break;
+                case 'manager_id':
+                    $events[] = 'updated Manager to ' . User::find($value)->name;
+                    break;
+            }
+        }
+
+        $event = implode(', ', $events);
+
+        return $event;
     }
 }

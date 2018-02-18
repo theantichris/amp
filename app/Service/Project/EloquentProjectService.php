@@ -33,7 +33,7 @@ class EloquentProjectService implements ProjectServiceInterface
         $project = Project::find($id);
         $data    = json_decode($json, true);
 
-        if (array_key_exists('customer', $data)) {
+        if (array_key_exists('customer', $data) && !empty($data['customer'])) {
             $project->customer()->associate(Customer::find($data['customer']['id']));
         } else {
             $project->customer()->dissociate();
