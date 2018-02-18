@@ -6,18 +6,34 @@
             <a v-on:click="showForm = true"><i class="fa fa-plus-circle text-success"></i> </a>
         </legend>
 
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="sortable-table__heading">Name</th>
+                <th class="sortable-table__heading">Quantity</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr v-for="part in parts">
+                <td><div class="btn-table-align">{{ part.name }}</div></td>
+                <td><div class="btn-table-align">{{ part.quantity }}</div></td>
+            </tr>
+            </tbody>
+        </table>
+
         <form v-on:submit.prevent="save" v-show="showForm">
             <div class="row">
-                <div class="form-group col-xs-12 col-md-10">
-                    <label for="name" class="control-label required">Name</label>
+                <div class="form-group col-xs-12 col-md-10 required">
+                    <label for="name" class="control-label">Name</label>
                     <input id="name"
                            class="form-control"
                            v-model="part.name"
                            required>
                 </div>
 
-                <div class="form-group col-xs-12 col-md-2">
-                    <label for="quantity" class="control-label required">Quantity</label>
+                <div class="form-group col-xs-12 col-md-2 required">
+                    <label for="quantity" class="control-label">Quantity</label>
                     <input id="quantity"
                            class="form-control"
                            type="number"
@@ -27,8 +43,8 @@
             </div>
 
             <div class="row">
-                <div class="form-group col-xs-12">
-                    <label for="requirements" class="control-label required">Requirements</label>
+                <div class="form-group col-xs-12 required">
+                    <label for="requirements" class="control-label">Requirements</label>
                     <textarea id="requirements"
                               class="form-control"
                               rows="5"
@@ -38,8 +54,8 @@
             </div>
 
             <div class="row">
-                <div class="form-group col-xs-12">
-                    <label for="description" class="control-label required">Description</label>
+                <div class="form-group col-xs-12 required">
+                    <label for="description" class="control-label">Description</label>
                     <textarea id="description"
                               class="form-control"
                               rows="5"
@@ -79,7 +95,7 @@
             }
         },
 
-        props: ['projectId'],
+        props: ['projectId', 'parts'],
 
         methods: {
             save: function () {

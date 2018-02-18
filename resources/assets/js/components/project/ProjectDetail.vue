@@ -28,6 +28,7 @@
                 </div>
 
                 <parts :project-id="project.id"
+                       :parts="project.parts"
                        v-on:commentSaved="handlePartSaved"/>
 
                 <comments :model="'projects'"

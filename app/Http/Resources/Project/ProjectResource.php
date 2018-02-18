@@ -19,6 +19,7 @@ class ProjectResource extends Resource
             'customer' => $this->customer ? new CustomerResource($this->customer) : 'Internal',
             'name'     => $this->name,
             'manager'  => new UserResource($this->manager),
+            'parts'    => $this->parts,
         ];
     }
 }

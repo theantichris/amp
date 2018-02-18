@@ -57,7 +57,7 @@ class ProjectApiController extends BaseApiController
 
     public function show(int $id): ProjectResource
     {
-        $project = Project::find($id);
+        $project = Project::with('parts')->find($id);
 
         return new ProjectResource($project);
     }
