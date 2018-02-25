@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -10,12 +6,18 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
+  display: table;
   transition: opacity .3s ease;
 }
 
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .modal-container {
-  width: 300px;
-  margin: 40px auto 0;
+  width: 50%;
+  margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
   border-radius: 2px;
@@ -33,25 +35,8 @@
   margin: 20px 0;
 }
 
-.text-right {
-  text-align: right;
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 1em;
-}
-
-.form-label > .form-control {
-  margin-top: 0.5em;
-}
-
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 0.5em 1em;
-  line-height: 1.5;
-  border: 1px solid #ddd;
+.modal-default-button {
+  float: right;
 }
 
 /*
