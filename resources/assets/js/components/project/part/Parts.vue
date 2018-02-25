@@ -83,6 +83,7 @@
                 <th class="sortable-table__heading">Name</th>
                 <th class="sortable-table__heading">Quantity</th>
                 <th class="sortable-table__heading">Material</th>
+                <th></th>
             </tr>
             </thead>
 
@@ -97,17 +98,29 @@
                 <td>
                     <div class="btn-table-align">{{ part.material.name }}</div>
                 </td>
+                <td>
+                    <button type="button" class="btn btn-primary" v-on:click="showModal = true">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                </td>
             </tr>
             </tbody>
         </table>
+
+        <parts-modal :show-modal="showModal" v-on:close="handleClose"/>
     </fieldset>
 </template>
 
 <script>
+    import PartsModal from './PartsModal';
+
     export default {
+        components: {PartsModal},
+
         data: function () {
             return {
                 showForm: false,
+                showModal: false,
                 materials: [],
                 part: {
                     id: '',
@@ -162,6 +175,10 @@
                         console.error(error);
                     });
             },
+
+            handleClose: function () {
+                this.showModal = false;
+            }
         }
     }
 </script>
