@@ -99,7 +99,7 @@
                     <div class="btn-table-align">{{ part.material.name }}</div>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary" v-on:click="showModal = true">
+                    <button type="button" class="btn btn-primary" v-on:click="showDetails(part)">
                         <i class="fa fa-eye"></i>
                     </button>
                 </td>
@@ -107,7 +107,7 @@
             </tbody>
         </table>
 
-        <parts-modal :show-modal="showModal" v-on:close="handleClose"/>
+        <parts-modal :show-modal="showModal" :part="part" v-on:close="handleClose"/>
     </fieldset>
 </template>
 
@@ -176,8 +176,14 @@
                     });
             },
 
+            showDetails: function (part) {
+                this.showModal = true;
+                this.part = part;
+            },
+
             handleClose: function () {
                 this.showModal = false;
+                this.part = {};
             }
         }
     }

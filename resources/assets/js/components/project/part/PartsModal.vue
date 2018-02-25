@@ -6,23 +6,41 @@
                     <div class="modal-container">
 
                         <div class="modal-header">
-                            <slot name="header">
-                                Part Header
-                            </slot>
+                            <h3>{{ part.name }}</h3>
                         </div>
 
                         <div class="modal-body">
-                            <slot name="body">
-                                Part Body
-                            </slot>
+                            <div class="row">
+                                <div class="detail-group col-xs-12 col-md-2">
+                                    <div class="detail-label">Quantity</div>
+                                    <div>{{ part.quantity }}</div>
+                                </div>
+
+                                <div class="detail-group col-xs-12 col-md-10">
+                                    <div class="detail-label">Material</div>
+                                    <div>{{ part.material.name }}</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="detail-group col-xs-12">
+                                    <div class="detail-label">Requirements</div>
+                                    <div>{{ part.requirements }}</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="detail-group col-xs-12">
+                                    <div class="detail-label">Description</div>
+                                    <div>{{ part.description }}</div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
-                            <slot name="footer">
-                                <button class="modal-default-button" v-on:click="$emit('close')">
-                                    OK
-                                </button>
-                            </slot>
+                            <button class="modal-default-button" v-on:click="$emit('close')">
+                                OK
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -37,6 +55,6 @@
             return {}
         },
 
-        props: ['showModal'],
+        props: ['showModal', 'part'],
     }
 </script>
