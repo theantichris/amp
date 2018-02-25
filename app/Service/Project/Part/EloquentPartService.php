@@ -2,6 +2,7 @@
 
 namespace AMP\Service\Project\Part;
 
+use AMP\Domain\Project\Material\Material;
 use AMP\Domain\Project\Part\Part;
 use AMP\Domain\Project\Project;
 
@@ -16,7 +17,12 @@ class EloquentPartService implements PartServiceInterface
         $part->team()->associate($project->team);
         $part->fill($data);
 
-        $project->parts()->save($part);
+        $material = Material::find($data['material']['id']);
+        $part->material()->associate($material);
+
+        $part->project()->associate($project);
+
+        $part->save();
 
         return $part;
     }

@@ -82,6 +82,7 @@
             <tr>
                 <th class="sortable-table__heading">Name</th>
                 <th class="sortable-table__heading">Quantity</th>
+                <th class="sortable-table__heading">Material</th>
             </tr>
             </thead>
 
@@ -92,6 +93,9 @@
                 </td>
                 <td>
                     <div class="btn-table-align">{{ part.quantity }}</div>
+                </td>
+                <td>
+                    <div class="btn-table-align">{{ part.material.name }}</div>
                 </td>
             </tr>
             </tbody>

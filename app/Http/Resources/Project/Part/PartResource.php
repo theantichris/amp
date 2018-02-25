@@ -3,6 +3,7 @@
 namespace AMP\Http\Resources\Project\Part;
 
 use AMP\Domain\Project\Part\Part;
+use AMP\Http\Resources\Project\Material\MaterialResource;
 use Illuminate\Http\Resources\Json\Resource;
 
 class PartResource extends Resource
@@ -17,6 +18,7 @@ class PartResource extends Resource
             'quantity'     => $this->quantity,
             'requirements' => $this->requirements,
             'description'  => $this->description,
+            'material'     => new MaterialResource($this->material),
         ];
     }
 }

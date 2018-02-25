@@ -35,8 +35,7 @@ class CreatePartsTable extends Migration
 
             $table->integer('material_id')
                   ->unsigned()
-                  ->index()
-                  ->nullable();
+                  ->index();
 
             $table->foreign('material_id')
                   ->references('id')
