@@ -33,6 +33,15 @@ class CreatePartsTable extends Migration
                   ->on('teams')
                   ->onDelete('cascade');
 
+            $table->integer('material_id')
+                  ->unsigned()
+                  ->index()
+                  ->nullable();
+
+            $table->foreign('material_id')
+                  ->references('id')
+                  ->on('materials');
+
             $table->softDeletes();
             $table->timestamps();
         });

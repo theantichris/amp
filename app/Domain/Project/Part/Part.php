@@ -7,6 +7,7 @@ use AMP\Domain\Project\Material\Material;
 use AMP\Domain\Project\Project;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Part extends BaseModel
 {

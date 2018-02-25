@@ -7,6 +7,7 @@ use AMP\Domain\Project\Part\Part;
 use AMP\Enum\Density;
 use AMP\Enum\Weight;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use InvalidArgumentException;
 
 class Material extends BaseModel
@@ -66,8 +67,8 @@ class Material extends BaseModel
         return $this;
     }
 
-    public function parts(): BelongsToMany
+    public function parts(): HasMany
     {
-        return $this->belongsToMany(Part::class);
+        return $this->hasMany(Part::class);
     }
 }
