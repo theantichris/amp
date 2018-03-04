@@ -1,10 +1,13 @@
 <?php
 
-namespace Tests\Acceptance\Part;
+namespace Tests\Acceptance\Project\Part;
 
+use AMP\Domain\Project\Material\Material;
 use AMP\Domain\Project\Part\Part;
 use AMP\Domain\Project\Project;
+use AMP\Enum\Density;
 use AMP\Enum\Project\Status;
+use AMP\Enum\Weight;
 use Illuminate\Http\Response;
 use Tests\AcceptanceTest;
 
@@ -12,6 +15,9 @@ class PartTest extends AcceptanceTest
 {
     /** @var string */
     private $url;
+
+    /** @var Material */
+    private $material;
 
     /** @var Part */
     private $part;
@@ -23,12 +29,24 @@ class PartTest extends AcceptanceTest
     {
         parent::setUp();
 
+        factory(Material::class)->create([
+            'name'         => 'Test Material',
+            'cost'         => 25,
+            'weight_unit'  => Weight::POUND,
+            'density'      => 10,
+            'density_unit' => Density::GRAM_PER_CUBIC_CENTIMETER,
+            'team_id'      => $this->team->id,
+        ]);
+
+        $this->material = Material::whereName('Test Material')->first();
+
         factory(Part::class)->create([
             'name'         => 'Test Part',
             'quantity'     => 10,
             'requirements' => 'Just need a few',
             'description'  => 'It does some things',
             'team_id'      => $this->team->id,
+            'material_id'  => $this->material->id,
         ]);
 
         $this->part = Part::whereName('Test Part')->first();
@@ -82,6 +100,15 @@ class PartTest extends AcceptanceTest
             'quantity'     => 10,
             'requirements' => 'Just need a few',
             'description'  => 'It does some things',
+            'material'     => [
+                'id'           => $this->material->id,
+                'name'         => 'Test Material',
+                'cost'         => 25,
+                'weight_unit'  => Weight::POUND,
+                'density'      => 10,
+                'density_unit' => Density::GRAM_PER_CUBIC_CENTIMETER,
+                'team_id'      => $this->team->id,
+            ],
         ];
 
         $this->actingAs($this->user)
