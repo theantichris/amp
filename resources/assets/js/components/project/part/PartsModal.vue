@@ -71,7 +71,7 @@
 
                                 <div class="row" v-for="url in part.urls">
                                     <div class="detail-group col-xs-12">
-                                        {{ url }}
+                                        <a :href="url" target="_blank">{{ url }} <i class="fa fa-external-link"></i></a>
                                     </div>
                                 </div>
                             </fieldset>
