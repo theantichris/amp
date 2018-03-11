@@ -40,7 +40,7 @@
                                 <legend>
                                     Resources
 
-                                    <a v-on:click="showForm = true"><i class="fa fa-plus-circle text-success"></i> </a>
+                                    <a v-on:click="showForm = true; url = ''"><i class="fa fa-plus-circle text-success"></i> </a>
                                 </legend>
 
                                 <form v-on:submit.prevent="save" v-show="showForm">
@@ -105,7 +105,7 @@
                 axios.post('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls', this.url)
                     .then(() => {
                         this.showForm = false;
-                        this.$emit('urlSaved');
+                        this.part.urls.push(this.url);
                     })
                     .catch((error) => {
                         console.error(error);
