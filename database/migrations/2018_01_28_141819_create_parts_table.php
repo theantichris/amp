@@ -15,6 +15,7 @@ class CreatePartsTable extends Migration
             $table->integer('quantity');
             $table->text('requirements')->nullable();
             $table->text('description')->nullable();
+            $table->json('urls')->nullable();
 
             $table->integer('project_id')
                   ->unsigned()

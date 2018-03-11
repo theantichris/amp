@@ -39,7 +39,7 @@
 
                         <div class="modal-footer">
                             <button class="modal-default-button" v-on:click="$emit('close')">
-                                OK
+                                Close
                             </button>
                         </div>
                     </div>

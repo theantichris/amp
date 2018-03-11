@@ -18,6 +18,7 @@ class PartResource extends Resource
             'quantity'     => $this->quantity,
             'requirements' => $this->requirements,
             'description'  => $this->description,
+            'urls'         => $this->urls,
             'material'     => new MaterialResource($this->material),
         ];
     }

@@ -14,6 +14,11 @@ class Part extends BaseModel
         'quantity',
         'requirements',
         'description',
+        'urls',
+    ];
+
+    protected $casts = [
+        'urls' => 'array',
     ];
 
     public function material(): BelongsTo
