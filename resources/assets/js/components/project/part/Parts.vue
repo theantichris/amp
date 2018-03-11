@@ -107,7 +107,8 @@
             </tbody>
         </table>
 
-        <parts-modal :show-modal="showModal" :part="part" v-on:close="handleClose"/>
+        <parts-modal :show-modal="showModal"
+                     :part="part" :project-id="projectId" v-on:close="handleClose"/>
     </fieldset>
 </template>
 

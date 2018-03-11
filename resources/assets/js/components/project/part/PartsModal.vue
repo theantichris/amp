@@ -35,6 +35,46 @@
                                     <div>{{ part.description }}</div>
                                 </div>
                             </div>
+
+                            <fieldset>
+                                <legend>
+                                    Resources
+
+                                    <a v-on:click="showForm = true"><i class="fa fa-plus-circle text-success"></i> </a>
+                                </legend>
+
+                                <form v-on:submit.prevent="save" v-show="showForm">
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 required">
+                                            <label for="name" class="control-label">URL</label>
+                                            <input id="name"
+                                                   type="url"
+                                                   class="form-control"
+                                                   v-model="url"
+                                                   required>
+                                        </div>
+
+                                        <div class="row pull-right">
+                                            <div class="form-group col-xs-12">
+                                                <button type="submit"
+                                                        class="btn-sm btn-primary">Save
+                                                </button>
+
+                                                <button type="button"
+                                                        class="btn-sm btn-danger"
+                                                        v-on:click="cancelForm()">Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div class="row" v-for="url in part.urls">
+                                    <div class="detail-group col-xs-12">
+                                        {{ url }}
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
 
                         <div class="modal-footer">
@@ -52,9 +92,30 @@
 <script>
     export default {
         data: function () {
-            return {}
+            return {
+                showForm: false,
+                url: ''
+            }
         },
 
-        props: ['showModal', 'part'],
+        props: ['showModal', 'part', 'projectId'],
+
+        methods: {
+            save: function () {
+                axios.post('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls', this.url)
+                    .then(() => {
+                        this.showForm = false;
+                        this.$emit('urlSaved');
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            },
+
+            cancelForm: function () {
+                this.showForm = false;
+                this.url = '';
+            }
+        }
     }
 </script>

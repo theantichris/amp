@@ -21,6 +21,25 @@ class Part extends BaseModel
         'urls' => 'array',
     ];
 
+    public function addUrl(string $url): Part
+    {
+        $urls = [];
+
+        if (!$this->urls) {
+            $this->urls = [];
+        }
+
+        foreach ($this->urls as $oldUrl) {
+            $urls[] = $oldUrl;
+        }
+
+        $urls[] = $url;
+
+        $this->urls = $urls;
+
+        return $this;
+    }
+
     public function material(): BelongsTo
     {
         return $this->belongsTo(Material::class);
