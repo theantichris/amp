@@ -49,8 +49,8 @@
                             <input id="density"
                                    name="density"
                                    type="number"
-                                   min="0.01"
-                                   step="0.01"
+                                   min="0.000001"
+                                   step="0.000001"
                                    class="form-control"
                                    v-model="form.density"
                                    required>
@@ -79,63 +79,55 @@
 </template>
 
 <script>
-    export default {
-        components: {},
+  export default {
+    components: {},
 
-        props: ['form'],
+    props: ['form'],
 
-        data() {
-            return {
-                weights: [],
-                densities: []
-            }
-        },
+    data() {
+      return {
+        weights: [],
+        densities: [],
+      };
+    },
 
-        mounted() {
-            this.getWeights();
-            this.getDensities();
-        },
+    mounted() {
+      this.getWeights();
+      this.getDensities();
+    },
 
-        methods: {
-            save() {
-                if (this.form.id) {
-                    axios.put('/api/projects/materials/' + this.form.id, this.form)
-                        .then(() => {
-                            this.$emit('formSaved');
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        });
-                } else {
-                    axios.post('/api/projects/materials', this.form)
-                        .then(() => {
-                            this.$emit('formSaved');
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        });
-                }
-            },
-
-            getWeights() {
-                axios.get('/api/weights')
-                    .then((response) => {
-                        this.weights = response.data.weights;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    });
-            },
-
-            getDensities() {
-                axios.get('/api/densities')
-                    .then((response) => {
-                        this.densities = response.data.densities;
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    });
-            }
+    methods: {
+      save() {
+        if (this.form.id) {
+          axios.put('/api/projects/materials/' + this.form.id, this.form).then(() => {
+            this.$emit('formSaved');
+          }).catch((error) => {
+            console.error(error);
+          });
+        } else {
+          axios.post('/api/projects/materials', this.form).then(() => {
+            this.$emit('formSaved');
+          }).catch((error) => {
+            console.error(error);
+          });
         }
-    }
+      },
+
+      getWeights() {
+        axios.get('/api/weights').then((response) => {
+          this.weights = response.data.weights;
+        }).catch((error) => {
+          console.error(error);
+        });
+      },
+
+      getDensities() {
+        axios.get('/api/densities').then((response) => {
+          this.densities = response.data.densities;
+        }).catch((error) => {
+          console.error(error);
+        });
+      },
+    },
+  };
 </script>
