@@ -40,6 +40,20 @@ class Part extends BaseModel
         return $this;
     }
 
+    public function removeUrl(string $index): Part
+    {
+        $urls = [];
+        foreach ($this->urls as $url) {
+            $urls[] = $url;
+        }
+
+        unset($urls[$index]);
+
+        $this->urls = $urls;
+
+        return $this;
+    }
+
     public function material(): BelongsTo
     {
         return $this->belongsTo(Material::class);

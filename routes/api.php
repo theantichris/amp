@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth:api'], function () {
             Route::put('/{id}', 'Project\Part\PartApiController@update');
 
             Route::post('/{id}/urls', 'Project\Part\Url\UrlApiController@create');
+            Route::delete('/{id}/urls/{index}', 'Project\Part\Url\UrlApiController@delete');
         });
 
         Route::group(['prefix' => '{projectId}/comments'], function () {
