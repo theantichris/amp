@@ -50,8 +50,6 @@ class HistoryResource extends Resource
             }
         }
 
-        $event = implode(', ', $events);
-
-        return $event;
+        return implode(', ', $events);
     }
 }
