@@ -6,9 +6,13 @@ use AMP\Domain\BaseModel;
 use AMP\Domain\Project\Material\Material;
 use AMP\Domain\Project\Project;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use OwenIt\Auditing\Auditable as AuditableTrait;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Part extends BaseModel
+class Part extends BaseModel implements Auditable
 {
+    use AuditableTrait;
+
     protected $fillable = [
         'name',
         'quantity',
