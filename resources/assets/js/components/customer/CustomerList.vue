@@ -10,17 +10,17 @@
                         <table class="table table-striped sortable-table">
                             <thead>
                             <tr>
-                                <th class="sortable-table__heading" v-on:click="sortBy('accountNumber')">Account
-                                    <i class="fa" v-bind:class="sortClass('accountNumber')"></i>
+                                <th class="sortable-table__heading" v-on:click="sortBy('account_number')">Account
+                                    <i class="fa" v-bind:class="sortClass('account_number')"></i>
                                 </th>
-                                <th class="sortable-table__heading" v-on:click="sortBy('companyName')">Company
-                                    <i class="fa" v-bind:class="sortClass('companyName')"></i>
+                                <th class="sortable-table__heading" v-on:click="sortBy('company_name')">Company
+                                    <i class="fa" v-bind:class="sortClass('company_name')"></i>
                                 </th>
-                                <th class="sortable-table__heading" v-on:click="sortBy('contactName')">Contact
-                                    <i class="fa" v-bind:class="sortClass('contactName')"></i>
+                                <th class="sortable-table__heading" v-on:click="sortBy('contact_name')">Contact
+                                    <i class="fa" v-bind:class="sortClass('contact_name')"></i>
                                 </th>
-                                <th class="sortable-table__heading" v-on:click="sortBy('contactEmail')">Email
-                                    <i class="fa" v-bind:class="sortClass('contactEmail')"></i>
+                                <th class="sortable-table__heading" v-on:click="sortBy('contact_email')">Email
+                                    <i class="fa" v-bind:class="sortClass('contact_email')"></i>
                                 </th>
 
                                 <th></th>
@@ -30,16 +30,16 @@
                             <tbody>
                             <tr v-for="item in items">
                                 <td>
-                                    <div class="btn-table-align">{{ item.accountNumber }}</div>
+                                    <div class="btn-table-align">{{ item.account_number }}</div>
                                 </td>
                                 <td>
-                                    <div class="btn-table-align">{{ item.companyName }}</div>
+                                    <div class="btn-table-align">{{ item.company_name }}</div>
                                 </td>
                                 <td>
-                                    <div class="btn-table-align">{{ item.contactName }}</div>
+                                    <div class="btn-table-align">{{ item.contact_name }}</div>
                                 </td>
                                 <td>
-                                    <div class="btn-table-align">{{ item.contactEmail }}</div>
+                                    <div class="btn-table-align">{{ item.contact_email }}</div>
                                 </td>
 
                                 <td>

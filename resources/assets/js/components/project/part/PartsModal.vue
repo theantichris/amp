@@ -1,0 +1,150 @@
+<template>
+    <div v-if="showModal" v-on:close="showModal = false">
+        <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper">
+                    <div class="modal-container">
+
+                        <div class="modal-header">
+                            <h3>{{ part.name }}</h3>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="detail-group col-xs-12 col-md-2">
+                                    <div class="detail-label">Quantity</div>
+                                    <div>{{ part.quantity }}</div>
+                                </div>
+
+                                <div class="detail-group col-xs-12 col-md-10">
+                                    <div class="detail-label">Material</div>
+                                    <div>{{ part.material.name }}</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="detail-group col-xs-12">
+                                    <div class="detail-label">Requirements</div>
+                                    <div>{{ part.requirements }}</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="detail-group col-xs-12">
+                                    <div class="detail-label">Description</div>
+                                    <div>{{ part.description }}</div>
+                                </div>
+                            </div>
+
+                            <fieldset>
+                                <legend>
+                                    Resources
+
+                                    <a v-on:click="showUrlForm()"><i
+                                            class="fa fa-plus-circle text-success"></i> </a>
+                                </legend>
+
+                                <form v-on:submit.prevent="saveUrlForm" v-show="showForm">
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 required">
+                                            <label for="name" class="control-label">URL</label>
+                                            <input id="name"
+                                                   type="url"
+                                                   class="form-control"
+                                                   v-model="url"
+                                                   required>
+                                        </div>
+
+                                        <div class="row pull-right">
+                                            <div class="form-group col-xs-12">
+                                                <button type="submit"
+                                                        class="btn-sm btn-primary">Save
+                                                </button>
+
+                                                <button type="button"
+                                                        class="btn-sm btn-danger"
+                                                        v-on:click="cancelUrlForm()">Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div class="row" v-for="(url, index) in part.urls">
+                                    <div class="detail-group col-xs-12">
+                                        <a :href="url" target="_blank">{{ url }} <i class="fa fa-external-link"></i></a>
+                                        <a href="#" v-on:click="deleteUrl(index)"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- TODO: Pull into component -->
+                            <fieldset>
+                                <legend>History</legend>
+
+                                <div class="row">
+                                    <div class="detail-group col-xs-12">
+                                        <ul class="list-group">
+                                            <li class="list-group-item" v-for="item in partHistory">
+                                                {{ item.user.name }} {{ item.event }} on {{ item.created_at.date |
+                                                datetime }}.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="modal-default-button" v-on:click="$emit('close')">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</template>
+
+<script>
+    export default {
+        data: function () {
+            return {
+                showForm: false,
+                url: '',
+            };
+        },
+
+        props: ['showModal', 'part', 'projectId', 'partHistory'],
+
+        methods: {
+            saveUrlForm: function () {
+                axios.post('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls', this.url).then(() => {
+                    this.showForm = false;
+                    this.part.urls.push(this.url);
+                }).catch((error) => {
+                    console.error(error);
+                });
+            },
+
+            deleteUrl: function (index) {
+                axios.delete('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls/' + index).then(() => {
+                    this.part.urls.splice(index, 1);
+                }).catch((error) => {
+                    console.error(error);
+                });
+            },
+
+            showUrlForm: function () {
+                this.showForm = true;
+                this.url = '';
+            },
+
+            cancelUrlForm: function () {
+                this.showForm = false;
+                this.url = '';
+            },
+        },
+    };
+</script>

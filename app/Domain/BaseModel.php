@@ -38,6 +38,9 @@ class BaseModel extends Model
         return $this->attributes['deleted_at'];
     }
 
+    /**
+     * @return BelongsTo|Team
+     */
     public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class);

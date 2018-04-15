@@ -2,62 +2,60 @@
 
 namespace AMP\Http\Controllers\Customer;
 
+use AMP\Domain\Customer\Customer;
 use AMP\Http\Controllers\BaseApiController;
+use AMP\Http\Resources\Customer\CustomerResource;
 use AMP\Service\Customer\CustomerServiceInterface;
-use AMP\Team;
-use Auth;
+use Illuminate\Contracts\Auth\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Response;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Response;
 
 class CustomerApiController extends BaseApiController
 {
     private $customerService;
 
-    public function __construct(CustomerServiceInterface $customerService)
+    public function __construct(Factory $auth, CustomerServiceInterface $customerService)
     {
         $this->middleware('auth');
+
+        parent::__construct($auth);
 
         $this->customerService = $customerService;
     }
 
-    public function index(): JsonResponse
+    public function index(): ResourceCollection
     {
-        $customers = $this->customerService->getListViewModels($this->getTeam()->getQueueableId());
+        $customers = Customer::whereTeamId($this->getTeam()->getQueueableId())->get();
 
-        return Response::json([
-            'customers' => $customers,
-        ]);
+        return CustomerResource::collection($customers);
     }
 
     public function create(Request $request): JsonResponse
     {
-        $json = $request->getContent();
+        /** @noinspection PhpUndefinedMethodInspection */
+        $customer = $this->customerService->createFromJson(
+            $request->getContent(),
+            $this->auth->user()->currentTeam()
+        );
 
-        /** @var Team $team */
-        $team = Auth::user()->currentTeam();
-
-        $customer = $this->customerService->createFromJson($json, $team);
-
-        return Response::json([], 201, [
+        return new JsonResponse([], Response::HTTP_CREATED, [
             'Location' => '/customers/' . $customer->getId(),
         ]);
     }
 
     public function update(int $id, Request $request): JsonResponse
     {
-        $json = $request->getContent();
-        $this->customerService->updateFromJson($json, $id);
+        $this->customerService->updateFromJson($request->getContent(), $id);
 
-        return Response::json([], 204);
+        return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id): CustomerResource
     {
-        $customer = $this->customerService->getCustomer($id, $this->getTeam()->getQueueableId());
+        $customer = Customer::find($id);
 
-        return new JsonResponse([
-            'customer' => $customer,
-        ]);
+        return new CustomerResource($customer);
     }
 }

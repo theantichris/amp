@@ -8,8 +8,12 @@ Route::group(['prefix' => 'customers'], function () {
     Route::get('', 'Customer\CustomerController@index');
 });
 
-Route::group(['prefix' => 'materials'], function () {
-    Route::get('', 'Material\MaterialController@index');
+Route::group(['prefix' => 'projects'], function () {
+    Route::get('', 'Project\ProjectController@index');
+
+    Route::group(['prefix' => 'materials'], function () {
+        Route::get('', 'Project\Material\MaterialController@index');
+    });
 });
 
 Route::group(['prefix' => 'machine-profiles'], function () {

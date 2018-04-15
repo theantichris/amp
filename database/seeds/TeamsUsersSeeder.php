@@ -22,9 +22,9 @@ class TeamsUsersSeeder extends Seeder
             'remember_token' => str_random(10),
         ]);
 
-        $matt = User::create([
-            'name'           => 'Matt Serkland',
-            'email'          => 'mattserkland@additerra.com',
+        $bill = User::create([
+            'name'           => 'Bill Sames',
+            'email'          => 'bill@@additerra.com',
             'password'       => bcrypt('secret'),
             'remember_token' => str_random(10),
         ]);
@@ -36,6 +36,6 @@ class TeamsUsersSeeder extends Seeder
 
         $additerra->users()->attach($christopher, ['role' => 'owner']);
         $additerra->users()->attach($will, ['role' => 'member']);
-        $additerra->users()->attach($matt, ['role' => 'member']);
+        $additerra->users()->attach($bill, ['role' => 'member']);
     }
 }

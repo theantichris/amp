@@ -83,7 +83,7 @@
 
                 axios.get('/api/customers')
                     .then((response) => {
-                        this.customers = response.data.customers;
+                        this.customers = response.data.data;
                     })
                     .catch((error) => {
                         console.error(error);
@@ -94,7 +94,7 @@
                 if (id)
                     axios.get('/api/customers/' + id)
                         .then((response) => {
-                            this.customer = response.data.customer;
+                            this.customer = response.data.data;
                         })
                         .catch((error) => {
                             console.error(error);
