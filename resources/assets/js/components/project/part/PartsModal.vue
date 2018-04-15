@@ -40,12 +40,11 @@
                                 <legend>
                                     Resources
 
-
-                                    <a v-on:click="showForm = true url = ''"><i
+                                    <a v-on:click="showUrlForm()"><i
                                             class="fa fa-plus-circle text-success"></i> </a>
                                 </legend>
 
-                                <form v-on:submit.prevent="save" v-show="showForm">
+                                <form v-on:submit.prevent="saveUrlForm" v-show="showForm">
                                     <div class="row">
                                         <div class="form-group col-xs-12 required">
                                             <label for="name" class="control-label">URL</label>
@@ -64,7 +63,7 @@
 
                                                 <button type="button"
                                                         class="btn-sm btn-danger"
-                                                        v-on:click="cancelForm()">Cancel
+                                                        v-on:click="cancelUrlForm()">Cancel
                                                 </button>
                                             </div>
                                         </div>
@@ -75,6 +74,22 @@
                                     <div class="detail-group col-xs-12">
                                         <a :href="url" target="_blank">{{ url }} <i class="fa fa-external-link"></i></a>
                                         <a href="#" v-on:click="deleteUrl(index)"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- TODO: Pull into component -->
+                            <fieldset>
+                                <legend>History</legend>
+
+                                <div class="row">
+                                    <div class="detail-group col-xs-12">
+                                        <ul class="list-group">
+                                            <li class="list-group-item" v-for="item in partHistory">
+                                                {{ item.user.name }} {{ item.event }} on {{ item.created_at.date |
+                                                datetime }}.
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </fieldset>
@@ -94,38 +109,39 @@
 
 <script>
     export default {
-        data: function() {
+        data: function () {
             return {
                 showForm: false,
                 url: '',
             };
         },
 
-        props: ['showModal', 'part', 'projectId'],
+        props: ['showModal', 'part', 'projectId', 'partHistory'],
 
         methods: {
-            save: function() {
-                axios.post('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls', this.url).
-                    then(() => {
-                        this.showForm = false;
-                        this.part.urls.push(this.url);
-                    }).
-                    catch((error) => {
-                        console.error(error);
-                    });
+            saveUrlForm: function () {
+                axios.post('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls', this.url).then(() => {
+                    this.showForm = false;
+                    this.part.urls.push(this.url);
+                }).catch((error) => {
+                    console.error(error);
+                });
             },
 
-            deleteUrl: function(index) {
-                axios.delete('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls/' + index).
-                    then(() => {
-                        this.part.urls.splice(index, 1);
-                    }).
-                    catch((error) => {
-                        console.error(error);
-                    });
+            deleteUrl: function (index) {
+                axios.delete('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls/' + index).then(() => {
+                    this.part.urls.splice(index, 1);
+                }).catch((error) => {
+                    console.error(error);
+                });
             },
 
-            cancelForm: function() {
+            showUrlForm: function () {
+                this.showForm = true;
+                this.url = '';
+            },
+
+            cancelUrlForm: function () {
                 this.showForm = false;
                 this.url = '';
             },

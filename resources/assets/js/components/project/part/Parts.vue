@@ -108,7 +108,10 @@
         </table>
 
         <parts-modal :show-modal="showModal"
-                     :part="part" :project-id="projectId" v-on:close="handleClose"/>
+                     :part="part"
+                     :project-id="projectId"
+                     :part-history="partHistory"
+                     v-on:close="handleClose"/>
     </fieldset>
 </template>
 
@@ -129,7 +132,8 @@
                     quantity: '',
                     requirements: '',
                     description: '',
-                }
+                },
+                partHistory: {}
             }
         },
 
@@ -180,6 +184,14 @@
             showDetails: function (part) {
                 this.showModal = true;
                 this.part = part;
+
+                axios.get('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/history')
+                    .then((response) => {
+                        this.partHistory = response.data.data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             },
 
             handleClose: function () {

@@ -32,6 +32,13 @@ Route::group(['middleware' => 'auth:api'], function () {
 
             Route::post('/{id}/urls', 'Project\Part\Url\UrlApiController@create');
             Route::delete('/{id}/urls/{index}', 'Project\Part\Url\UrlApiController@delete');
+
+            Route::group(
+                ['prefix' => '{partId}/history'],
+                function () {
+                    Route::get('', 'Project\Part\History\HistoryApiController@index');
+                }
+            );
         });
 
         Route::group(['prefix' => '{projectId}/comments'], function () {
