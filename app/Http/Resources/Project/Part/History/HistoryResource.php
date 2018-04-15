@@ -2,8 +2,6 @@
 
 namespace AMP\Http\Resources\Project\Part\History;
 
-use AMP\Domain\Customer\Customer;
-use AMP\User;
 use Illuminate\Http\Resources\Json\Resource;
 
 class HistoryResource extends Resource
@@ -37,15 +35,14 @@ class HistoryResource extends Resource
                 case 'name':
                     $events[] = 'updated Name to ' . $value;
                     break;
-                case 'customer_id':
-                    if ($value) {
-                        $events[] = 'updated Customer to ' . Customer::find($value)->company_name;
-                    } else {
-                        $events[] = 'updated Customer to Internal';
-                    }
+                case 'quantity':
+                    $events[] = 'updated Quantity to ' . $value;
                     break;
-                case 'manager_id':
-                    $events[] = 'updated Manager to ' . User::find($value)->name;
+                case 'requirements':
+                    $events[] = 'updated Requirements to ' . $value;
+                    break;
+                case 'description':
+                    $events[] = 'updated Description to ' . $value;
                     break;
             }
         }
