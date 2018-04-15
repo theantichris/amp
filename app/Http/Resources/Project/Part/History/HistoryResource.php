@@ -2,6 +2,7 @@
 
 namespace AMP\Http\Resources\Project\Part\History;
 
+use AMP\Domain\Project\Material\Material;
 use Illuminate\Http\Resources\Json\Resource;
 
 class HistoryResource extends Resource
@@ -44,6 +45,8 @@ class HistoryResource extends Resource
                 case 'description':
                     $events[] = 'updated Description to ' . $value;
                     break;
+                case 'material':
+                    $events[] = 'updated Material to ' . Material::find($value)->name;
             }
         }
 
