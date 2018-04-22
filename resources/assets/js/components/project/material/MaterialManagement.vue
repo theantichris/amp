@@ -44,7 +44,9 @@
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="detail">
-                        <material-detail :material="material" />
+                        <material-detail :material="material"
+                                         v-on:materialDeleted="handleMaterialDeleted"
+                                         v-on:materialRestored="handleMaterialRestored"/>
                     </div>
                 </div>
             </div>
@@ -133,6 +135,14 @@
                 setInterval(() => {
                     this.form.successful = false;
                 }, 10000);
+            },
+
+            handleMaterialDeleted() {
+                this.loadMaterial(this.material.id);
+            },
+
+            handleMaterialRestored() {
+                this.loadMaterial(this.material.id);
             }
         }
     }

@@ -18,6 +18,7 @@ class MaterialResource extends Resource
             'weight_unit'  => $this->weight_unit,
             'density'      => $this->density,
             'density_unit' => $this->density_unit,
+            'deleted_at'   => $this->deleted_at,
         ];
     }
 }

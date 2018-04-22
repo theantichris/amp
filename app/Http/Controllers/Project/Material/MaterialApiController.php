@@ -40,9 +40,11 @@ class MaterialApiController extends BaseApiController
             $this->auth->user()->currentTeam()
         );
 
-        return new JsonResponse([], 201, [
+        return new JsonResponse(
+            [], 201, [
             'Location' => '/projects/materials' . $material->getId(),
-        ]);
+              ]
+        );
     }
 
     public function update(int $id, Request $request): JsonResponse
@@ -57,8 +59,22 @@ class MaterialApiController extends BaseApiController
 
     public function show(int $id): MaterialResource
     {
-        $material = Material::find($id);
+        $material = Material::withTrashed()->find($id);
 
         return new MaterialResource($material);
+    }
+
+    public function delete(int $id): JsonResponse
+    {
+        $this->materialService->delete($id);
+
+        return new JsonResponse([], Response::HTTP_NO_CONTENT);
+    }
+
+    public function restore(int $id): JsonResponse
+    {
+        $this->materialService->restore($id);
+
+        return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
 }

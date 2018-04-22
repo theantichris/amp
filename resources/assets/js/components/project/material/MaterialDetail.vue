@@ -39,6 +39,22 @@
                            v-on:click="$parent.initForm(true)">
                             <i class="fa fa-edit"></i> Edit
                         </a>
+
+                        <button v-if="!material.deleted_at"
+                                type="button"
+                                class="btn btn-danger"
+                                title="Delete"
+                                v-on:click="deleteMaterial()">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+
+                        <button v-if="material.deleted_at"
+                                type="button"
+                                class="btn btn-success"
+                                title="Restore"
+                                v-on:click="restoreMaterial()">
+                            <i class="fa fa-plus"></i> Restore
+                        </button>
                     </div>
                 </div>
             </div>
@@ -49,5 +65,22 @@
 <script>
     export default {
         props: ['material'],
+        methods: {
+            deleteMaterial() {
+                axios.delete('/api/projects/materials/' + this.material.id).then(() => {
+                    this.$emit('materialDeleted');
+                }).catch((error) => {
+                    console.error(error);
+                });
+            },
+
+            restoreMaterial() {
+                axios.put('/api/deleted/projects/materials/' + this.material.id).then(() => {
+                    this.$emit('materialRestored');
+                }).catch((error) => {
+                    console.error(error);
+                });
+            }
+        }
     }
 </script>

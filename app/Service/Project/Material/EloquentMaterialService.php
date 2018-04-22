@@ -26,4 +26,21 @@ class EloquentMaterialService implements MaterialServiceInterface
 
         return $material;
     }
+
+    public function delete(int $id): Material
+    {
+        $material = Material::find($id);
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $material->delete();
+
+        return $material;
+    }
+
+    public function restore(int $id): Material
+    {
+        $material = Material::withTrashed()->find($id);
+        $material->restore();
+
+        return $material;
+    }
 }
