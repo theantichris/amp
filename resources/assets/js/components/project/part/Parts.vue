@@ -33,7 +33,6 @@
                             class="form-control"
                             v-model="part.material"
                             required>
-                        <option value="">Material</option>
                         <option v-for="material in materials" :value="material" :key="material.id">
                             {{ material.name }}
                         </option>
