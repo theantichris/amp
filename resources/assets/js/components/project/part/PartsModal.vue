@@ -122,6 +122,10 @@
             saveUrlForm: function () {
                 axios.post('/api/projects/' + this.projectId + '/parts/' + this.part.id + '/urls', this.url).then(() => {
                     this.showForm = false;
+
+                    if (!this.part.urls)
+                        this.part.urls = [];
+
                     this.part.urls.push(this.url);
                 }).catch((error) => {
                     console.error(error);
