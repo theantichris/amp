@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\Resource;
 
 class HistoryResource extends Resource
 {
-    public function toArray($request)
+    public function toArray($request): array
     {
         $event = '';
 
@@ -47,6 +47,10 @@ class HistoryResource extends Resource
                     break;
                 case 'material':
                     $events[] = 'updated Material to ' . Material::find($value)->name;
+                    break;
+                case 'urls':
+                    $events[] = 'updated the Resources';
+                    break;
             }
         }
 
