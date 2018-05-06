@@ -103,6 +103,14 @@
                         </button>
 
                         <button type="button"
+                                class="btn btn-success"
+                                title="Quote Accepted"
+                                v-show="project.status === 'Quote Sent'"
+                                v-on:click="changeProjectStatus('Quote Accepted')">
+                            <i class="fa fa-arrow-circle-right"></i> Quote Accepted
+                        </button>
+
+                        <button type="button"
                                 class="btn btn-danger"
                                 title="Quote Rejected"
                                 v-show="project.status === 'Quote Sent'"
