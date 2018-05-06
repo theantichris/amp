@@ -22,6 +22,11 @@ class Project extends BaseModel implements Auditable
         'name',
         'production_cost',
         'sales_price',
+        'production_due_date',
+        'post_production_due_date',
+        'quality_control_due_date',
+        'shipped_due_date',
+        'delivered_due_date',
     ];
 
     public function customer(): BelongsTo
