@@ -81,7 +81,7 @@
                            data-toggle="tab"
                            class="btn btn-success"
                            title="Ready To Quote"
-                           v-show="project.status === 'New' && parts.length > 0"
+                           v-show="(project.status === 'New' || project.status === 'Quote Rejected') && parts.length > 0"
                            v-on:click="$parent.initForm(true, 'Ready To Quote')">
                             <i class="fa fa-arrow-circle-right"></i> Ready To Quote
                         </a>
