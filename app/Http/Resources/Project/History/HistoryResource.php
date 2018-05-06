@@ -31,11 +31,19 @@ class HistoryResource extends Resource
 
     private function processUpdatedFields(): string
     {
+        setlocale(LC_MONETARY, 'en_US.UTF-8');
+
         $events = [];
         foreach ($this->new_values as $property => $value) {
             switch ($property) {
                 case 'name':
                     $events[] = 'updated Name to ' . $value;
+                    break;
+                case 'production_cost':
+                    $events[] = 'updated Production Cost to ' . money_format('%.2n', $value);
+                    break;
+                case 'sales_price':
+                    $events[] = 'updated Sales Price to ' . money_format('%.2n', $value);
                     break;
                 case 'customer_id':
                     if ($value) {
