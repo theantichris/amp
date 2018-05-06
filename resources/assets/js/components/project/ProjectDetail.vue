@@ -85,6 +85,14 @@
                            v-on:click="$parent.initForm(true, 'Ready To Quote')">
                             <i class="fa fa-arrow-circle-right"></i> Ready To Quote
                         </a>
+
+                        <button type="button"
+                                class="btn btn-success"
+                                title="Quote Generated"
+                                v-show="project.status === 'Ready To Quote'"
+                                v-on:click="changeProjectStatus('Quote Generated')">
+                            <i class="fa fa-arrow-circle-right"></i> Quote Generated
+                        </button>
                     </div>
                 </div>
             </div>
@@ -108,6 +116,16 @@
 
             handlePartSaved: function () {
                 this.$emit('partSaved');
+            },
+
+            changeProjectStatus: function (newStatus) {
+                this.project.status = newStatus;
+                axios.put('/api/projects/' + this.project.id, this.project)
+                    .then(() => {
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             }
         }
     }
