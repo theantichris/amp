@@ -20,6 +20,8 @@ class Project extends BaseModel implements Auditable
     protected $fillable = [
         'status',
         'name',
+        'production_cost',
+        'sales_price',
     ];
 
     public function customer(): BelongsTo

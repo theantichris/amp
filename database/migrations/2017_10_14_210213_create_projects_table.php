@@ -8,60 +8,65 @@ class CreateProjectsTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('projects',
+            function (Blueprint $table) {
+                $table->increments('id');
+                $table->timestamps();
+                $table->softDeletes();
 
-            $table->string('name');
+                $table->string('name');
 
-            $table->enum('status', [
-                'New',
-                'Ready To Quote',
-                'Quote Generated',
-                'Quote Sent',
-                'Quote Accepted',
-                'Quote Rejected',
-                'Pre-Production',
-                'Production',
-                'Post-Production',
-                'Quality Control',
-                'Shipping',
-                'Shipped',
-                'Delivered',
-                'Invoiced',
-                'Paid',
-                'Complete',
-            ]);
+                $table->enum('status',
+                    [
+                        'New',
+                        'Ready To Quote',
+                        'Quote Generated',
+                        'Quote Sent',
+                        'Quote Accepted',
+                        'Quote Rejected',
+                        'Pre-Production',
+                        'Production',
+                        'Post-Production',
+                        'Quality Control',
+                        'Shipping',
+                        'Shipped',
+                        'Delivered',
+                        'Invoiced',
+                        'Paid',
+                        'Complete',
+                    ]);
 
-            $table->integer('customer_id')
-                  ->unsigned()
-                  ->index()
-                  ->nullable();
+                $table->float('production_cost')->nullable();
+                $table->float('sales_price')->nullable();
 
-            $table->foreign('customer_id')
-                  ->references('id')
-                  ->on('customers')
-                  ->onDelete('cascade');
+                $table->integer('customer_id')
+                      ->unsigned()
+                      ->index()
+                      ->nullable();
 
-            $table->integer('manager_id')
-                  ->unsigned()
-                  ->index()
-                  ->nullable();
+                $table->foreign('customer_id')
+                      ->references('id')
+                      ->on('customers')
+                      ->onDelete('cascade');
 
-            $table->foreign('manager_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
+                $table->integer('manager_id')
+                      ->unsigned()
+                      ->index()
+                      ->nullable();
 
-            $table->integer('team_id')
-                  ->unsigned();
+                $table->foreign('manager_id')
+                      ->references('id')
+                      ->on('users')
+                      ->onDelete('cascade');
 
-            $table->foreign('team_id')
-                  ->references('id')
-                  ->on('teams')
-                  ->onDelete('cascade');
-        });
+                $table->integer('team_id')
+                      ->unsigned();
+
+                $table->foreign('team_id')
+                      ->references('id')
+                      ->on('teams')
+                      ->onDelete('cascade');
+            });
     }
 
     public function down(): void
