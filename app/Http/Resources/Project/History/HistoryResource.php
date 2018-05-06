@@ -36,6 +36,9 @@ class HistoryResource extends Resource
         $events = [];
         foreach ($this->new_values as $property => $value) {
             switch ($property) {
+                case 'status':
+                    $events[] = 'moved the status to ' . $value;
+                    break;
                 case 'name':
                     $events[] = 'updated Name to ' . $value;
                     break;
