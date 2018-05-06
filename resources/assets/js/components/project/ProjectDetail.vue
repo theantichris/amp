@@ -93,6 +93,14 @@
                                 v-on:click="changeProjectStatus('Quote Generated')">
                             <i class="fa fa-arrow-circle-right"></i> Quote Generated
                         </button>
+
+                        <button type="button"
+                                class="btn btn-success"
+                                title="Quote Sent"
+                                v-show="project.status === 'Quote Generated'"
+                                v-on:click="changeProjectStatus('Quote Sent')">
+                            <i class="fa fa-arrow-circle-right"></i> Quote Sent
+                        </button>
                     </div>
                 </div>
             </div>
