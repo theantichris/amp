@@ -34,7 +34,9 @@ class EloquentProjectService implements ProjectServiceInterface
         $data    = json_decode($json, true);
 
         if (array_key_exists('customer', $data) && !empty($data['customer'])) {
-            $project->customer()->associate(Customer::find($data['customer']['id']));
+            if ($data['customer'] !== 'Internal') {
+                $project->customer()->associate(Customer::find($data['customer']['id']));
+            }
         } else {
             $project->customer()->dissociate();
         }

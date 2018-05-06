@@ -117,7 +117,7 @@
                     });
             },
 
-            initForm(editProject) {
+            initForm(editProject, newStatus) {
                 if (editProject && this.project) {
                     let project = this.project;
                     this.project = {};
@@ -127,14 +127,21 @@
                         name: project.name,
                         status: project.status,
                         customer: project.customer,
-                        manager: project.manager
+                        manager: project.manager,
+                        production_cost: project.production_cost,
+                        sales_price: project.sales_price
                     });
+
+                    if (newStatus)
+                        this.form.status = newStatus;
                 } else {
                     this.form = new SparkForm({
                         name: '',
                         status: 'New',
                         customer: '',
-                        manager: ''
+                        manager: '',
+                        production_cost: null,
+                        sales_price: null
                     });
                 }
             },

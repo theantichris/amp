@@ -27,6 +27,18 @@
                     </div>
                 </div>
 
+                <div class="row" v-show="project.status !== 'New'">
+                    <div class="detail-group col-xs-12 col-md-6">
+                        <div class="detail-label">Production Cost</div>
+                        <div>{{ project.production_cost | currency }}</div>
+                    </div>
+
+                    <div class="detail-group col-xs-12 col-md-6">
+                        <div class="detail-label">Production Cost</div>
+                        <div>{{ project.sales_price | currency }}</div>
+                    </div>
+                </div>
+
                 <parts :project-id="project.id"
                        :parts="parts"
                        v-on:partSaved="handlePartSaved"/>
@@ -59,8 +71,19 @@
                            data-toggle="tab"
                            class="btn btn-primary"
                            title="Edit"
-                           v-on:click="$parent.initForm(true)">
+                           v-on:click="$parent.initForm(true, null)">
                             <i class="fa fa-edit"></i> Edit
+                        </a>
+
+                        <a href="#form"
+                           aria-controls="form"
+                           role="tab"
+                           data-toggle="tab"
+                           class="btn btn-success"
+                           title="Ready To Quote"
+                           v-show="project.status === 'New' && parts.length > 0"
+                           v-on:click="$parent.initForm(true, 'Ready To Quote')">
+                            <i class="fa fa-arrow-circle-right"></i> Ready To Quote
                         </a>
                     </div>
                 </div>

@@ -33,6 +33,36 @@
                         </div>
                     </div>
 
+                    <div class="row" v-show="form.status !== 'New'">
+                        <div class="form-group col-xs-12 col-md-6 required">
+                            <label for="productionCost" class="control-label">Production Cost</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input id="productionCost"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="1"
+                                       v-model="form.production_cost"
+                                       v-bind:required="form.status !== 'New'">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-xs-12 col-md-6 required">
+                            <label for="salesPrice" class="control-label">Production Cost</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input id="salesPrice"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="1"
+                                       v-model="form.sales_price"
+                                       v-bind:required="form.status !== 'New'">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="form-group col-xs-12 required">
                             <label for="name" class="control-label">Name</label>
