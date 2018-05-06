@@ -6,20 +6,20 @@ use theantichris\enum\Enum;
 
 class Status extends Enum
 {
-    const NEW_PROJECT     = 'New';
-    const READY_TO_QUOTE  = 'Ready To Quote';
-    const QUOTE_GENERATED = 'Quote Generated';
-    const QUOTE_SENT      = 'Quote Sent';
-    const QUOTE_ACCEPTED  = 'Quote Accepted';
-    const QUOTE_REJECTED  = 'Quote Rejected';
-    const PRE_PRODUCTION  = 'Pre-Production';
-    const PRODUCTION      = 'Production';
-    const POST_PRODUCTION = 'Post-Production';
-    const QUALITY_CONTROL = 'Quality Control';
-    const SHIPPING        = 'Shipping';
-    const SHIPPED         = 'Shipped';
-    const DELIVERED       = 'Delivered';
-    const INVOICED        = 'Invoiced';
-    const PAID            = 'Paid';
-    const COMPLETE        = 'Complete';
+    public const NEW_PROJECT     = 'New';
+    public const READY_TO_QUOTE  = 'Ready To Quote';
+    public const QUOTE_GENERATED = 'Quote Generated';
+    public const QUOTE_SENT      = 'Quote Sent';
+    public const QUOTE_ACCEPTED  = 'Quote Accepted';
+    public const QUOTE_REJECTED  = 'Quote Rejected';
+    public const PRE_PRODUCTION  = 'Pre-Production';
+    public const PRODUCTION      = 'Production';
+    public const POST_PRODUCTION = 'Post-Production';
+    public const QUALITY_CONTROL = 'Quality Control';
+    public const SHIPPING        = 'Shipping';
+    public const SHIPPED         = 'Shipped';
+    public const DELIVERED       = 'Delivered';
+    public const INVOICED        = 'Invoiced';
+    public const PAID            = 'Paid';
+    public const COMPLETE        = 'Complete';
 }
