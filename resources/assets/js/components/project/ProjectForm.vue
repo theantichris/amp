@@ -145,7 +145,8 @@
             requiresDates: function () {
                 let statuses = [
                     'Pre-Production',
-                    'Production'
+                    'Production',
+                    'Post-Production'
                 ];
 
                 return statuses.indexOf(this.form.status) !== -1;
