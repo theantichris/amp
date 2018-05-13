@@ -146,7 +146,8 @@
                 let statuses = [
                     'Pre-Production',
                     'Production',
-                    'Post-Production'
+                    'Post-Production',
+                    'Quality Control'
                 ];
 
                 return statuses.indexOf(this.form.status) !== -1;
