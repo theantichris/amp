@@ -42,29 +42,29 @@
                 <div class="row">
                     <div class="detail-group col-xs-12 col-md-4" v-show="project.production_due_date">
                         <div class="detail-label">Production Due Date</div>
-                        <div>{{ project.production_due_date | date}}</div>
+                        <div>{{ project.production_due_date | date }}</div>
                     </div>
 
                     <div class="detail-group col-xs-12 col-md-4" v-show="project.post_production_due_date">
                         <div class="detail-label">Post-Production Due Date</div>
-                        <div>{{ project.post_production_due_date | date}}</div>
+                        <div>{{ project.post_production_due_date | date }}</div>
                     </div>
 
                     <div class="detail-group col-xs-12 col-md-4" v-show="project.quality_control_due_date">
                         <div class="detail-label">Quality Control Due Date</div>
-                        <div>{{ project.quality_control_due_date | date}}</div>
+                        <div>{{ project.quality_control_due_date | date }}</div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="detail-group col-xs-12 col-md-4" v-show="project.shipped_due_date">
                         <div class="detail-label">Shipped Due Date</div>
-                        <div>{{ project.shipped_due_date | date}}</div>
+                        <div>{{ project.shipped_due_date | date }}</div>
                     </div>
 
                     <div class="detail-group col-xs-12 col-md-4" v-show="project.delivered_due_date">
                         <div class="detail-label">Delivered Due Date</div>
-                        <div>{{ project.delivered_due_date | date}}</div>
+                        <div>{{ project.delivered_due_date | date }}</div>
                     </div>
                 </div>
 

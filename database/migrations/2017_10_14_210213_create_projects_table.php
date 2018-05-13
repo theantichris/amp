@@ -38,6 +38,7 @@ class CreateProjectsTable extends Migration
 
                 $table->float('production_cost')->nullable();
                 $table->float('sales_price')->nullable();
+
                 $table->date('production_due_date')->nullable();
                 $table->date('post_production_due_date')->nullable();
                 $table->date('quality_control_due_date')->nullable();
