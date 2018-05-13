@@ -143,7 +143,12 @@
 
         computed: {
             requiresDates: function () {
-                return this.form.status === 'Pre-Production';
+                let statuses = [
+                    'Pre-Production',
+                    'Production'
+                ];
+
+                return statuses.indexOf(this.form.status) !== -1;
             }
         },
 

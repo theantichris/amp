@@ -157,6 +157,14 @@
                            v-on:click="$parent.initForm(true, 'Pre-Production')">
                             <i class="fa fa-arrow-circle-right"></i> Pre-Production
                         </a>
+
+                        <button type="button"
+                                class="btn btn-success"
+                                title="Production"
+                                v-show="project.status === 'Pre-Production'"
+                                v-on:click="changeProjectStatus('Production')">
+                            <i class="fa fa-arrow-circle-right"></i> Production
+                        </button>
                     </div>
                 </div>
             </div>
