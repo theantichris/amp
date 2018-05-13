@@ -39,11 +39,11 @@ class CreateProjectsTable extends Migration
                 $table->float('production_cost')->nullable();
                 $table->float('sales_price')->nullable();
 
-                $table->date('production_due_date')->nullable();
-                $table->date('post_production_due_date')->nullable();
-                $table->date('quality_control_due_date')->nullable();
-                $table->date('shipped_due_date')->nullable();
-                $table->date('delivered_due_date')->nullable();
+                $table->timestamp('production_due_date')->nullable();
+                $table->timestamp('post_production_due_date')->nullable();
+                $table->timestamp('quality_control_due_date')->nullable();
+                $table->timestamp('shipped_due_date')->nullable();
+                $table->timestamp('delivered_due_date')->nullable();
 
                 $table->integer('customer_id')
                       ->unsigned()
