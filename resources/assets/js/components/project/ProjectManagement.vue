@@ -129,7 +129,12 @@
                         customer: project.customer,
                         manager: project.manager,
                         production_cost: project.production_cost,
-                        sales_price: project.sales_price
+                        sales_price: project.sales_price,
+                        production_due_date: project.production_due_date,
+                        post_production_due_date: project.post_production_due_date,
+                        quality_control_due_date: project.quality_control_due_date,
+                        shipped_due_date: project.shipped_due_date,
+                        delivered_due_date: project.delivered_due_date,
                     });
 
                     if (newStatus)
@@ -141,7 +146,12 @@
                         customer: '',
                         manager: '',
                         production_cost: null,
-                        sales_price: null
+                        sales_price: null,
+                        production_due_date: null,
+                        post_production_due_date: null,
+                        quality_control_due_date: null,
+                        shipped_due_date: null,
+                        delivered_due_date: null,
                     });
                 }
             },

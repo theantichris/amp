@@ -2,7 +2,8 @@
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Add Project
+                <span v-show="form.id">Edit Project</span>
+                <span v-show="!form.id">Add Project</span>
             </div>
 
             <div class="panel-body">
@@ -30,6 +31,13 @@
                                     {{ user.name }}
                                 </option>
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-12 required">
+                            <label for="name" class="control-label">Name</label>
+                            <input id="name" name="name" type="text" class="form-control" v-model="form.name" required>
                         </div>
                     </div>
 
@@ -63,10 +71,52 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-xs-12 required">
-                            <label for="name" class="control-label">Name</label>
-                            <input id="name" name="name" type="text" class="form-control" v-model="form.name" required>
+                    <div class="row" v-show="requiresDates">
+                        <div class="form-group col-xs-12 col-md-4 required">
+                            <div class="control-label">Production Due Date</div>
+                            <date-picker name="production_due_date"
+                                         placeholder="Select Date"
+                                         input-class="form-control"
+                                         :required="requiresDates"
+                                         v-model="form.production_due_date"></date-picker>
+                        </div>
+
+                        <div class="form-group col-xs-12 col-md-4 required">
+                            <div class="control-label">Post-Production Due Date</div>
+                            <date-picker name="post_production_due_date"
+                                         placeholder="Select Date"
+                                         input-class="form-control"
+                                         :required="requiresDates"
+                                         v-model="form.post_production_due_date"></date-picker>
+                        </div>
+
+                        <div class="form-group col-xs-12 col-md-4 required">
+                            <div class="control-label">Quality Control Due Date</div>
+                            <date-picker name="quality_control_due_date"
+                                         placeholder="Select Date"
+                                         input-class="form-control"
+                                         :required="requiresDates"
+                                         v-model="form.quality_control_due_date"></date-picker>
+                        </div>
+                    </div>
+
+                    <div class="row" v-show="requiresDates">
+                        <div class="form-group col-xs-12 col-md-4 required">
+                            <div class="control-label">Shipped Due Date</div>
+                            <date-picker name="shipped_due_date"
+                                         placeholder="Select Date"
+                                         input-class="form-control"
+                                         :required="requiresDates"
+                                         v-model="form.shipped_due_date"></date-picker>
+                        </div>
+
+                        <div class="form-group col-xs-12 col-md-4 required">
+                            <div class="control-label">Delivered Due Date</div>
+                            <date-picker name="post_production_due_date"
+                                         placeholder="Select Date"
+                                         input-class="form-control"
+                                         :required="requiresDates"
+                                         v-model="form.delivered_due_date"></date-picker>
                         </div>
                     </div>
 
@@ -84,10 +134,18 @@
 </template>
 
 <script>
+    import DatePicker from 'vuejs-datepicker';
+
     export default {
-        components: {},
+        components: {DatePicker},
 
         props: ['form'],
+
+        computed: {
+            requiresDates: function () {
+                return this.form.status === 'Pre-Production';
+            }
+        },
 
         data() {
             return {

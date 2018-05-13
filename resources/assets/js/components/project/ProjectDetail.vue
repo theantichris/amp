@@ -27,15 +27,44 @@
                     </div>
                 </div>
 
-                <div class="row" v-show="project.status !== 'New'">
-                    <div class="detail-group col-xs-12 col-md-6">
+                <div class="row">
+                    <div class="detail-group col-xs-12 col-md-6" v-show="project.production_cost">
                         <div class="detail-label">Production Cost</div>
                         <div>{{ project.production_cost | currency }}</div>
                     </div>
 
-                    <div class="detail-group col-xs-12 col-md-6">
-                        <div class="detail-label">Production Cost</div>
+                    <div class="detail-group col-xs-12 col-md-6" v-show="project.sales_price">
+                        <div class="detail-label">Sales Price</div>
                         <div>{{ project.sales_price | currency }}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="detail-group col-xs-12 col-md-4" v-show="project.production_due_date">
+                        <div class="detail-label">Production Due Date</div>
+                        <div>{{ project.production_due_date | date}}</div>
+                    </div>
+
+                    <div class="detail-group col-xs-12 col-md-4" v-show="project.post_production_due_date">
+                        <div class="detail-label">Post-Production Due Date</div>
+                        <div>{{ project.post_production_due_date | date}}</div>
+                    </div>
+
+                    <div class="detail-group col-xs-12 col-md-4" v-show="project.quality_control_due_date">
+                        <div class="detail-label">Quality Control Due Date</div>
+                        <div>{{ project.quality_control_due_date | date}}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="detail-group col-xs-12 col-md-4" v-show="project.shipped_due_date">
+                        <div class="detail-label">Shipped Due Date</div>
+                        <div>{{ project.shipped_due_date | date}}</div>
+                    </div>
+
+                    <div class="detail-group col-xs-12 col-md-4" v-show="project.delivered_due_date">
+                        <div class="detail-label">Delivered Due Date</div>
+                        <div>{{ project.delivered_due_date | date}}</div>
                     </div>
                 </div>
 
@@ -117,6 +146,17 @@
                                 v-on:click="changeProjectStatus('Quote Rejected')">
                             <i class="fa fa-arrow-circle-right"></i> Quote Rejected
                         </button>
+
+                        <a href="#form"
+                           aria-controls="form"
+                           role="tab"
+                           data-toggle="tab"
+                           class="btn btn-success"
+                           title="Pre-Production"
+                           v-show="project.status === 'Quote Accepted'"
+                           v-on:click="$parent.initForm(true, 'Pre-Production')">
+                            <i class="fa fa-arrow-circle-right"></i> Pre-Production
+                        </a>
                     </div>
                 </div>
             </div>
