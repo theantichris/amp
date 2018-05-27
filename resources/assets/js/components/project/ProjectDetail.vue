@@ -112,6 +112,7 @@
                            data-toggle="tab"
                            class="btn btn-primary"
                            title="Edit"
+                           v-show="project.status !== 'Complete'"
                            v-on:click="$parent.initForm(true, null)">
                             <i class="fa fa-edit"></i> Edit
                         </a>
@@ -235,6 +236,14 @@
                                 v-show="project.status === 'Invoiced'"
                                 v-on:click="changeProjectStatus('Paid')">
                             <i class="fa fa-arrow-circle-right"></i> Paid
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-success"
+                                title="Complete"
+                                v-show="project.status === 'Paid'"
+                                v-on:click="changeProjectStatus('Complete')">
+                            <i class="fa fa-arrow-circle-right"></i> Complete
                         </button>
                     </div>
                 </div>
