@@ -27,6 +27,8 @@ class Project extends BaseModel implements Auditable
         'quality_control_due_date',
         'shipped_due_date',
         'delivered_due_date',
+        'shipping_provider',
+        'tracking_number',
     ];
 
     public function customer(): BelongsTo

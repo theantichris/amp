@@ -26,6 +26,8 @@ class ProjectResource extends Resource
             'quality_control_due_date' => $this->quality_control_due_date,
             'shipped_due_date'         => $this->shipped_due_date,
             'delivered_due_date'       => $this->delivered_due_date,
+            'shipping_provider'        => $this->shipping_provider,
+            'tracking_number'          => $this->tracking_number,
         ];
     }
 }

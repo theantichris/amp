@@ -135,6 +135,8 @@
                         quality_control_due_date: project.quality_control_due_date,
                         shipped_due_date: project.shipped_due_date,
                         delivered_due_date: project.delivered_due_date,
+                        shipping_provider: project.shipping_provider,
+                        tracking_number: project.tracking_number
                     });
 
                     if (newStatus)
@@ -152,6 +154,8 @@
                         quality_control_due_date: null,
                         shipped_due_date: null,
                         delivered_due_date: null,
+                        shipping_provider: null,
+                        tracking_number: null
                     });
                 }
             },

@@ -68,6 +68,18 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="detail-group col-xs-12 col-md-6" v-show="project.shipping_provider">
+                        <div class="detail-label">Shipping Provider</div>
+                        <div>{{ project.shipping_provider }}</div>
+                    </div>
+
+                    <div class="detail-group col-xs-12 col-md-6" v-show="project.tracking_number">
+                        <div class="detail-label">Tracking Number</div>
+                        <div>{{ project.tracking_number }}</div>
+                    </div>
+                </div>
+
                 <parts :project-id="project.id"
                        :parts="parts"
                        v-on:partSaved="handlePartSaved"/>
@@ -189,6 +201,17 @@
                                 v-on:click="changeProjectStatus('Shipping')">
                             <i class="fa fa-arrow-circle-right"></i> Shipping
                         </button>
+
+                        <a href="#form"
+                           aria-controls="form"
+                           role="tab"
+                           data-toggle="tab"
+                           class="btn btn-success"
+                           title="Shipped"
+                           v-show="project.status === 'Shipping'"
+                           v-on:click="$parent.initForm(true, 'Shipped')">
+                            <i class="fa fa-arrow-circle-right"></i> Shipped
+                        </a>
                     </div>
                 </div>
             </div>

@@ -73,7 +73,7 @@
 
                     <div class="row" v-show="requiresDates">
                         <div class="form-group col-xs-12 col-md-4 required">
-                            <div class="control-label">Production Due Date</div>
+                            <label class="control-label">Production Due Date</label>
                             <date-picker name="production_due_date"
                                          placeholder="Select Date"
                                          input-class="form-control"
@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="form-group col-xs-12 col-md-4 required">
-                            <div class="control-label">Post-Production Due Date</div>
+                            <label class="control-label">Post-Production Due Date</label>
                             <date-picker name="post_production_due_date"
                                          placeholder="Select Date"
                                          input-class="form-control"
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="form-group col-xs-12 col-md-4 required">
-                            <div class="control-label">Quality Control Due Date</div>
+                            <label class="control-label">Quality Control Due Date</label>
                             <date-picker name="quality_control_due_date"
                                          placeholder="Select Date"
                                          input-class="form-control"
@@ -102,7 +102,7 @@
 
                     <div class="row" v-show="requiresDates">
                         <div class="form-group col-xs-12 col-md-4 required">
-                            <div class="control-label">Shipped Due Date</div>
+                            <label class="control-label">Shipped Due Date</label>
                             <date-picker name="shipped_due_date"
                                          placeholder="Select Date"
                                          input-class="form-control"
@@ -111,12 +111,30 @@
                         </div>
 
                         <div class="form-group col-xs-12 col-md-4 required">
-                            <div class="control-label">Delivered Due Date</div>
+                            <label class="control-label">Delivered Due Date</label>
                             <date-picker name="post_production_due_date"
                                          placeholder="Select Date"
                                          input-class="form-control"
                                          :required="requiresDates"
                                          v-model="form.delivered_due_date"></date-picker>
+                        </div>
+                    </div>
+
+                    <div class="row" v-show="requiresShipping">
+                        <div class="form-group col-xs-12 col-md-6 required">
+                            <label for="shippingProvider" class="control-label">Shipping Provider</label>
+                            <input id="shippingProvider"
+                                   class="form-control"
+                                   v-model="form.shipping_provider"
+                                   :required="requiresShipping">
+                        </div>
+
+                        <div class="form-group col-xs-12 col-md-6 required">
+                            <label for="trackingNumber" class="control-label">Tracking Number</label>
+                            <input id="trackingNumber"
+                                   class="form-control"
+                                   v-model="form.tracking_number"
+                                   :required="requiresShipping">
                         </div>
                     </div>
 
@@ -147,7 +165,25 @@
                     'Pre-Production',
                     'Production',
                     'Post-Production',
-                    'Quality Control'
+                    'Quality Control',
+                    'Shipping',
+                    'Shipped',
+                    'Delivered',
+                    'Invoiced',
+                    'Paid',
+                    'Complete'
+                ];
+
+                return statuses.indexOf(this.form.status) !== -1;
+            },
+
+            requiresShipping: function () {
+                let statuses = [
+                    'Shipped',
+                    'Delivered',
+                    'Invoiced',
+                    'Paid',
+                    'Complete'
                 ];
 
                 return statuses.indexOf(this.form.status) !== -1;

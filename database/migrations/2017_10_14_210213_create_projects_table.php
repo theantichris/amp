@@ -16,25 +16,24 @@ class CreateProjectsTable extends Migration
 
                 $table->string('name');
 
-                $table->enum('status',
-                    [
-                        'New',
-                        'Ready To Quote',
-                        'Quote Generated',
-                        'Quote Sent',
-                        'Quote Accepted',
-                        'Quote Rejected',
-                        'Pre-Production',
-                        'Production',
-                        'Post-Production',
-                        'Quality Control',
-                        'Shipping',
-                        'Shipped',
-                        'Delivered',
-                        'Invoiced',
-                        'Paid',
-                        'Complete',
-                    ]);
+                $table->enum('status', [
+                    'New',
+                    'Ready To Quote',
+                    'Quote Generated',
+                    'Quote Sent',
+                    'Quote Accepted',
+                    'Quote Rejected',
+                    'Pre-Production',
+                    'Production',
+                    'Post-Production',
+                    'Quality Control',
+                    'Shipping',
+                    'Shipped',
+                    'Delivered',
+                    'Invoiced',
+                    'Paid',
+                    'Complete',
+                ]);
 
                 $table->float('production_cost')->nullable();
                 $table->float('sales_price')->nullable();
@@ -44,6 +43,9 @@ class CreateProjectsTable extends Migration
                 $table->timestamp('quality_control_due_date')->nullable();
                 $table->timestamp('shipped_due_date')->nullable();
                 $table->timestamp('delivered_due_date')->nullable();
+
+                $table->string('shipping_provider')->nullable();
+                $table->string('tracking_number')->nullable();
 
                 $table->integer('customer_id')
                       ->unsigned()
