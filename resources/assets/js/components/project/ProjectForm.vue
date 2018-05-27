@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="form-group col-xs-12 col-md-6 required">
-                            <label for="salesPrice" class="control-label">Production Cost</label>
+                            <label for="salesPrice" class="control-label">Sales Price</label>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
                                 <input id="salesPrice"
