@@ -228,6 +228,14 @@
                                 v-on:click="changeProjectStatus('Invoiced')">
                             <i class="fa fa-arrow-circle-right"></i> Invoiced
                         </button>
+
+                        <button type="button"
+                                class="btn btn-success"
+                                title="Paid"
+                                v-show="project.status === 'Invoiced'"
+                                v-on:click="changeProjectStatus('Paid')">
+                            <i class="fa fa-arrow-circle-right"></i> Paid
+                        </button>
                     </div>
                 </div>
             </div>
