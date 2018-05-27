@@ -181,6 +181,14 @@
                                 v-on:click="changeProjectStatus('Quality Control')">
                             <i class="fa fa-arrow-circle-right"></i> Quality Control
                         </button>
+
+                        <button type="button"
+                                class="btn btn-success"
+                                title="Shipping"
+                                v-show="project.status === 'Quality Control'"
+                                v-on:click="changeProjectStatus('Shipping')">
+                            <i class="fa fa-arrow-circle-right"></i> Shipping
+                        </button>
                     </div>
                 </div>
             </div>
