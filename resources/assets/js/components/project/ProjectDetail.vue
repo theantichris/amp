@@ -212,6 +212,14 @@
                            v-on:click="$parent.initForm(true, 'Shipped')">
                             <i class="fa fa-arrow-circle-right"></i> Shipped
                         </a>
+
+                        <button type="button"
+                                class="btn btn-success"
+                                title="Delivered"
+                                v-show="project.status === 'Shipped'"
+                                v-on:click="changeProjectStatus('Delivered')">
+                            <i class="fa fa-arrow-circle-right"></i> Delivered
+                        </button>
                     </div>
                 </div>
             </div>
